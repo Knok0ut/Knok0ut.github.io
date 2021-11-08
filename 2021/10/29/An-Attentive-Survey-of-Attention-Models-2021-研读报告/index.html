@@ -36,7 +36,7 @@
 <meta property="og:image" content="http://example.com/2021/10/29/An-Attentive-Survey-of-Attention-Models-2021-%E7%A0%94%E8%AF%BB%E6%8A%A5%E5%91%8A/upload_11ba64cfcd9ee772f67375ac7dbc8270.png">
 <meta property="og:image" content="http://example.com/2021/10/29/An-Attentive-Survey-of-Attention-Models-2021-%E7%A0%94%E8%AF%BB%E6%8A%A5%E5%91%8A/upload_5220608e9e49aeb36a7d305a78faa59a.png">
 <meta property="article:published_time" content="2021-10-29T15:20:56.000Z">
-<meta property="article:modified_time" content="2021-10-31T06:18:01.394Z">
+<meta property="article:modified_time" content="2021-11-08T09:36:07.716Z">
 <meta property="article:author" content="wangxh">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/2021/10/29/An-Attentive-Survey-of-Attention-Models-2021-%E7%A0%94%E8%AF%BB%E6%8A%A5%E5%91%8A/upload_e1e9157e816c7a6c17f183442e37c95d.png">
@@ -189,7 +189,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-10-31 14:18:01" itemprop="dateModified" datetime="2021-10-31T14:18:01+08:00">2021-10-31</time>
+                <time title="Modified: 2021-11-08 17:36:07" itemprop="dateModified" datetime="2021-11-08T17:36:07+08:00">2021-11-08</time>
               </span>
 
           
@@ -206,8 +206,7 @@
         <h1 id="An-Attentive-Survey-of-Attention-Models-2021-研读报告"><a href="#An-Attentive-Survey-of-Attention-Models-2021-研读报告" class="headerlink" title="An Attentive Survey of Attention Models(2021)研读报告"></a>An Attentive Survey of Attention Models(2021)研读报告</h1><blockquote>
 <p>论文标题：关于注意力模型的细心调研<br>如今注意力模型已经成为了神经网络中一个非常重要的概念，而且在多种应用领域中得到了广泛的研究。这篇调研针对注意力机制的发展提供了一个结构化、综合的概述。我们将现有的注意力技术分类。我们回顾了一些具有注意力模型的神经结构，并且讨论一些注意力模型已经发挥显著作用的应用。我们还描述了注意力机制是如何用来提升神经网络的可解释性的。最后我们讨论了一些未来的注意力机制的研究方向。这篇调研可以针对注意力机制提供一个简洁的介绍，并在实践人员开发应用时提供引导。</p>
 </blockquote>
-<!-- ## 写在开始之前
-这篇论文是在我搜索关于神经网络中的注意力机制时发现的。其中也有很多地方在初读时让我感到困惑，能解决的地方我都尽量去解决了。这篇研读报告中*斜体*的内容是我对这篇文章的补充说明，大家可以 -->
+<span id="more"></span>
 <h2 id="1-INTRODUCTION"><a href="#1-INTRODUCTION" class="headerlink" title="1 INTRODUCTION"></a>1 INTRODUCTION</h2><p>注意力模型（AM）最早用于机器翻译，并为神经网络模型带来很大的优势。AM作为大量NLP应用中的一个基本部件，它已经变得非常出名。注意力机制背后的直觉（intuition）可以用人类生物系统解释。举个例子，我们的视觉处理系统倾向于把注意点放在图像的某些部位，同时忽略其他不相关的信息。类似的，在一些关于语言、视觉、听觉的问题中，输入的某些部分比其它部分更加重要（如图像描述问题，相较于其他区域，图像的某一个特定区域可能对于生成描述句的下一个词更加重要）。注意力模型通过动态的调整模型的注意力从而让模型只注意对完成任务有用的部分输入。下面是[Yang et al. 2016] 做的关于注意力机制在情感分类问题中的应用的例子。AM学习到在这五句话中，第一句和第三句对情感分析更有帮助。</p>
 <p><img src="/2021/10/29/An-Attentive-Survey-of-Attention-Models-2021-%E7%A0%94%E8%AF%BB%E6%8A%A5%E5%91%8A/upload_e1e9157e816c7a6c17f183442e37c95d.png" alt="img"></p>
 <p>对注意力进行建模发展迅速的三个原因：</p>
