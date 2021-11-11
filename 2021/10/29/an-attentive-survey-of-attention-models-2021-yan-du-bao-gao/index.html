@@ -1,0 +1,1256 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="An Attentive Survey of Attention Models(2021)研读报告, 没想好先随便起一个">
+    <meta name="description" content="An Attentive Survey of Attention Models(2021)研读报告
+论文标题：关于注意力模型的细心调研如今注意力模型已经成为了神经网络中一个非常重要的概念，而且在多种应用领域中得到了广泛的研究。这篇调研针对注">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>An Attentive Survey of Attention Models(2021)研读报告 | 没想好先随便起一个</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">没想好先随便起一个</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">没想好先随便起一个</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/WangXurun" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/WangXurun" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">An Attentive Survey of Attention Models(2021)研读报告</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-10-29
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2021-11-08
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    4.3k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    16 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="An-Attentive-Survey-of-Attention-Models-2021-研读报告"><a href="#An-Attentive-Survey-of-Attention-Models-2021-研读报告" class="headerlink" title="An Attentive Survey of Attention Models(2021)研读报告"></a>An Attentive Survey of Attention Models(2021)研读报告</h1><blockquote>
+<p>论文标题：关于注意力模型的细心调研<br>如今注意力模型已经成为了神经网络中一个非常重要的概念，而且在多种应用领域中得到了广泛的研究。这篇调研针对注意力机制的发展提供了一个结构化、综合的概述。我们将现有的注意力技术分类。我们回顾了一些具有注意力模型的神经结构，并且讨论一些注意力模型已经发挥显著作用的应用。我们还描述了注意力机制是如何用来提升神经网络的可解释性的。最后我们讨论了一些未来的注意力机制的研究方向。这篇调研可以针对注意力机制提供一个简洁的介绍，并在实践人员开发应用时提供引导。</p>
+</blockquote>
+<span id="more"></span>
+<h2 id="1-INTRODUCTION"><a href="#1-INTRODUCTION" class="headerlink" title="1 INTRODUCTION"></a>1 INTRODUCTION</h2><p>注意力模型（AM）最早用于机器翻译，并为神经网络模型带来很大的优势。AM作为大量NLP应用中的一个基本部件，它已经变得非常出名。注意力机制背后的直觉（intuition）可以用人类生物系统解释。举个例子，我们的视觉处理系统倾向于把注意点放在图像的某些部位，同时忽略其他不相关的信息。类似的，在一些关于语言、视觉、听觉的问题中，输入的某些部分比其它部分更加重要（如图像描述问题，相较于其他区域，图像的某一个特定区域可能对于生成描述句的下一个词更加重要）。注意力模型通过动态的调整模型的注意力从而让模型只注意对完成任务有用的部分输入。下面是[Yang et al. 2016] 做的关于注意力机制在情感分类问题中的应用的例子。AM学习到在这五句话中，第一句和第三句对情感分析更有帮助。</p>
+<p><img src="/2021/10/29/an-attentive-survey-of-attention-models-2021-yan-du-bao-gao/upload_e1e9157e816c7a6c17f183442e37c95d.png" alt="img"></p>
+<p>对注意力进行建模发展迅速的三个原因：</p>
+<ol>
+<li>是解决多任务最先进的模型。</li>
+<li>为提升主任务性能提供了其它的优势。它被用于提升神将网络的可解释性（越来越多的人对影响人类生活的应用中的网络模型的公平性、问责制、透明度感兴趣）。</li>
+<li>它们有助于克服递归神经网络RNN中的一些挑战，例如随着输入长度的增加性能下降，以及输入顺序不合理导致的计算效率低下。</li>
+</ol>
+<p>文章的组织：我们的工作致力于为注意力建模提供一个简短但是综合的研究。在第二节我们用一个简单的回归模型来为你提供关于注意力的初步印象。在第三节我们简短的介绍了[Bahdanau et al. 2015]提出的AM和其他的注意力函数（attention function）。第四节我们介绍了我们的分类结果。第五节和第六节讨论了使用AM的关键神经结构并展示了一些广泛使用注意力机制的应用。最后在第七节我们解释了注意力如何促进理解神经网络的可解释性，并在第八节介绍了未来的研究方向。</p>
+<p>相关的调研：目前已经有一些专门领域的关于注意力机制的研究。如：</p>
+<ol>
+<li>[Wang and Tax 2016] on cv</li>
+<li>[Lee et al. 2019] on graphs</li>
+<li>[Galassi et al. 2020] on nlp</li>
+</ol>
+<h2 id="2-ATTENTION-BASICS"><a href="#2-ATTENTION-BASICS" class="headerlink" title="2 ATTENTION BASICS"></a>2 ATTENTION BASICS</h2><p>[Nadaraya 1964; Watson 1964]提出的回归模型可以帮助我们理解注意力机制。我们的数据样本有n个数据$\{(x_1,y_1),(x_2,y_2),\dots,(x_n,y_n)\}$。我们想知道当给定一个x时其对应的y的预测值$\hat{y}$。一个朴素的估计器对于任何输入都会输出样本中$y_i$的平均值。Naradaya-Watson提出了一个更好的方法：使用$y_i$的加权平均数。$y_i$的权值为$x,x_i$之间的相关度。公式如下：</p>
+<script type="math/tex; mode=display">\hat{y} = \sum_{i=1}^{n}\alpha(x,x_i)y_i</script><p>$\alpha$是一个衡量$x,x_i$关联程度的函数。对于$\alpha$的一个普遍的选择是使用高斯核。Naradaya-Watson表示这种估计器有两个特性：</p>
+<ol>
+<li>一致性(consistency)：数据样本量越大结果越好。</li>
+<li>朴素性(simplicity)：没有没用的参数。信息存储在样本数据中而不是在权重中。<br>往后推50年，深度模型中的注意力机制可以看作是上述公式的一种泛化，即权重函数是可以学习的。</li>
+</ol>
+<h2 id="3-ATTENTION-MODEL"><a href="#3-ATTENTION-MODEL" class="headerlink" title="3 ATTENTION MODEL"></a>3 ATTENTION MODEL</h2><p>AM的第一次应用被[Bahdanau et al. 2015]用来解决一个sequence-to-sequence modeling<br>task。s2s Model含有一个编码器(encoder)和一个解码器(decoder),他们的隐藏状态分别为$h_i,s_i$。编码器获得输入$\{x_1,x_2,\dots,x_T\}$并输出T个具有固定长度的向量$\{h_1,h_2,\dots,h_T\}$。将$h_T$输入解码器，解码器会输出$\{y_1,y_2,\dots,y_{T’}\}$token by token。<br><strong>上述模型有两个问题（挑战）：</strong></p>
+<ol>
+<li>将所有输入压缩成一个具有固定长度的向量会造成信息丢失。</li>
+<li>无法对输入和输出序列之间的排列进行建模</li>
+</ol>
+<p>也就是说解码器在输出每个token时无法有选择的使用输入。</p>
+<p><strong>核心思想</strong>：使用注意力权重来决定哪些输入对下一个输出更重要。</p>
+<p><strong>注意力的使用方法</strong>：如下图(b)。在解码器的第j个时间步，模型结构中的注意力模块负责自动生成注意力权重$\alpha_{ij}$。用这个权重表示$s_{j-1},h_i$直间的关联度。接着这些权重会通过$c_j=\sum_{i=1}^{T}\alpha_{ij}h_i$生成contex vector c。c会输入到解码器的下一个时间步。通过生成c，解码器就可以获得整个输入信息同时只把”注意力”放在输入的某部分。这种方法提升了算法的性能和输出的质量。Table 1 是这种注意力机制的数学表达。<br><img src="/2021/10/29/an-attentive-survey-of-attention-models-2021-yan-du-bao-gao/upload_1455ea8a4e2ecf7e25bf47df00e2bac9.png" alt=""><br><img src="/2021/10/29/an-attentive-survey-of-attention-models-2021-yan-du-bao-gao/upload_7d99451e1b73905d753043d61336ddb0.png" alt=""></p>
+<p><strong>学习注意力权重</strong>: 注意力权重的学习可以通过引入一个前馈神经网络来完成。这个前馈神经网络作为一个函数，它的的输入为$h_i,s_{j-1}$。这个函数叫做alignment funcion（table 1 中用a表示），它会对$h_i,s_{j-1}$的相关度进行评估（有的资料把这个函数叫做评分函数scoring function）并输出评分$e_{ij}$。distribution function（table 1中用p表示）会把$e_{ij}$转化为注意力权重。当a，p是可微的函数时，这整个基于注意力的encoder-decoder模型就会成为一个大的可微函数，并且可以一同训练。<br><strong>泛化的AM</strong>：AM可以看作是一种映射。这个映射会根据query q将keys K映射为权重$\alpha$。其中keys即为编码器的隐藏状态$\{h_1,h_2,\dots,h_T\}$，q即为$s_{j-1}$。注意力模型表示如下：</p>
+<script type="math/tex; mode=display">A(q,K,V)=\sum_ip(a(k_i,q))*v_i</script><p>通常keys和values是一一对应的。在[Bahdanau et al. 2015]提出的模型中，$h_i = v_i = k_i$。通过上面的回归的例子来理解这个公式，输入x为query，$v_i$为$y_i$，$k_i$为$x_i$。</p>
+<p><strong>Alignment functions（排列函数？）</strong>：<br>对于key和query在相同向量空间的：</p>
+<ol>
+<li>余弦相似度或者点积（dot product）</li>
+<li>考虑到不同的表示长度，scaled dot product使用表示向量的长度来归一化点积。</li>
+</ol>
+<p>对于key和query在不同向量空间的：</p>
+<ol>
+<li>General alignment：引入可学习的转换矩阵将query映射到key的向量空间。</li>
+<li>Activated general alignment：添加一个非线性的激活层（hyperbolic tangent, rectifier linear unit, or scaled exponential linear unit. ）</li>
+<li>Biased general alignment ：不管query，通过添加偏置项（bias）直接学习一些key的全局重要性。</li>
+<li>[Choromanski et al. 2021] 展示了key和query可以通过generalized kernel function匹配，而不是点积。<br>key，query联合表示的：</li>
+<li>concat alignment：keys和queries拼接到一起形成联合表示。</li>
+<li>Additive alignment：对key和query的贡献进行解耦。使得可以提前计算所有key的贡献而不用对每个query再计算一遍。降低了计算时间。</li>
+<li>deep alignment 使用了多层神经网络。<br>针对特定使用场景的：</li>
+<li>Location-based alignment：忽略keys的内容，只使用它的位置信息。</li>
+<li>[Li et al. 2019a]提出当处理一组元素（如2-D patches for images 或者 1-D temporal<br>sequences），从属于该组的单个元素的表示中得出的特征（如平均数和标准差）可以作为alignment function的输入。</li>
+</ol>
+<p><img src="/2021/10/29/an-attentive-survey-of-attention-models-2021-yan-du-bao-gao/upload_617f45653ad3c44d2f61bd3ded2c020e.png" alt=""></p>
+<p><strong>distribution function（分布函数）</strong>：</p>
+<ol>
+<li>dense distribution：softmax,logistic sigmoid。输出可以看作概率，但会降低模型的可解释性，而且会对不可能的输出分配概率（This density is wasteful, making models less interpretable and assigning probability mass to many implausible outputs. ）。</li>
+<li>sparse distribution：sparsemax和sparse entmax。通过只对少量可能的输出赋予概率从而产生sparse alignment。当大量元素之间是不相关时会非常有用。</li>
+<li>[Tay et al. 2019]提出一种分布函数。计算两个项——$thanh(\frac{qk_i^T}{\sqrt{d_k}}),sigmoid(\frac{G(qk_i^T)}{\sqrt{d_k}})$的乘积来形成准注意力（qusi-attention）。其中第一项控制向量的加或者减，第二项可以看作是控制删除不相关元素的门函数。</li>
+</ol>
+<h2 id="4-TAXONOMY-OF-ATTENTION"><a href="#4-TAXONOMY-OF-ATTENTION" class="headerlink" title="4 TAXONOMY OF ATTENTION"></a>4 TAXONOMY OF ATTENTION</h2><p><img src="/2021/10/29/an-attentive-survey-of-attention-models-2021-yan-du-bao-gao/upload_7471d28d5ac5631a1e2d6b9048aab5ef.png" alt=""></p>
+<h3 id="4-1-Number-of-sequences"><a href="#4-1-Number-of-sequences" class="headerlink" title="4.1 Number of sequences"></a>4.1 Number of sequences</h3><ol>
+<li>distinctive attention：输入和输出是独立的两个序列。上面考虑的全是这种情况。大部分情况应用于翻译 [Bahdanau et al. 2015]、图像描述[Xu et al. 2015]和语音识别[Chan et al. 2016]。</li>
+<li>co-attention：输入有多个序列，同时计算他们的注意力权重。[Lu et al. 2016]用它来做visual question answering。不仅提取图像中的重要信息a同样也要提取问题中的关键点b。a和b会互相影响。类似的[Yu et al. 2019] 也用它来做visual question answering task</li>
+<li>self-attention(inner attention)。每个输入序列都可以学习自身中相关的元素。即key和query在同一个序列中。</li>
+</ol>
+<h3 id="4-2-Number-of-abstraction-levels"><a href="#4-2-Number-of-abstraction-levels" class="headerlink" title="4.2 Number of abstraction levels"></a>4.2 Number of abstraction levels</h3><ol>
+<li>single-level：只对原始输入添加注意力权重。</li>
+<li>multi-level：注意力模型的低层输出变为高层的输入（query）。再细分可以根据学习顺序分为自顶向下，自底向上两类。 [Yang et al. 2016]用“Hierarchical Attention Model”(HAM) 解决文档分类问题。这种多层模型可以从句子中找到关键词，从文档中找到关键句。上面提到的 [Lu et al. 2016]使用的co-attention也是多层模型（单词层，短语层，问题层），如下图。[Zhao and Zhang 2018]提出attention-via-attention，低层为字母高层为单词，并通过自顶向下的方式学习。<br><img src="/2021/10/29/an-attentive-survey-of-attention-models-2021-yan-du-bao-gao/upload_6149cd7ede3a72ba726fd358cba6b2f6.png" alt=""></li>
+</ol>
+<h3 id="4-3-Number-of-positions"><a href="#4-3-Number-of-positions" class="headerlink" title="4.3 Number of positions"></a>4.3 Number of positions</h3><ol>
+<li>soft attention：编码器输出的所有隐藏状态都要参与注意力的计算。方便反向传播但是会造成二次方的损失（quadratic computational cost）。</li>
+<li>hard attention：[Xu et al. 2015]提出通过范畴分布（multinoulli distribution）随机选取隐藏状态计算注意力权重。降低了计算损失但导致函数不可微，并且难以优化。Variational learning方法和 policy gradient 方法的提出可以帮助解决这些缺陷。</li>
+<li>local and global：[Luong et al. 2015b] 为机器翻译提出两种注意力模型：local、global。global类似soft attention模型。local介于soft和hard之间。local的关键想法是在输入序列中找到一个”注意点”（attention point），在这个点（位置）周围选择一个创建一个窗口，在窗口中建立局部soft attention模型。这个点（位置）可以认为设定(monotonic alignment) 或者通过学习得到(predictive alignment)。</li>
+</ol>
+<h3 id="4-4-Number-of-representations"><a href="#4-4-Number-of-representations" class="headerlink" title="4.4 Number of representations"></a>4.4 Number of representations</h3><ol>
+<li>Single-representational AM：只使用输入序列的一种特征表示法。这是大多数应用使用的方法。但是在某些情况下不能满足下游任务。</li>
+<li>Multi-representational AM：通过多种特征表示来获取输入的不同方面的特征，然后使用注意力机制为不同的表示添加权重从而决定与这个任务最相关的表示法。[Kiela et al. 2018]、[Maharjan et al. 2018]、[Lin et al. 2017] 、 [Shen et al. 2018] 都做了类似的工作。</li>
+</ol>
+<h2 id="5-NETWORK-ARCHITECTURES-WITH-ATTENTION"><a href="#5-NETWORK-ARCHITECTURES-WITH-ATTENTION" class="headerlink" title="5 NETWORK ARCHITECTURES WITH ATTENTION"></a>5 NETWORK ARCHITECTURES WITH ATTENTION</h2><h3 id="5-1-Encoder-Decoder"><a href="#5-1-Encoder-Decoder" class="headerlink" title="5.1 Encoder-Decoder"></a>5.1 Encoder-Decoder</h3><p>最早在 [Bahdanau et al. 2015]中提出。编码器把输入压缩到一个固定长度的向量，解码器再对这个向量进行处理。这种方式把输入输出进行解耦，这使得杂交encoder-decoder成为了可能。比如编码器用CNN，解码器用LSTM。对许多模型任务例如图像，视频描述、Visual Question Answering和语音识别有非常大的帮助。<br>但是并不是所有问题都可以的输入输出都是序列化的。Pointer Network [Vinyals et al. 2015]有如下的两个不同：</p>
+<ol>
+<li>输出是离散的值，并且指向了输入序列的某个位置。</li>
+<li>输出类别取决于输入的数量。<br>作者通过使用注意力权重来对每个时间步选择第i个输入符号的概率。这个方法可以用作离散优化问题（旅行商，排序）</li>
+</ol>
+<h3 id="5-2-Transformer"><a href="#5-2-Transformer" class="headerlink" title="5.2 Transformer"></a>5.2 Transformer</h3><p>循环结构会序列化的处理输入，这导致计算效率下降。Transformer [Vaswani et al. 2017].通过使用自注意力机制来获得输入输出的全局依赖。作者展示了使用Transformer，即便不使用循环结构也可以在机器翻译任务中获得超强的并行处理能力，更短的训练时间和更高的准确度。</p>
+<h3 id="5-3-Memory-Networks"><a href="#5-3-Memory-Networks" class="headerlink" title="5.3 Memory Networks"></a>5.3 Memory Networks</h3><p>类似Question Answering的应用需要拥有从事实数据库中学习的能力。网络的输入是知识数据库（knowledge dagabase）和一个问题（query）。在数据库中有些事实是与问题相关的但有些不是。在这种情况下就需要注意力来选择相关的事实。</p>
+<h3 id="5-4-Graph-Attention-Networks-GAT"><a href="#5-4-Graph-Attention-Networks-GAT" class="headerlink" title="5.4 Graph Attention Networks (GAT)"></a>5.4 Graph Attention Networks (GAT)</h3><p>战略性略过</p>
+<h2 id="6-APPLICATIONS"><a href="#6-APPLICATIONS" class="headerlink" title="6 APPLICATIONS"></a>6 APPLICATIONS</h2><p><img src="/2021/10/29/an-attentive-survey-of-attention-models-2021-yan-du-bao-gao/upload_11ba64cfcd9ee772f67375ac7dbc8270.png" alt=""></p>
+<h2 id="7-ATTENTION-FOR-INTERPRETABILITY"><a href="#7-ATTENTION-FOR-INTERPRETABILITY" class="headerlink" title="7 ATTENTION FOR INTERPRETABILITY"></a>7 ATTENTION FOR INTERPRETABILITY</h2><p>越来越多的人关注AI模型的可解释性，而且这正是神经网络特别是深度学习网络所欠缺的。注意力机制可以帮助我们提升AI模型的可解释性。存在的一种假设是注意力权重的大小与对应输入部分与当前时间步下的输出的相关度有关。通过可视化输入输出对可以发现这种规律。<br> [Rush et al. 2015]展示了在（文本）总结问题中，AM可以在输出时把注意力放在输入的相关的单词上（下图a）。 [He et al. 2018]表示注意力可以用来识别用户的兴趣（下图b）。[Xu et al. 2015]通过可视化展示了图片摘要问题中对输出有很大影响的图形区域。<br><img src="/2021/10/29/an-attentive-survey-of-attention-models-2021-yan-du-bao-gao/upload_5220608e9e49aeb36a7d305a78faa59a.png" alt=""><br>总结几种有趣的事实：</p>
+<ol>
+<li>[De-Arteaga et al. 2019] explored gender bias in occupation classification, and showed how the words getting more attention during classification task are often gendered.（没看懂，直接粘原文了）</li>
+<li>[Yang et al. 2016]表示在情感分类问题中，”good”和”bad”这两个单词的重要性是与文本内容相关的。</li>
+<li>[Chan et al. 2016]注意到在语音识别中，字符输出和音频信号之间的注意力可以正确识别音频信号中第一个字符的起始位置，并且对于具有声学相似性的单词，注意力权重是相似的。</li>
+<li>[Kiela et al. 2018]发现multi-representational attention对 GloVe, FastText这两种词嵌入方式赋予了更高的权重。</li>
+</ol>
+<p>另一种有趣的应用： [Lee et al. 2017] and [Liu et al. 2018]提供了一种注意力可视化的工具</p>
+<p>尽管许多人用注意力来提高AI模型的可解释性，但有些人也提出了相反的观点。 [Jain and Wallace 2019]提出注意力权重与特征重要性分析是不相关的。他们观察预测结果对注意力权重改变的敏感度，却发现通过使用随机排列和adversarial training并没有改变输出结果。[Serrano and Smith 2019] applied a different analysis based on intermediate representation erasure method and showed that attention weights are at best noisy predictors of relative importance of the specific regions of input sequence, and should not be treated as justifications for model’s decisions. （又没看懂………….）</p>
+<h2 id="未来的研究方向"><a href="#未来的研究方向" class="headerlink" title="未来的研究方向"></a>未来的研究方向</h2><ol>
+<li>Real-time Attention<br>类似实时翻译的应用需要在获得整个输入之前开始预测结果，这就需要Real-time Attention。<br>相关的成果：<ol>
+<li>[Chiu and Raffel 2017] </li>
+<li>[Ma et al. 2019] </li>
+</ol>
+</li>
+<li><p>Stand-alone Attention<br>相关成果：</p>
+<ol>
+<li>[Ramachandran et al. 2019]</li>
+<li>[Wang et al. 2020e]</li>
+</ol>
+</li>
+<li><p>Model Distillation<br>相关成果：</p>
+<ol>
+<li>[Wang et al. 2020d] </li>
+<li>[Mirzadeh et al. 2020]</li>
+<li>[Touvron et al. 2020] </li>
+</ol>
+</li>
+<li><p>Attention for Interpretability<br>相关成果</p>
+<ol>
+<li>[Mohankumar et al. 2020]</li>
+</ol>
+</li>
+<li><p>Auto-learning Attention<br>相关成果：</p>
+<ol>
+<li>[Ma et al. 2020] </li>
+</ol>
+</li>
+<li><p>Multi-instance Attention<br>相关成果：</p>
+<ol>
+<li>[Li et al. 2019a]</li>
+</ol>
+</li>
+<li><p>Multi-agent Systems<br>相关成果：</p>
+<ol>
+<li>[Fujii et al. 2020; Li et al. 2020a] </li>
+</ol>
+</li>
+<li><p>Scalability<br>相关成果：</p>
+<ol>
+<li>[Sukhbaatar et al. 2019b] </li>
+<li>[Choromanski et al. 2021]</li>
+<li>[Wang et al. 2020a]</li>
+<li>[Li et al. 2020b]</li>
+</ol>
+</li>
+</ol>
+<h2 id="REFERENCES"><a href="#REFERENCES" class="headerlink" title="REFERENCES"></a>REFERENCES</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1904.02874.pdf">Chaudhari S, Mithal V, Polatkan G, et al. An attentive survey of attention models[J]. ACM Transactions on Intelligent Systems and Technology (TIST), 2021, 12(5): 1-32.</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/d2l-ai/d2l-zh">《动手学深度学习》</a></li>
+</ol>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">wangxh</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://blog.expecto.top/2021/10/29/an-attentive-survey-of-attention-models-2021-yan-du-bao-gao/">https://blog.expecto.top/2021/10/29/an-attentive-survey-of-attention-models-2021-yan-du-bao-gao/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">wangxh</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2021/11/08/evaluating-differentially-private-machine-learning-in-practice/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Evaluating Differentially Private Machine Learning in Practice">
+                        
+                        <span class="card-title">Evaluating Differentially Private Machine Learning in Practice</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Evaluating Differentially Private Machine Learning in PracticeBargav Jayaraman and David Evans, University of Virginia  
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-11-08
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            wangxh
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/10/28/hello-world/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        
+                        <span class="card-title">Hello World</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-28
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            wangxh
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+    });
+</script>
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2021</span>
+            
+            <a href="/about" target="_blank">wangxh</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">6.1k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis"> 
+    <a href="https://github.com/WangXurun" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+<!--
+
+
+
+
+
+
+
+
+
+
+
+
+ -->
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
