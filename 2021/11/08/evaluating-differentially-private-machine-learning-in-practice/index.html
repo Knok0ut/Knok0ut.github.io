@@ -4,9 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="An Attentive Survey of Attention Models(2021)研读报告, 没想好先随便起一个">
-    <meta name="description" content="An Attentive Survey of Attention Models(2021)研读报告
-论文标题：关于注意力模型的细心调研如今注意力模型已经成为了神经网络中一个非常重要的概念，而且在多种应用领域中得到了广泛的研究。这篇调研针对注">
+    <meta name="keywords" content="Evaluating Differentially Private Machine Learning in Practice, 没想好先随便起一个">
+    <meta name="description" content="Evaluating Differentially Private Machine Learning in PracticeBargav Jayaraman and David Evans, University of Virginia  ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>An Attentive Survey of Attention Models(2021)研读报告 | 没想好先随便起一个</title>
+    <title>Evaluating Differentially Private Machine Learning in Practice | 没想好先随便起一个</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -325,12 +324,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">An Attentive Survey of Attention Models(2021)研读报告</h1>
+                    <h1 class="description center-align post-title">Evaluating Differentially Private Machine Learning in Practice</h1>
                 </div>
             </div>
         </div>
@@ -458,28 +457,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-10-29
+                    2021-11-08
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-11-08
+                    2021-11-11
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.3k
+                    1.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    16 分
+                    6 分
                 </div>
                 
 
@@ -499,154 +498,79 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="An-Attentive-Survey-of-Attention-Models-2021-研读报告"><a href="#An-Attentive-Survey-of-Attention-Models-2021-研读报告" class="headerlink" title="An Attentive Survey of Attention Models(2021)研读报告"></a>An Attentive Survey of Attention Models(2021)研读报告</h1><blockquote>
-<p>论文标题：关于注意力模型的细心调研<br>如今注意力模型已经成为了神经网络中一个非常重要的概念，而且在多种应用领域中得到了广泛的研究。这篇调研针对注意力机制的发展提供了一个结构化、综合的概述。我们将现有的注意力技术分类。我们回顾了一些具有注意力模型的神经结构，并且讨论一些注意力模型已经发挥显著作用的应用。我们还描述了注意力机制是如何用来提升神经网络的可解释性的。最后我们讨论了一些未来的注意力机制的研究方向。这篇调研可以针对注意力机制提供一个简洁的介绍，并在实践人员开发应用时提供引导。</p>
+                <h1 id="Evaluating-Differentially-Private-Machine-Learning-in-Practice"><a href="#Evaluating-Differentially-Private-Machine-Learning-in-Practice" class="headerlink" title="Evaluating Differentially Private Machine Learning in Practice"></a>Evaluating Differentially Private Machine Learning in Practice</h1><p>Bargav Jayaraman and David Evans, University of Virginia  </p>
+<blockquote>
+<p>摘要：差分隐私可以用来计算一个机制泄露了多少隐私(用$\epsilon$表示)。当用于机器学习时，差分隐私的目标即为限制模型泄露的训练集中单个个体的隐私量。但是目前人们对于如何校准$\epsilon$还不是很了解。在机器学习中人们通常会设定一个很大的$\epsilon$值来获得更好的可用性，但对这种选择对隐私所造成的影响所知甚少。此外，在使用迭代学习程序的情况下，经常使用宽松的差分隐私定义，这似乎减少了所需的隐私预算，但人们对隐私性和可用性之间的平衡理解并不深刻。<strong>在这篇文章中</strong>，我们在逻辑回归和神经网络模型的实验中量化了这些选择对隐私的影响。我们的主要的发现是获取隐私是需要代价的——宽松的差分隐私定义减少了所需的噪声数量但同时增大了隐私泄露的风险。现有的差分隐私机器学习机制很少会对复杂学习任务做可接受的可用性与隐私性之间的平衡：降低准确率损失会降低隐私性，提供强隐私保障的会产生无用的模型。</p>
 </blockquote>
-<span id="more"></span>
-<h2 id="1-INTRODUCTION"><a href="#1-INTRODUCTION" class="headerlink" title="1 INTRODUCTION"></a>1 INTRODUCTION</h2><p>注意力模型（AM）最早用于机器翻译，并为神经网络模型带来很大的优势。AM作为大量NLP应用中的一个基本部件，它已经变得非常出名。注意力机制背后的直觉（intuition）可以用人类生物系统解释。举个例子，我们的视觉处理系统倾向于把注意点放在图像的某些部位，同时忽略其他不相关的信息。类似的，在一些关于语言、视觉、听觉的问题中，输入的某些部分比其它部分更加重要（如图像描述问题，相较于其他区域，图像的某一个特定区域可能对于生成描述句的下一个词更加重要）。注意力模型通过动态的调整模型的注意力从而让模型只注意对完成任务有用的部分输入。下面是[Yang et al. 2016] 做的关于注意力机制在情感分类问题中的应用的例子。AM学习到在这五句话中，第一句和第三句对情感分析更有帮助。</p>
-<p><img src="/2021/10/29/an-attentive-survey-of-attention-models-2021-yan-du-bao-gao/upload_e1e9157e816c7a6c17f183442e37c95d.png" alt="img"></p>
-<p>对注意力进行建模发展迅速的三个原因：</p>
+<p><strong>主要内容：通过实验验证不同的$\epsilon$值和使用不同的宽松的差分隐私定义对模型可用性与隐私性的影响。</strong></p>
+<h3 id="几种宽松的差分隐私定义"><a href="#几种宽松的差分隐私定义" class="headerlink" title="几种宽松的差分隐私定义"></a>几种宽松的差分隐私定义</h3><p>主要思想：多种差分隐私机制组合起来时其整体的privacy budget（暂且称为隐私代价）不一定为各个privacy budget之和。可以通过一些其他的规律来获得一个更紧的上界。</p>
 <ol>
-<li>是解决多任务最先进的模型。</li>
-<li>为提升主任务性能提供了其它的优势。它被用于提升神将网络的可解释性（越来越多的人对影响人类生活的应用中的网络模型的公平性、问责制、透明度感兴趣）。</li>
-<li>它们有助于克服递归神经网络RNN中的一些挑战，例如随着输入长度的增加性能下降，以及输入顺序不合理导致的计算效率低下。</li>
+<li>advanced composition theorem ：考虑到隐私损失的期望，可以获得$\epsilon$的一个更紧的上界。</li>
+<li>Concentrated Differential Privacy (CDP)  ：$\mathcal{D}_{subG}(\mathcal{M}(D)||\mathcal(D’))\le(\mu,\tau)$。任何$\epsilon-DP$算法都满足$(\epsilon \cdot(e^{\epsilon}-1)/2,\epsilon)-CDP$ ，反过来不一定满足。</li>
+<li>Zero-Concentrated Differential Privacy (zCDP)  ：$\mathcal{D}_{\alpha}(\mathcal{M}(D)||\mathcal(D’))\le \xi + \rho a$。如果$\mathcal{M}$满足$\epsilon-DP$，则它满足$(\frac{1}{2}\epsilon^2)-zCDP$。如果它满足$\rho-zCDP$，则对任意$\delta&gt;0$它满足$(\rho+2\sqrt{\rho log(1/\delta),\delta})-DP$</li>
+<li>Rényi Differential Privacy (RDP)  :$\mathcal{D}_{\alpha}(\mathcal{M}(D)||\mathcal{M}(D’))\le \epsilon$。如果$\mathcal{M}$满足$(\alpha,\epsilon)-RDP$，则对于任意$0&lt;\delta&lt;1,$满足$(\epsilon+\frac{log(1/\delta)}{\alpha-1},\delta)-DP$</li>
 </ol>
-<p>文章的组织：我们的工作致力于为注意力建模提供一个简短但是综合的研究。在第二节我们用一个简单的回归模型来为你提供关于注意力的初步印象。在第三节我们简短的介绍了[Bahdanau et al. 2015]提出的AM和其他的注意力函数（attention function）。第四节我们介绍了我们的分类结果。第五节和第六节讨论了使用AM的关键神经结构并展示了一些广泛使用注意力机制的应用。最后在第七节我们解释了注意力如何促进理解神经网络的可解释性，并在第八节介绍了未来的研究方向。</p>
-<p>相关的调研：目前已经有一些专门领域的关于注意力机制的研究。如：</p>
+<p><img src="/2021/11/08/evaluating-differentially-private-machine-learning-in-practice/image-20211107162132017.png" alt="img"></p>
+<h3 id="实验方法"><a href="#实验方法" class="headerlink" title="实验方法"></a>实验方法</h3><h4 id="实验设定"><a href="#实验设定" class="headerlink" title="实验设定"></a>实验设定</h4><ol>
+<li>使用逻辑回归模型（凸优化）和神经网络模型（非凸）作为目标模型。</li>
+<li>使用成员推断和属性推断作为攻击方式，从而获得模型的隐私损失。</li>
+<li>在梯度上添加扰动。</li>
+<li>使用具有两个隐藏层的神经网络作为推断（攻击）网络</li>
+</ol>
+<h4 id="攻击方式"><a href="#攻击方式" class="headerlink" title="攻击方式"></a>攻击方式</h4><p>成员推断使用Shokri（1）和Yeom（2）的方法。</p>
 <ol>
-<li>[Wang and Tax 2016] on cv</li>
-<li>[Lee et al. 2019] on graphs</li>
-<li>[Galassi et al. 2020] on nlp</li>
+<li>黑盒攻击。攻击者可以获得目标模型对输入的置信度（confidence score）。使用相同分布下采样的数据训练了多个影子模型。使用这些影子模型训练推断模型。推断模型的训练集来源于部分用来训练影子模型的训练数据和一些相同分布下随机采样的数据。推断模型的输入还包括影子模型对这些数据的置信度。</li>
+<li>白盒攻击。假设攻击者可以访问训练集在目标模型上的平均损失。如果输入数据在目标模型上的损失值小于均值的话就认为这个输入在目标模型的训练集里。</li>
 </ol>
-<h2 id="2-ATTENTION-BASICS"><a href="#2-ATTENTION-BASICS" class="headerlink" title="2 ATTENTION BASICS"></a>2 ATTENTION BASICS</h2><p>[Nadaraya 1964; Watson 1964]提出的回归模型可以帮助我们理解注意力机制。我们的数据样本有n个数据$\{(x_1,y_1),(x_2,y_2),\dots,(x_n,y_n)\}$。我们想知道当给定一个x时其对应的y的预测值$\hat{y}$。一个朴素的估计器对于任何输入都会输出样本中$y_i$的平均值。Naradaya-Watson提出了一个更好的方法：使用$y_i$的加权平均数。$y_i$的权值为$x,x_i$之间的相关度。公式如下：</p>
-<script type="math/tex; mode=display">\hat{y} = \sum_{i=1}^{n}\alpha(x,x_i)y_i</script><p>$\alpha$是一个衡量$x,x_i$关联程度的函数。对于$\alpha$的一个普遍的选择是使用高斯核。Naradaya-Watson表示这种估计器有两个特性：</p>
+<p>属性推断：使用Yeom的方法。与上2类似。暴力搜索隐私属性的所有可能值，选择与平均损失最接近的组合。</p>
+<h4 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h4><p>选择两个数据集</p>
 <ol>
-<li>一致性(consistency)：数据样本量越大结果越好。</li>
-<li>朴素性(simplicity)：没有没用的参数。信息存储在样本数据中而不是在权重中。<br>往后推50年，深度模型中的注意力机制可以看作是上述公式的一种泛化，即权重函数是可以学习的。</li>
+<li>CIFAR-100  （28×28 images）。使用PCA把维度压缩到50</li>
+<li>Purchase-100  </li>
 </ol>
-<h2 id="3-ATTENTION-MODEL"><a href="#3-ATTENTION-MODEL" class="headerlink" title="3 ATTENTION MODEL"></a>3 ATTENTION MODEL</h2><p>AM的第一次应用被[Bahdanau et al. 2015]用来解决一个sequence-to-sequence modeling<br>task。s2s Model含有一个编码器(encoder)和一个解码器(decoder),他们的隐藏状态分别为$h_i,s_i$。编码器获得输入$\{x_1,x_2,\dots,x_T\}$并输出T个具有固定长度的向量$\{h_1,h_2,\dots,h_T\}$。将$h_T$输入解码器，解码器会输出$\{y_1,y_2,\dots,y_{T’}\}$token by token。<br><strong>上述模型有两个问题（挑战）：</strong></p>
-<ol>
-<li>将所有输入压缩成一个具有固定长度的向量会造成信息丢失。</li>
-<li>无法对输入和输出序列之间的排列进行建模</li>
-</ol>
-<p>也就是说解码器在输出每个token时无法有选择的使用输入。</p>
-<p><strong>核心思想</strong>：使用注意力权重来决定哪些输入对下一个输出更重要。</p>
-<p><strong>注意力的使用方法</strong>：如下图(b)。在解码器的第j个时间步，模型结构中的注意力模块负责自动生成注意力权重$\alpha_{ij}$。用这个权重表示$s_{j-1},h_i$直间的关联度。接着这些权重会通过$c_j=\sum_{i=1}^{T}\alpha_{ij}h_i$生成contex vector c。c会输入到解码器的下一个时间步。通过生成c，解码器就可以获得整个输入信息同时只把”注意力”放在输入的某部分。这种方法提升了算法的性能和输出的质量。Table 1 是这种注意力机制的数学表达。<br><img src="/2021/10/29/an-attentive-survey-of-attention-models-2021-yan-du-bao-gao/upload_1455ea8a4e2ecf7e25bf47df00e2bac9.png" alt=""><br><img src="/2021/10/29/an-attentive-survey-of-attention-models-2021-yan-du-bao-gao/upload_7d99451e1b73905d753043d61336ddb0.png" alt=""></p>
-<p><strong>学习注意力权重</strong>: 注意力权重的学习可以通过引入一个前馈神经网络来完成。这个前馈神经网络作为一个函数，它的的输入为$h_i,s_{j-1}$。这个函数叫做alignment funcion（table 1 中用a表示），它会对$h_i,s_{j-1}$的相关度进行评估（有的资料把这个函数叫做评分函数scoring function）并输出评分$e_{ij}$。distribution function（table 1中用p表示）会把$e_{ij}$转化为注意力权重。当a，p是可微的函数时，这整个基于注意力的encoder-decoder模型就会成为一个大的可微函数，并且可以一同训练。<br><strong>泛化的AM</strong>：AM可以看作是一种映射。这个映射会根据query q将keys K映射为权重$\alpha$。其中keys即为编码器的隐藏状态$\{h_1,h_2,\dots,h_T\}$，q即为$s_{j-1}$。注意力模型表示如下：</p>
-<script type="math/tex; mode=display">A(q,K,V)=\sum_ip(a(k_i,q))*v_i</script><p>通常keys和values是一一对应的。在[Bahdanau et al. 2015]提出的模型中，$h_i = v_i = k_i$。通过上面的回归的例子来理解这个公式，输入x为query，$v_i$为$y_i$，$k_i$为$x_i$。</p>
-<p><strong>Alignment functions（排列函数？）</strong>：<br>对于key和query在相同向量空间的：</p>
-<ol>
-<li>余弦相似度或者点积（dot product）</li>
-<li>考虑到不同的表示长度，scaled dot product使用表示向量的长度来归一化点积。</li>
-</ol>
-<p>对于key和query在不同向量空间的：</p>
-<ol>
-<li>General alignment：引入可学习的转换矩阵将query映射到key的向量空间。</li>
-<li>Activated general alignment：添加一个非线性的激活层（hyperbolic tangent, rectifier linear unit, or scaled exponential linear unit. ）</li>
-<li>Biased general alignment ：不管query，通过添加偏置项（bias）直接学习一些key的全局重要性。</li>
-<li>[Choromanski et al. 2021] 展示了key和query可以通过generalized kernel function匹配，而不是点积。<br>key，query联合表示的：</li>
-<li>concat alignment：keys和queries拼接到一起形成联合表示。</li>
-<li>Additive alignment：对key和query的贡献进行解耦。使得可以提前计算所有key的贡献而不用对每个query再计算一遍。降低了计算时间。</li>
-<li>deep alignment 使用了多层神经网络。<br>针对特定使用场景的：</li>
-<li>Location-based alignment：忽略keys的内容，只使用它的位置信息。</li>
-<li>[Li et al. 2019a]提出当处理一组元素（如2-D patches for images 或者 1-D temporal<br>sequences），从属于该组的单个元素的表示中得出的特征（如平均数和标准差）可以作为alignment function的输入。</li>
-</ol>
-<p><img src="/2021/10/29/an-attentive-survey-of-attention-models-2021-yan-du-bao-gao/upload_617f45653ad3c44d2f61bd3ded2c020e.png" alt=""></p>
-<p><strong>distribution function（分布函数）</strong>：</p>
-<ol>
-<li>dense distribution：softmax,logistic sigmoid。输出可以看作概率，但会降低模型的可解释性，而且会对不可能的输出分配概率（This density is wasteful, making models less interpretable and assigning probability mass to many implausible outputs. ）。</li>
-<li>sparse distribution：sparsemax和sparse entmax。通过只对少量可能的输出赋予概率从而产生sparse alignment。当大量元素之间是不相关时会非常有用。</li>
-<li>[Tay et al. 2019]提出一种分布函数。计算两个项——$thanh(\frac{qk_i^T}{\sqrt{d_k}}),sigmoid(\frac{G(qk_i^T)}{\sqrt{d_k}})$的乘积来形成准注意力（qusi-attention）。其中第一项控制向量的加或者减，第二项可以看作是控制删除不相关元素的门函数。</li>
-</ol>
-<h2 id="4-TAXONOMY-OF-ATTENTION"><a href="#4-TAXONOMY-OF-ATTENTION" class="headerlink" title="4 TAXONOMY OF ATTENTION"></a>4 TAXONOMY OF ATTENTION</h2><p><img src="/2021/10/29/an-attentive-survey-of-attention-models-2021-yan-du-bao-gao/upload_7471d28d5ac5631a1e2d6b9048aab5ef.png" alt=""></p>
-<h3 id="4-1-Number-of-sequences"><a href="#4-1-Number-of-sequences" class="headerlink" title="4.1 Number of sequences"></a>4.1 Number of sequences</h3><ol>
-<li>distinctive attention：输入和输出是独立的两个序列。上面考虑的全是这种情况。大部分情况应用于翻译 [Bahdanau et al. 2015]、图像描述[Xu et al. 2015]和语音识别[Chan et al. 2016]。</li>
-<li>co-attention：输入有多个序列，同时计算他们的注意力权重。[Lu et al. 2016]用它来做visual question answering。不仅提取图像中的重要信息a同样也要提取问题中的关键点b。a和b会互相影响。类似的[Yu et al. 2019] 也用它来做visual question answering task</li>
-<li>self-attention(inner attention)。每个输入序列都可以学习自身中相关的元素。即key和query在同一个序列中。</li>
-</ol>
-<h3 id="4-2-Number-of-abstraction-levels"><a href="#4-2-Number-of-abstraction-levels" class="headerlink" title="4.2 Number of abstraction levels"></a>4.2 Number of abstraction levels</h3><ol>
-<li>single-level：只对原始输入添加注意力权重。</li>
-<li>multi-level：注意力模型的低层输出变为高层的输入（query）。再细分可以根据学习顺序分为自顶向下，自底向上两类。 [Yang et al. 2016]用“Hierarchical Attention Model”(HAM) 解决文档分类问题。这种多层模型可以从句子中找到关键词，从文档中找到关键句。上面提到的 [Lu et al. 2016]使用的co-attention也是多层模型（单词层，短语层，问题层），如下图。[Zhao and Zhang 2018]提出attention-via-attention，低层为字母高层为单词，并通过自顶向下的方式学习。<br><img src="/2021/10/29/an-attentive-survey-of-attention-models-2021-yan-du-bao-gao/upload_6149cd7ede3a72ba726fd358cba6b2f6.png" alt=""></li>
-</ol>
-<h3 id="4-3-Number-of-positions"><a href="#4-3-Number-of-positions" class="headerlink" title="4.3 Number of positions"></a>4.3 Number of positions</h3><ol>
-<li>soft attention：编码器输出的所有隐藏状态都要参与注意力的计算。方便反向传播但是会造成二次方的损失（quadratic computational cost）。</li>
-<li>hard attention：[Xu et al. 2015]提出通过范畴分布（multinoulli distribution）随机选取隐藏状态计算注意力权重。降低了计算损失但导致函数不可微，并且难以优化。Variational learning方法和 policy gradient 方法的提出可以帮助解决这些缺陷。</li>
-<li>local and global：[Luong et al. 2015b] 为机器翻译提出两种注意力模型：local、global。global类似soft attention模型。local介于soft和hard之间。local的关键想法是在输入序列中找到一个”注意点”（attention point），在这个点（位置）周围选择一个创建一个窗口，在窗口中建立局部soft attention模型。这个点（位置）可以认为设定(monotonic alignment) 或者通过学习得到(predictive alignment)。</li>
-</ol>
-<h3 id="4-4-Number-of-representations"><a href="#4-4-Number-of-representations" class="headerlink" title="4.4 Number of representations"></a>4.4 Number of representations</h3><ol>
-<li>Single-representational AM：只使用输入序列的一种特征表示法。这是大多数应用使用的方法。但是在某些情况下不能满足下游任务。</li>
-<li>Multi-representational AM：通过多种特征表示来获取输入的不同方面的特征，然后使用注意力机制为不同的表示添加权重从而决定与这个任务最相关的表示法。[Kiela et al. 2018]、[Maharjan et al. 2018]、[Lin et al. 2017] 、 [Shen et al. 2018] 都做了类似的工作。</li>
-</ol>
-<h2 id="5-NETWORK-ARCHITECTURES-WITH-ATTENTION"><a href="#5-NETWORK-ARCHITECTURES-WITH-ATTENTION" class="headerlink" title="5 NETWORK ARCHITECTURES WITH ATTENTION"></a>5 NETWORK ARCHITECTURES WITH ATTENTION</h2><h3 id="5-1-Encoder-Decoder"><a href="#5-1-Encoder-Decoder" class="headerlink" title="5.1 Encoder-Decoder"></a>5.1 Encoder-Decoder</h3><p>最早在 [Bahdanau et al. 2015]中提出。编码器把输入压缩到一个固定长度的向量，解码器再对这个向量进行处理。这种方式把输入输出进行解耦，这使得杂交encoder-decoder成为了可能。比如编码器用CNN，解码器用LSTM。对许多模型任务例如图像，视频描述、Visual Question Answering和语音识别有非常大的帮助。<br>但是并不是所有问题都可以的输入输出都是序列化的。Pointer Network [Vinyals et al. 2015]有如下的两个不同：</p>
-<ol>
-<li>输出是离散的值，并且指向了输入序列的某个位置。</li>
-<li>输出类别取决于输入的数量。<br>作者通过使用注意力权重来对每个时间步选择第i个输入符号的概率。这个方法可以用作离散优化问题（旅行商，排序）</li>
-</ol>
-<h3 id="5-2-Transformer"><a href="#5-2-Transformer" class="headerlink" title="5.2 Transformer"></a>5.2 Transformer</h3><p>循环结构会序列化的处理输入，这导致计算效率下降。Transformer [Vaswani et al. 2017].通过使用自注意力机制来获得输入输出的全局依赖。作者展示了使用Transformer，即便不使用循环结构也可以在机器翻译任务中获得超强的并行处理能力，更短的训练时间和更高的准确度。</p>
-<h3 id="5-3-Memory-Networks"><a href="#5-3-Memory-Networks" class="headerlink" title="5.3 Memory Networks"></a>5.3 Memory Networks</h3><p>类似Question Answering的应用需要拥有从事实数据库中学习的能力。网络的输入是知识数据库（knowledge dagabase）和一个问题（query）。在数据库中有些事实是与问题相关的但有些不是。在这种情况下就需要注意力来选择相关的事实。</p>
-<h3 id="5-4-Graph-Attention-Networks-GAT"><a href="#5-4-Graph-Attention-Networks-GAT" class="headerlink" title="5.4 Graph Attention Networks (GAT)"></a>5.4 Graph Attention Networks (GAT)</h3><p>战略性略过</p>
-<h2 id="6-APPLICATIONS"><a href="#6-APPLICATIONS" class="headerlink" title="6 APPLICATIONS"></a>6 APPLICATIONS</h2><p><img src="/2021/10/29/an-attentive-survey-of-attention-models-2021-yan-du-bao-gao/upload_11ba64cfcd9ee772f67375ac7dbc8270.png" alt=""></p>
-<h2 id="7-ATTENTION-FOR-INTERPRETABILITY"><a href="#7-ATTENTION-FOR-INTERPRETABILITY" class="headerlink" title="7 ATTENTION FOR INTERPRETABILITY"></a>7 ATTENTION FOR INTERPRETABILITY</h2><p>越来越多的人关注AI模型的可解释性，而且这正是神经网络特别是深度学习网络所欠缺的。注意力机制可以帮助我们提升AI模型的可解释性。存在的一种假设是注意力权重的大小与对应输入部分与当前时间步下的输出的相关度有关。通过可视化输入输出对可以发现这种规律。<br> [Rush et al. 2015]展示了在（文本）总结问题中，AM可以在输出时把注意力放在输入的相关的单词上（下图a）。 [He et al. 2018]表示注意力可以用来识别用户的兴趣（下图b）。[Xu et al. 2015]通过可视化展示了图片摘要问题中对输出有很大影响的图形区域。<br><img src="/2021/10/29/an-attentive-survey-of-attention-models-2021-yan-du-bao-gao/upload_5220608e9e49aeb36a7d305a78faa59a.png" alt=""><br>总结几种有趣的事实：</p>
-<ol>
-<li>[De-Arteaga et al. 2019] explored gender bias in occupation classification, and showed how the words getting more attention during classification task are often gendered.（没看懂，直接粘原文了）</li>
-<li>[Yang et al. 2016]表示在情感分类问题中，”good”和”bad”这两个单词的重要性是与文本内容相关的。</li>
-<li>[Chan et al. 2016]注意到在语音识别中，字符输出和音频信号之间的注意力可以正确识别音频信号中第一个字符的起始位置，并且对于具有声学相似性的单词，注意力权重是相似的。</li>
-<li>[Kiela et al. 2018]发现multi-representational attention对 GloVe, FastText这两种词嵌入方式赋予了更高的权重。</li>
-</ol>
-<p>另一种有趣的应用： [Lee et al. 2017] and [Liu et al. 2018]提供了一种注意力可视化的工具</p>
-<p>尽管许多人用注意力来提高AI模型的可解释性，但有些人也提出了相反的观点。 [Jain and Wallace 2019]提出注意力权重与特征重要性分析是不相关的。他们观察预测结果对注意力权重改变的敏感度，却发现通过使用随机排列和adversarial training并没有改变输出结果。[Serrano and Smith 2019] applied a different analysis based on intermediate representation erasure method and showed that attention weights are at best noisy predictors of relative importance of the specific regions of input sequence, and should not be treated as justifications for model’s decisions. （又没看懂………….）</p>
-<h2 id="未来的研究方向"><a href="#未来的研究方向" class="headerlink" title="未来的研究方向"></a>未来的研究方向</h2><ol>
-<li>Real-time Attention<br>类似实时翻译的应用需要在获得整个输入之前开始预测结果，这就需要Real-time Attention。<br>相关的成果：<ol>
-<li>[Chiu and Raffel 2017] </li>
-<li>[Ma et al. 2019] </li>
-</ol>
-</li>
-<li><p>Stand-alone Attention<br>相关成果：</p>
-<ol>
-<li>[Ramachandran et al. 2019]</li>
-<li>[Wang et al. 2020e]</li>
-</ol>
-</li>
-<li><p>Model Distillation<br>相关成果：</p>
-<ol>
-<li>[Wang et al. 2020d] </li>
-<li>[Mirzadeh et al. 2020]</li>
-<li>[Touvron et al. 2020] </li>
-</ol>
-</li>
-<li><p>Attention for Interpretability<br>相关成果</p>
-<ol>
-<li>[Mohankumar et al. 2020]</li>
-</ol>
-</li>
-<li><p>Auto-learning Attention<br>相关成果：</p>
-<ol>
-<li>[Ma et al. 2020] </li>
-</ol>
-</li>
-<li><p>Multi-instance Attention<br>相关成果：</p>
-<ol>
-<li>[Li et al. 2019a]</li>
-</ol>
-</li>
-<li><p>Multi-agent Systems<br>相关成果：</p>
-<ol>
-<li>[Fujii et al. 2020; Li et al. 2020a] </li>
-</ol>
-</li>
-<li><p>Scalability<br>相关成果：</p>
-<ol>
-<li>[Sukhbaatar et al. 2019b] </li>
-<li>[Choromanski et al. 2021]</li>
-<li>[Wang et al. 2020a]</li>
-<li>[Li et al. 2020b]</li>
+<p>每个数据集中分别随机选10,000 个作为训练集，10000个作为测试集。剩下的用来训练影子模型和推断模型。</p>
+<p>在进行属性推断攻击时，因为原数据集没有标注哪些属性为隐私属性，所以随机选取5个属性作为隐私属性。</p>
+<h4 id="评价指标"><a href="#评价指标" class="headerlink" title="评价指标"></a>评价指标</h4><ol>
+<li>accuracy loss：没有隐私保护的模型在测试集上的准确率（baseline） - 有隐私保护的模型的准确率<ol>
+<li>privacy leakage：真阳率（True Positive Rate) - 假阳率（False Positive Rate)。如果是0的话代表没有隐私泄露。</li>
 </ol>
 </li>
 </ol>
-<h2 id="REFERENCES"><a href="#REFERENCES" class="headerlink" title="REFERENCES"></a>REFERENCES</h2><ol>
-<li><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1904.02874.pdf">Chaudhari S, Mithal V, Polatkan G, et al. An attentive survey of attention models[J]. ACM Transactions on Intelligent Systems and Technology (TIST), 2021, 12(5): 1-32.</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/d2l-ai/d2l-zh">《动手学深度学习》</a></li>
+<h4 id="超参数"><a href="#超参数" class="headerlink" title="超参数"></a>超参数</h4><p>训练模型时使用$l_2$正则化。首先使用grid search训练一个非隐私模型，从而找到一个最大化测试集正确率的$\lambda$。</p>
+<p>对于CIFAR-100 </p>
+<ol>
+<li>逻辑回归：$\lambda = 10^{-5}$</li>
+<li>神经网络：$\lambda = 10^{-4}$</li>
 </ol>
+<p>对于Purchase-100  </p>
+<ol>
+<li>逻辑回归：$\lambda = 10^{-5}$</li>
+<li>神经网络：$\lambda = 10^{-8}$</li>
+</ol>
+<p>然后用上面的设定训练隐私模型。$\epsilon$取值范围为$0.01-1000$，$\delta$固定为$10^{-5}$(假设训练集大小为n, $\delta\lt\frac{1}{n}$)</p>
+<p>使用ADAM优化器，固定学习率为0.01.</p>
+<p>batch size = 200</p>
+<h4 id="Clipping"><a href="#Clipping" class="headerlink" title="Clipping"></a>Clipping</h4><p>使用Tensorflow Privacy框架实现了batch clipping 和 per-instance clipping。阈值$\mathcal{C}=1$。通过下图的比较结果发现Per-instance clipping放大了不同机制之间的差异。因此后面的实验中只使用这一种clipping方式。</p>
+<p><img src="/2021/11/08/evaluating-differentially-private-machine-learning-in-practice/image-20211107204703476.png" alt="image-20211107204703476"></p>
+<h3 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h3><h4 id="逻辑回归"><a href="#逻辑回归" class="headerlink" title="逻辑回归"></a>逻辑回归</h4><h5 id="CIFAR-100"><a href="#CIFAR-100" class="headerlink" title="CIFAR-100"></a>CIFAR-100</h5><p>baseline在训练集上的准确率是0.225，测试集上的准确率是0.155。中间的gap值为0.07。上图（b）显示了不同$\epsilon$值，不同差分隐私定义对准确率损失的影响。</p>
+<p>下图（a) （b)展示成员推断攻击下的隐私损失，（c）展示了属性推断攻击下的隐私损失。</p>
+<p>通过(a)看出对于Naive composition来说，当$\epsilon\le10$时隐私损失基本为0，当$\epsilon=1000$隐私泄露达到了$0.065\pm0.004$，同时RDP和zCDP的损失之达到了$0.08\pm0.004$。通过图(b)可以看出naive-composition在$\epsilon\le 10$时没有明显的隐私损失。但是当$\epsilon=1000$时损失快速上升到$0.093\pm0.002  $。</p>
+<p>图中还显示了$\epsilon-differential\quad privacy$的理论损失上界：$e^{\epsilon}-1$   [Yeom et al]。</p>
+<p><img src="/2021/11/08/evaluating-differentially-private-machine-learning-in-practice/image-20211107211234195.png" alt="image-20211107211234195"></p>
+<p>下面的图表展示了不同的差分隐私定义下泄露给敌手的训练集成员数量。</p>
+<p><img src="/2021/11/08/evaluating-differentially-private-machine-learning-in-practice/image-20211107213708468.png" alt="image-20211107213708468"></p>
+<p>实验结论后面还有好多，与上面的大同小异，不一一展示了。</p>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>获取隐私是有代价的（that there is no way to obtain privacy for free  ）</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p><a target="_blank" rel="noopener" href="https://github.com/bargavj/EvaluatingDPML">https://github.com/bargavj/EvaluatingDPML</a>  </p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a target="_blank" rel="noopener" href="https://www.usenix.org/conference/usenixsecurity19/presentation/jayaraman">原文链接</a></p>
+<h3 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h3><ol>
+<li><p>实验方法</p>
+</li>
+<li><p>在机器学习中应用差分隐私</p>
+</li>
+</ol>
+<p><img src="/2021/11/08/evaluating-differentially-private-machine-learning-in-practice/image-20211108121014599.png" alt="image-20211108121014599"></p>
+<p><img src="/2021/11/08/evaluating-differentially-private-machine-learning-in-practice/image-20211108121412999.png" alt="image-20211108121412999"></p>
 
                 
             </div>
@@ -673,7 +597,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://blog.expecto.top/2021/10/29/an-attentive-survey-of-attention-models-2021-yan-du-bao-gao/">https://blog.expecto.top/2021/10/29/an-attentive-survey-of-attention-models-2021-yan-du-bao-gao/</a>
+                    <a href="https://blog.expecto.top/2021/11/08/evaluating-differentially-private-machine-learning-in-practice/">https://blog.expecto.top/2021/11/08/evaluating-differentially-private-machine-learning-in-practice/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -754,9 +678,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/11/08/evaluating-differentially-private-machine-learning-in-practice/">
                     <div class="card-image">
@@ -774,9 +699,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-11-08
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-08
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -785,6 +710,7 @@
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -795,24 +721,25 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/10/28/hello-world/">
+                <a href="/2021/10/29/an-attentive-survey-of-attention-models-2021-yan-du-bao-gao/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="An Attentive Survey of Attention Models(2021)研读报告">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">An Attentive Survey of Attention Models(2021)研读报告</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
+                            An Attentive Survey of Attention Models(2021)研读报告
+论文标题：关于注意力模型的细心调研如今注意力模型已经成为了神经网络中一个非常重要的概念，而且在多种应用领域中得到了广泛的研究。这篇调研针对注
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-28
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-29
                             </span>
                         <span class="publish-author">
                             
