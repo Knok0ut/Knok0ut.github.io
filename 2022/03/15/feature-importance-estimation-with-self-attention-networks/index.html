@@ -4,13 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="testpass, 一丁">
-    <meta name="description" content="
-            
-        
-        
-          var ap = new APlayer({
-            element: document.getElementById(&#34;aplayer-j">
+    <meta name="keywords" content="Feature Importance Estimation with Self-Attention Networks, 一丁">
+    <meta name="description" content="《Feature Importance Estimation with Self-Attention Networks》 研读报告
+摘要：黑盒神经网络模型被广泛应用于工业界和科学研究，但目前还很难以去理解和翻译。最近，注意力机制的提出为神经">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -22,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>testpass | 一丁</title>
+    <title>Feature Importance Estimation with Self-Attention Networks | 一丁</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -37,9 +33,7 @@
 
 <meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
-<script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 
@@ -318,7 +312,7 @@
 <script src="/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
-        let pwd = '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92';
+        let pwd = '';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
                 alert('密码错误，将返回主页！');
@@ -331,12 +325,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">testpass</h1>
+                    <h1 class="description center-align post-title">Feature Importance Estimation with Self-Attention Networks</h1>
                 </div>
             </div>
         </div>
@@ -450,9 +444,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96-%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/">
+                                <span class="chip bg-color">论文笔记,特征提取,注意力机制</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -464,7 +462,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-11-15
+                    2022-03-15
                 </div>
                 
 
@@ -478,14 +476,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    33
+                    1.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    4 分
                 </div>
                 
 
@@ -505,27 +503,81 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <div id="aplayer-jaausIPo" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
-            <pre class="aplayer-lrc-content"></pre>
-        </div>
-        <script>
-          var ap = new APlayer({
-            element: document.getElementById("aplayer-jaausIPo"),
-            narrow: false,
-            autoplay: false,
-            showlrc: false,
-            music: {
-              title: "test",
-              author: "test",
-              url: "test.mp3",
-              pic: "",
-              lrc: ""
-            }
-          });
-          window.aplayers || (window.aplayers = []);
-          window.aplayers.push(ap);
-        </script>
-
+                <h1 id="《Feature-Importance-Estimation-with-Self-Attention-Networks》-研读报告"><a href="#《Feature-Importance-Estimation-with-Self-Attention-Networks》-研读报告" class="headerlink" title="《Feature Importance Estimation with Self-Attention Networks》 研读报告"></a>《Feature Importance Estimation with Self-Attention Networks》 研读报告</h1><blockquote>
+<p>摘要：黑盒神经网络模型被广泛应用于工业界和科学研究，但目前还很难以去理解和翻译。最近，注意力机制的提出为神经语言模型的内部工作原理提供了insight。本文探讨了使用基于注意力的神经网络机制来估计特征重要性，作为解释从命题（表格）数据中学习的模型的手段。由提议的自注意力网络 (SAN) 架构评估的特征重要性估计值与已建立的基于 ReliefF、互信息和随机森林的估计值进行比较，这些估计值在实践中广泛用于模型解释。我们首次在 10 个真实和合成数据集上跨算法对特征重要性估计进行无标度比较，以研究所得特征重要性估计的异同，表明 SAN 识别出与其他方法相似的高等级特征。我们证明 SAN 识别特征交互，在某些情况下，这些交互产生比基线更好的预测性能，这表明注意力超出了几个关键特征的交互，并检测到与所考虑的学习任务相关的更大的特征子集。</p>
+</blockquote>
+<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>这篇文章提出了自注意力网络（Self-Attention Networks ，即SANS)的概念，并且探索了这种网络学习到的“表示”是否可以用于重要性估计。主要贡献如下：</p>
+<ol>
+<li>提出SAN，这是一种可以直接获得特征重要程度的神经网络。</li>
+<li>对比ReliefF, Mutual Information 和Genie3等feature rank算法进行可拓展的经验评估。</li>
+<li>针对特征重要度估计机型直接比较，突出考虑的算法输出之间的相似性</li>
+<li>对SAN的属性进行理论研究，包括空间复杂度和时间复杂度。</li>
+</ol>
+<h3 id="Self-Attention-Networks"><a href="#Self-Attention-Networks" class="headerlink" title="Self-Attention Networks"></a>Self-Attention Networks</h3><p>本文实现了注意力机制的神经网络可以表示为：</p>
+<script type="math/tex; mode=display">
+l_2=\sigma(W_2\cdot(a(W_{|F|}\cdot \Omega(X)+b_{l_1}))+b_{l_2})</script><p>图示如下：</p>
+<p><img src="/2022/03/15/feature-importance-estimation-with-self-attention-networks/image-20220315203059280.png" alt="论文实现的神经网络结构"></p>
+<p>其中：</p>
+<script type="math/tex; mode=display">
+\Omega(x)=\frac{1}{k}\bigoplus_k[X\bigotimes softmax(W_{l_{att}}^kX+b_{l_{att}}^k)]</script><script type="math/tex; mode=display">
+a(X)= SELU(X)=\lambda\left\{\begin{array}{**lr**} x & if\quad x>0\\ \alpha(epx(x)-1)& if \quad x \leq0  \end{array}\right.</script><p>k表示注意力头的个数。$\oplus$表示Hadamard summation，$\otimes$表示Hadamard product。如下：</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+a_{11}&a_{12}&\dots&a_{1n}\\
+a_{21}&a_{22}&\dots&a_{2n}\\
+\vdots&\vdots&\vdots&\vdots\\
+a_{m1}&a_{m2}&\dots&a_{mn}
+\end{bmatrix}
+\bigotimes
+\begin{bmatrix}
+b_{11}&b_{12}&\dots&b_{1n}\\
+b_{21}&b_{22}&\dots&b_{2n}\\
+\vdots&\vdots&\vdots&\vdots\\
+b_{m1}&b_{m2}&\dots&b_{mn}
+\end{bmatrix}
+=
+\begin{bmatrix}
+a_{11}×b_{11} & a_{12}×b_{12}&\dots&a_{1n}×b_{1n}\\
+a_{21}×b_{21}&a_{22}×b_{22}&\dots&a_{2n}×b_{2n}\\
+\vdots&\vdots&\vdots&\vdots\\
+a_{m1}×b_{m1}&a_{m2}×b_{m2}&\dots&a_{mn}×b_{mn}
+\end{bmatrix}</script><script type="math/tex; mode=display">
+\begin{bmatrix}
+a_{11}&a_{12}&\dots&a_{1n}\\
+a_{21}&a_{22}&\dots&a_{2n}\\
+\vdots&\vdots&\vdots&\vdots\\
+a_{m1}&a_{m2}&\dots&a_{mn}
+\end{bmatrix}
+\bigoplus
+\begin{bmatrix}
+b_{11}&b_{12}&\dots&b_{1n}\\
+b_{21}&b_{22}&\dots&b_{2n}\\
+\vdots&\vdots&\vdots&\vdots\\
+b_{m1}&b_{m2}&\dots&b_{mn}
+\end{bmatrix}
+=
+\begin{bmatrix}
+a_{11}+b_{11} & a_{12}+b_{12}&\dots&a_{1n}+b_{1n}\\
+a_{21}+b_{21}&a_{22}+b_{22}&\dots&a_{2n}+b_{2n}\\
+\vdots&\vdots&\vdots&\vdots\\
+a_{m1}+b_{m1}&a_{m2}+b_{m2}&\dots&a_{mn}+b_{mn}
+\end{bmatrix}</script><p>这篇论文中使用的多头注意力与Transformer的多头注意力机制是不一样的。Transformer使用的多头注意力机制是将Q、K、V映射到更低的维度计算注意力，重复h次后将得到的所有注意力向量拼接到一起。而该论文使用的多头注意力是将所有的注意力向量相加做平均。</p>
+<h4 id="Computing-feature-importance-with-SANs"><a href="#Computing-feature-importance-with-SANs" class="headerlink" title="Computing feature importance with SANs"></a>Computing feature importance with SANs</h4><p>下面展示如何利用上述结构获得特征的重要性权重。</p>
+<ol>
+<li><strong>Instance-level  aggregations (attention)</strong>：令$\{(x_i,y_i),1\le i \le n\}$为样本集合，令$SAN(x_i)$表示第i个样本对应的注意力权重。</li>
+</ol>
+<script type="math/tex; mode=display">
+SAN(x_i)=\frac{1}{k}\bigoplus_k[softmax(w_{l_{att}}^kx_i+b_{l_{att}}^k)]</script><p>获得注意力的第一个选择就是将每个样本的注意力做均值：</p>
+<script type="math/tex; mode=display">
+R_I=\frac{1}{n}\sum_{i=1}^nSAN(x_i)</script><ol>
+<li><strong>Counting only correctly predicted instances (attentionPositive)</strong>:第二种变体基于如下的假设：只考虑被正确预测的样本。</li>
+</ol>
+<script type="math/tex; mode=display">
+R_I^c=\frac{1}{n}\sum_{i=1}^nSAN(x_i)[\hat{y}_i=y_i]</script><ol>
+<li><strong>Global attention layer (attentionGlobal)</strong>: 前面的两种方式通过累加注意力向量来获得全局的特征重要性。但是基于权重向量包含特征重要性信息的假设，可以在训练结束后直接获得全局的注意力权重。</li>
+</ol>
+<script type="math/tex; mode=display">
+R_G=\frac{1}{k}\bigoplus_k[softmax(diag(w_{l_{att}}^k))];w_{l_{att}}^k\in \mathbb{R}^{|F|×|F|}</script>
                 
             </div>
             <hr/>
@@ -551,7 +603,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://blog.expecto.top/2021/11/15/testpass/">https://blog.expecto.top/2021/11/15/testpass/</a>
+                    <a href="https://blog.expecto.top/2022/03/15/feature-importance-estimation-with-self-attention-networks/">https://blog.expecto.top/2022/03/15/feature-importance-estimation-with-self-attention-networks/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -588,7 +640,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96-%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/">
+                                    <span class="chip bg-color">论文笔记,特征提取,注意力机制</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -632,9 +688,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2022/03/15/feature-importance-estimation-with-self-attention-networks/">
                     <div class="card-image">
@@ -652,9 +709,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-03-15
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-15
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -663,6 +720,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -681,13 +739,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/11/08/evaluating-differentially-private-machine-learning-in-practice/">
+                <a href="/2021/11/15/testpass/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Evaluating Differentially Private Machine Learning in Practice">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="testpass">
                         
-                        <span class="card-title">Evaluating Differentially Private Machine Learning in Practice</span>
+                        <span class="card-title">testpass</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -698,7 +756,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-08
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-15
                             </span>
                         <span class="publish-author">
                             
@@ -835,6 +893,13 @@
 
 </main>
 
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+    });
+</script>
 
 
 
