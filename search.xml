@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>代码执行日志记录</title>
+      <link href="/2023/10/05/dai-ma-zhi-xing-ri-zhi-ji-lu/"/>
+      <url>/2023/10/05/dai-ma-zhi-xing-ri-zhi-ji-lu/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>忘了在哪个开源项目里看到了一个执行日志系统。它会在每次运行时备份代码。对于我这种随时会忘掉实验结果和实验设置的人来说，这种东西应该会很有用……吧。凭印象和自己的喜好复现了一下，具体如下。</p><p>首先，项目应该保持如下的结构。code路径下存放所有的代码，任何数据和中间运行结果都<strong>不</strong>应该放在这里。log目录下存放所有的日志记录。其它的目录根据自己喜好设置。<br><img src="/2023/10/05/dai-ma-zhi-xing-ri-zhi-ji-lu/path.png" alt="代码路径"></p><p>在code/util路径下，新建一个code_logger.py。粘贴如下内容。该日志模块下集成了代码备份、参数保存、日志输出与保存的功能。</p><pre class=" language-lang-python"><code class="language-lang-python">import osfrom datetime import datetimeimport shutilimport jsonimport loggingclass CodeLogger:    def __init__(self, comment=None, args=None):        self.run_time = datetime.now()        self.time_fmt = "%Y-%m-%d-%H-%M-%S"        # self.time_fmt = "%Y%m%d%H%M%S"        self.comment = comment        self.log_dir = self.run_time.strftime(self.time_fmt)        if comment is not None:            self.log_dir = f"{self.log_dir}-{comment}"        self.log_dir = os.path.join("../log", self.log_dir)        self.args = args        # create log dir if not exists        if not os.path.exists(self.log_dir):            os.mkdir(self.log_dir)        # back up codes        shutil.copytree("../code/", os.path.join(self.log_dir, "code/"))        if self.args is not None:            self.save_args(args)        self.logger = self.init_logger()    def save_args(self, args):        with open(os.path.join(self.log_dir, "args.json"), "w") as f:            json.dump(args.__dict__, f)    def init_logger(self):        logger = logging.getLogger(self.comment)        logger.setLevel(logging.INFO)        log_format = logging.Formatter(            "%(asctime)s %(levelname)-8s %(message)s")        filename = os.path.join(self.log_dir, "run.log")        log_handler = logging.FileHandler(filename, mode="w")        log_handler.setLevel(logging.INFO)        log_handler.setFormatter(log_format)        logger.addHandler(log_handler)        console_logger = logging.StreamHandler()        console_logger.setLevel(logging.INFO)        console_logger.setFormatter(log_format)        logger.addHandler(console_logger)        return logger</code></pre><p>在使用该模块时，需要先import该模块。演示如下：</p><pre class=" language-lang-python"><code class="language-lang-python">from util.models import get_architecturefrom util.code_logger import CodeLoggerimport argparseparser = argparse.ArgumentParser()parser.add_argument("--model", type=str, default="resnet")parser.add_argument("--dataset", type=str, default="cifar10")parser.add_argument("--epochs", type=int, default=150)parser.add_argument("--batch_size", type=int, default=256)parser.add_argument("--lr", type=float, default=0.01)parser.add_argument("--verbose", action="store_true")args = parser.parse_args()model_name = args.modeldataset = args.datasetepochs = args.epochsbatch_size = args.batch_sizelr = args.lrverbose = args.verbosecl = CodeLogger(comment=f"train model {model_name}_{dataset}", args=args)''' 上面是日志模块初始化，初始化会做三件事：1. 在log文件夹下新建一个文件夹，文件夹名称为“当前时间-comment内容”。2. 把code路径下所有文件保存到新建的文件夹中3. 把运行参数args存放到新建文件夹的args.json中'''cl.logger.info(f"test output") # 控制台输出，同时会把输出内容保存到新建文件夹下的run.log中</code></pre><p>如果再发生没有记录实验结果，或者忘掉实验设置时，就可以通过查找log目录下的代码备份或者参数备份来一键找回了。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 日志系统 </tag>
+            
+            <tag> 执行日志 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>2023安全顶会AI安全相关汇总</title>
       <link href="/2023/09/06/2023-an-quan-ding-hui-ai-an-quan-xiang-guan-hui-zong/"/>
       <url>/2023/09/06/2023-an-quan-ding-hui-ai-an-quan-xiang-guan-hui-zong/</url>
