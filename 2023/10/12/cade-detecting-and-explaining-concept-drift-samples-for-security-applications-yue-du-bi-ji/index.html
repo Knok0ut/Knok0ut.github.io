@@ -476,7 +476,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-10-12
+                    2023-10-15
                 </div>
                 
 
@@ -551,12 +551,12 @@
 \min_{\boldsymbol{\theta},\boldsymbol{\phi}}\mathbb{E}_{\boldsymbol{x}}\|\boldsymbol{x}-\hat{\boldsymbol{x}}\|_2^2+\lambda\mathbb{E}_{\boldsymbol{x}_i,\boldsymbol{x}_j}\left[(1-y_{ij})d_{ij}^2+y_{ij}(\boldsymbol{m}-d_{ij})_+^2\right]</script><p>该损失函数包含两项：</p>
 <ol>
 <li>重建损失$\mathbb{E}_{\boldsymbol{x}}|\boldsymbol{x}-\hat{\boldsymbol{x}}|_2^2$。即自动编码器对原样本进行重建后得到的样本与原样本距离的二范数。在这个自动编码器中，编码器$f$将$x$映射到一个低维向量$z=f(x,\Theta)$。自动编码器保证这个向量可以以较小的重建损失重建这个样本。</li>
-<li>对比损失$\lambda\mathbb{E}_{\boldsymbol{x}_i,\boldsymbol{x}_j}\left[(1-y_{ij})d_{ij}^2+y_{ij}(\boldsymbol{m}-d_{ij})_+^2\right]$。$(x_i,x_j)$是一个样本对。$y_{i,j}$表示两个样本之间的关系。如果两个样本来自不同的类别，则值为1，否则为0。$(.)_+$是$max(0,.)$的缩写。$d_{i,j}$是样本隐表示$z_i=(x_i;\Theta),z_j=f(x_j;\Theta)$之间的欧拉距离。$z\in \mathbb{R}^{d\times 1}$。使用该损失，模型会最小化统一类别的样本距离，同时最大化不同类别之间的样本距离（这个距离最大被限制到m）。</li>
+<li>对比损失$\lambda\mathbb{E}_{\boldsymbol{x}_i,\boldsymbol{x}_j}\left[(1-y_{ij})d_{ij}^2+y_{ij}(\boldsymbol{m}-d_{ij})_+^2\right]$。$(x_i,x_j)$是一个样本对。$y_{i,j}$表示两个样本之间的关系。如果两个样本来自不同的类别，则值为1，否则为0。$(.)_+$是$max(0,.)$的缩写。$d_{i,j}$是样本隐表示$z_i=(x_i;\Theta),z_j=f(x_j;\Theta)$之间的欧几里得距离。$z\in \mathbb{R}^{d\times 1}$。使用该损失，模型会最小化统一类别的样本距离，同时最大化不同类别之间的样本距离（这个距离最大被限制到m）。</li>
 </ol>
 <p>经过对比学习后，$f$可以把相同类别的样本映射为一个较紧的样本簇。在隐空间中使用距离函数就可以把漂移样本检测出来。</p>
 <h4 id="基于MAD的漂移样本检测"><a href="#基于MAD的漂移样本检测" class="headerlink" title="基于MAD的漂移样本检测"></a>基于MAD的漂移样本检测</h4><p>在训练好自动编码器之后，我们就可以使用它来检测漂移样本了。给定$K$个测试样本$\{x_t^{(k)}\}（k=1,\dots,K)$,我们寻求一种方法可以找到这些样本中的漂移样本。检测方法如算法1所示。</p>
 <p><img src="/2023/10/12/cade-detecting-and-explaining-concept-drift-samples-for-security-applications-yue-du-bi-ji/20231011191936.png" alt="img"></p>
-<p>假设训练集有$N$个类别，每个类别有$n_i$个训练样本。我们首先把所有的训练样本映射到隐空间中(2-4行)。对于每个类别$i$，我们可以计算出一个中心$c_i$（就是直接取样本均值）。对于待检测的测试样本$x_t^{(k)}$，我们同样需要把它映射到隐空间中得到$z_t^{(k)}$（第14行）。接着我们计算测试样本和每个中心之间的欧拉距离$d_i^{(k)}$。我们基于这个距离判断测试样本是否为离群点。在这我们不使用离测试样本最近的样本点的原因是，训练集中的离群点会影响判断。</p>
+<p>假设训练集有$N$个类别，每个类别有$n_i$个训练样本。我们首先把所有的训练样本映射到隐空间中(2-4行)。对于每个类别$i$，我们可以计算出一个中心$c_i$（就是直接取样本均值）。对于待检测的测试样本$x_t^{(k)}$，我们同样需要把它映射到隐空间中得到$z_t^{(k)}$（第14行）。接着我们计算测试样本和每个中心之间的欧几里得距离$d_i^{(k)}$。我们基于这个距离判断测试样本是否为离群点。在这我们不使用离测试样本最近的样本点的原因是，训练集中的离群点会影响判断。</p>
 <p>不同的类别有不同的紧凑程度，故对于不同的类别需要使用不同的阈值。我们没有为每个类别手动设定阈值，而是使用了一种叫做“绝对中位差（Median Absolute Deviation，MAD）“的方法。计算出某一类的中心后，需要计算该类每个样本与中心的距离。距离中位数记为$\tilde{d}_i$。则：</p>
 <script type="math/tex; mode=display">MAD_i = b*median(|d_i^{(j)}-\tilde{d}_i|),j=1,\dots,n_i</script><p>基于$MAD_i$，我们就可以决定$d_i^{(k)}$是不是所有类别的离群点。MAD的优势是每个类别都有一个独立的距离阈值，而且这个阈值和每一类的分布相关。举例来说，如果一个类别更分散，则这个阈值会更大。</p>
 <p>需要注意的是，当一个类没有足够的样本时，MAD可能会受到影响，因为它的中值可能容易受噪声影响。在我们的设计中，对比学习可以帮助缓解这个问题，因为每个类被映射到潜在空间中的一个紧凑区域，这有助于稳定中位数。</p>
