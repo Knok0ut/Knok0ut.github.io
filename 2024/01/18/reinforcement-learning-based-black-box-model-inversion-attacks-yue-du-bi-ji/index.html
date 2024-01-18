@@ -4,8 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Evaluating Differentially Private Machine Learning in Practice, 一丁">
-    <meta name="description" content="Evaluating Differentially Private Machine Learning in PracticeBargav Jayaraman and David Evans, University of Virginia  ">
+    <meta name="keywords" content="Reinforcement Learning-Based Black-Box Model Inversion Attacks 阅读笔记, 一丁">
+    <meta name="description" content="Reinforcement Learning-Based Black-Box Model Inversion AttacksMetadata
+Type: ConferencePaper
+Title: Reinforcement Learni">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +19,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Evaluating Differentially Private Machine Learning in Practice | 一丁</title>
+    <title>Reinforcement Learning-Based Black-Box Model Inversion Attacks 阅读笔记 | 一丁</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -324,12 +326,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Evaluating Differentially Private Machine Learning in Practice</h1>
+                    <h1 class="description center-align post-title">Reinforcement Learning-Based Black-Box Model Inversion Attacks 阅读笔记</h1>
                 </div>
             </div>
         </div>
@@ -443,9 +445,29 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                <span class="chip bg-color">机器学习</span>
+                            </a>
+                        
+                            <a href="/tags/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/">
+                                <span class="chip bg-color">论文笔记</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">
+                                <span class="chip bg-color">强化学习</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%A8%A1%E5%9E%8B%E9%80%86%E5%90%91/">
+                                <span class="chip bg-color">模型逆向</span>
+                            </a>
+                        
+                            <a href="/tags/GAN/">
+                                <span class="chip bg-color">GAN</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -457,28 +479,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-11-08
+                    2024-01-18
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-11-11
+                    2024-01-18
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.7k
+                    5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    18 分
                 </div>
                 
 
@@ -498,79 +520,51 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Evaluating-Differentially-Private-Machine-Learning-in-Practice"><a href="#Evaluating-Differentially-Private-Machine-Learning-in-Practice" class="headerlink" title="Evaluating Differentially Private Machine Learning in Practice"></a>Evaluating Differentially Private Machine Learning in Practice</h1><p>Bargav Jayaraman and David Evans, University of Virginia  </p>
-<blockquote>
-<p>摘要：差分隐私可以用来计算一个机制泄露了多少隐私(用$\epsilon$表示)。当用于机器学习时，差分隐私的目标即为限制模型泄露的训练集中单个个体的隐私量。但是目前人们对于如何校准$\epsilon$还不是很了解。在机器学习中人们通常会设定一个很大的$\epsilon$值来获得更好的可用性，但对这种选择对隐私所造成的影响所知甚少。此外，在使用迭代学习程序的情况下，经常使用宽松的差分隐私定义，这似乎减少了所需的隐私预算，但人们对隐私性和可用性之间的平衡理解并不深刻。<strong>在这篇文章中</strong>，我们在逻辑回归和神经网络模型的实验中量化了这些选择对隐私的影响。我们的主要的发现是获取隐私是需要代价的——宽松的差分隐私定义减少了所需的噪声数量但同时增大了隐私泄露的风险。现有的差分隐私机器学习机制很少会对复杂学习任务做可接受的可用性与隐私性之间的平衡：降低准确率损失会降低隐私性，提供强隐私保障的会产生无用的模型。</p>
-</blockquote>
-<p><strong>主要内容：通过实验验证不同的$\epsilon$值和使用不同的宽松的差分隐私定义对模型可用性与隐私性的影响。</strong></p>
-<h3 id="几种宽松的差分隐私定义"><a href="#几种宽松的差分隐私定义" class="headerlink" title="几种宽松的差分隐私定义"></a>几种宽松的差分隐私定义</h3><p>主要思想：多种差分隐私机制组合起来时其整体的privacy budget（暂且称为隐私代价）不一定为各个privacy budget之和。可以通过一些其他的规律来获得一个更紧的上界。</p>
-<ol>
-<li>advanced composition theorem ：考虑到隐私损失的期望，可以获得$\epsilon$的一个更紧的上界。</li>
-<li>Concentrated Differential Privacy (CDP)  ：$\mathcal{D}_{subG}(\mathcal{M}(D)||\mathcal(D’))\le(\mu,\tau)$。任何$\epsilon-DP$算法都满足$(\epsilon \cdot(e^{\epsilon}-1)/2,\epsilon)-CDP$ ，反过来不一定满足。</li>
-<li>Zero-Concentrated Differential Privacy (zCDP)  ：$\mathcal{D}_{\alpha}(\mathcal{M}(D)||\mathcal(D’))\le \xi + \rho a$。如果$\mathcal{M}$满足$\epsilon-DP$，则它满足$(\frac{1}{2}\epsilon^2)-zCDP$。如果它满足$\rho-zCDP$，则对任意$\delta&gt;0$它满足$(\rho+2\sqrt{\rho log(1/\delta),\delta})-DP$</li>
-<li>Rényi Differential Privacy (RDP)  :$\mathcal{D}_{\alpha}(\mathcal{M}(D)||\mathcal{M}(D’))\le \epsilon$。如果$\mathcal{M}$满足$(\alpha,\epsilon)-RDP$，则对于任意$0&lt;\delta&lt;1,$满足$(\epsilon+\frac{log(1/\delta)}{\alpha-1},\delta)-DP$</li>
-</ol>
-<p><img src="/2021/11/08/evaluating-differentially-private-machine-learning-in-practice/image-20211107162132017.png" alt="img"></p>
-<h3 id="实验方法"><a href="#实验方法" class="headerlink" title="实验方法"></a>实验方法</h3><h4 id="实验设定"><a href="#实验设定" class="headerlink" title="实验设定"></a>实验设定</h4><ol>
-<li>使用逻辑回归模型（凸优化）和神经网络模型（非凸）作为目标模型。</li>
-<li>使用成员推断和属性推断作为攻击方式，从而获得模型的隐私损失。</li>
-<li>在梯度上添加扰动。</li>
-<li>使用具有两个隐藏层的神经网络作为推断（攻击）网络</li>
-</ol>
-<h4 id="攻击方式"><a href="#攻击方式" class="headerlink" title="攻击方式"></a>攻击方式</h4><p>成员推断使用Shokri（1）和Yeom（2）的方法。</p>
-<ol>
-<li>黑盒攻击。攻击者可以获得目标模型对输入的置信度（confidence score）。使用相同分布下采样的数据训练了多个影子模型。使用这些影子模型训练推断模型。推断模型的训练集来源于部分用来训练影子模型的训练数据和一些相同分布下随机采样的数据。推断模型的输入还包括影子模型对这些数据的置信度。</li>
-<li>白盒攻击。假设攻击者可以访问训练集在目标模型上的平均损失。如果输入数据在目标模型上的损失值小于均值的话就认为这个输入在目标模型的训练集里。</li>
-</ol>
-<p>属性推断：使用Yeom的方法。与上2类似。暴力搜索隐私属性的所有可能值，选择与平均损失最接近的组合。</p>
-<h4 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h4><p>选择两个数据集</p>
-<ol>
-<li>CIFAR-100  （28×28 images）。使用PCA把维度压缩到50</li>
-<li>Purchase-100  </li>
-</ol>
-<p>每个数据集中分别随机选10,000 个作为训练集，10000个作为测试集。剩下的用来训练影子模型和推断模型。</p>
-<p>在进行属性推断攻击时，因为原数据集没有标注哪些属性为隐私属性，所以随机选取5个属性作为隐私属性。</p>
-<h4 id="评价指标"><a href="#评价指标" class="headerlink" title="评价指标"></a>评价指标</h4><ol>
-<li>accuracy loss：没有隐私保护的模型在测试集上的准确率（baseline） - 有隐私保护的模型的准确率<ol>
-<li>privacy leakage：真阳率（True Positive Rate) - 假阳率（False Positive Rate)。如果是0的话代表没有隐私泄露。</li>
-</ol>
-</li>
-</ol>
-<h4 id="超参数"><a href="#超参数" class="headerlink" title="超参数"></a>超参数</h4><p>训练模型时使用$l_2$正则化。首先使用grid search训练一个非隐私模型，从而找到一个最大化测试集正确率的$\lambda$。</p>
-<p>对于CIFAR-100 </p>
-<ol>
-<li>逻辑回归：$\lambda = 10^{-5}$</li>
-<li>神经网络：$\lambda = 10^{-4}$</li>
-</ol>
-<p>对于Purchase-100  </p>
-<ol>
-<li>逻辑回归：$\lambda = 10^{-5}$</li>
-<li>神经网络：$\lambda = 10^{-8}$</li>
-</ol>
-<p>然后用上面的设定训练隐私模型。$\epsilon$取值范围为$0.01-1000$，$\delta$固定为$10^{-5}$(假设训练集大小为n, $\delta\lt\frac{1}{n}$)</p>
-<p>使用ADAM优化器，固定学习率为0.01.</p>
-<p>batch size = 200</p>
-<h4 id="Clipping"><a href="#Clipping" class="headerlink" title="Clipping"></a>Clipping</h4><p>使用Tensorflow Privacy框架实现了batch clipping 和 per-instance clipping。阈值$\mathcal{C}=1$。通过下图的比较结果发现Per-instance clipping放大了不同机制之间的差异。因此后面的实验中只使用这一种clipping方式。</p>
-<p><img src="/2021/11/08/evaluating-differentially-private-machine-learning-in-practice/image-20211107204703476.png" alt="image-20211107204703476"></p>
-<h3 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h3><h4 id="逻辑回归"><a href="#逻辑回归" class="headerlink" title="逻辑回归"></a>逻辑回归</h4><h5 id="CIFAR-100"><a href="#CIFAR-100" class="headerlink" title="CIFAR-100"></a>CIFAR-100</h5><p>baseline在训练集上的准确率是0.225，测试集上的准确率是0.155。中间的gap值为0.07。上图（b）显示了不同$\epsilon$值，不同差分隐私定义对准确率损失的影响。</p>
-<p>下图（a) （b)展示成员推断攻击下的隐私损失，（c）展示了属性推断攻击下的隐私损失。</p>
-<p>通过(a)看出对于Naive composition来说，当$\epsilon\le10$时隐私损失基本为0，当$\epsilon=1000$隐私泄露达到了$0.065\pm0.004$，同时RDP和zCDP的损失之达到了$0.08\pm0.004$。通过图(b)可以看出naive-composition在$\epsilon\le 10$时没有明显的隐私损失。但是当$\epsilon=1000$时损失快速上升到$0.093\pm0.002  $。</p>
-<p>图中还显示了$\epsilon-differential\quad privacy$的理论损失上界：$e^{\epsilon}-1$   [Yeom et al]。</p>
-<p><img src="/2021/11/08/evaluating-differentially-private-machine-learning-in-practice/image-20211107211234195.png" alt="image-20211107211234195"></p>
-<p>下面的图表展示了不同的差分隐私定义下泄露给敌手的训练集成员数量。</p>
-<p><img src="/2021/11/08/evaluating-differentially-private-machine-learning-in-practice/image-20211107213708468.png" alt="image-20211107213708468"></p>
-<p>实验结论后面还有好多，与上面的大同小异，不一一展示了。</p>
-<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>获取隐私是有代价的（that there is no way to obtain privacy for free  ）</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p><a target="_blank" rel="noopener" href="https://github.com/bargavj/EvaluatingDPML">https://github.com/bargavj/EvaluatingDPML</a>  </p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a target="_blank" rel="noopener" href="https://www.usenix.org/conference/usenixsecurity19/presentation/jayaraman">原文链接</a></p>
-<h3 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h3><ol>
-<li><p>实验方法</p>
-</li>
-<li><p>在机器学习中应用差分隐私</p>
-</li>
-</ol>
-<p><img src="/2021/11/08/evaluating-differentially-private-machine-learning-in-practice/image-20211108121014599.png" alt="image-20211108121014599"></p>
-<p><img src="/2021/11/08/evaluating-differentially-private-machine-learning-in-practice/image-20211108121412999.png" alt="image-20211108121412999"></p>
+                <h1 id="Reinforcement-Learning-Based-Black-Box-Model-Inversion-Attacks"><a href="#Reinforcement-Learning-Based-Black-Box-Model-Inversion-Attacks" class="headerlink" title="Reinforcement Learning-Based Black-Box Model Inversion Attacks"></a>Reinforcement Learning-Based Black-Box Model Inversion Attacks</h1><h2 id="Metadata"><a href="#Metadata" class="headerlink" title="Metadata"></a>Metadata</h2><ul>
+<li><strong>Type</strong>: ConferencePaper</li>
+<li><strong>Title</strong>: Reinforcement Learning-Based Black-Box Model Inversion Attacks, </li>
+<li><strong>Author</strong>: Han, Gyojin; Choi, Jaehyun; Lee, Haeil; Kim, Junmo, </li>
+<li><strong>Year</strong>: 2023 ;</li>
+<li><strong>Pages</strong>: 20504-20513</li>
+<li><strong>Publisher</strong>: IEEE,</li>
+<li><strong>Location</strong>: Vancouver, BC, Canada,</li>
+<li><strong>DOI</strong>: 10.1109/CVPR52729.2023.01964</li>
+</ul>
+<hr>
+<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>Model inversion attacks are a type of privacy attack that reconstructs private data used to train a machine learning model, solely by accessing the model. Recently, white-box model inversion attacks leveraging Generative Adversarial Networks (GANs) to distill knowledge from public datasets have been receiving great attention because of their excellent attack performance. On the other hand, current blackbox model inversion attacks that utilize GANs suffer from issues such as being unable to guarantee the completion of the attack process within a predetermined number of query accesses or achieve the same level of performance as whitebox attacks. To overcome these limitations, we propose a reinforcement learning-based black-box model inversion attack. We formulate the latent space search as a Markov Decision Process (MDP) problem and solve it with reinforcement learning. Our method utilizes the conﬁdence scores of the generated images to provide rewards to an agent. Finally, the private data can be reconstructed using the latent vectors found by the agent trained in the MDP. The experiment results on various datasets and models demonstrate that our attack successfully recovers the private information of the target model by achieving state-of-the-art attack performance. We emphasize the importance of studies on privacy-preserving machine learning by proposing a more advanced black-box model inversion attack.</p>
+<p>模型逆向攻击是一种隐私攻击，通过仅访问模型，重新构建用于训练机器学习模型的私有数据。最近，利用生成对抗网络（GANs）从公共数据集中提取知识的白盒模型逆向攻击引起了广泛关注，因为其具有卓越的攻击性能。另一方面，当前利用GAN的黑盒模型逆向攻击存在一些问题，比如无法保证在预定数量的查询访问内完成攻击过程，或无法达到与白盒攻击相同水平的性能。为了克服这些限制，我们提出了一种基于强化学习的黑盒模型逆向攻击。我们将潜在空间搜索问题制定为马尔可夫决策过程（MDP）问题，并通过强化学习来解决它。我们的方法利用生成图像的置信度分数来为代理提供奖励。最终，通过在MDP中训练的代理找到的潜在向量，可以重构私有数据。在各种数据集和模型上的实验证明，我们的攻击成功地恢复了目标模型的私有信息，实现了最先进的攻击性能。我们强调通过提出更先进的黑盒模型逆向攻击，进行隐私保护机器学习研究的重要性。</p>
+<hr>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>随着人工智能的迅速发展，深度学习应用正在各个领域不断涌现，如计算机视觉、医疗保健、自动驾驶和自然语言处理。随着需要使用私有数据来训练深度学习模型的案例数量增加，对包括敏感个人信息在内的私有数据泄漏的关注正在上升。特别是关于隐私攻击的研究[21]表明，恶意用户可以从训练过的模型中提取个人信息。其中一种对机器学习模型最具代表性的隐私攻击是模型逆向攻击，它通过仅访问模型就能重构目标模型的训练数据。</p>
+<p>模型逆向攻击分为三类，即1）白盒攻击，2）黑盒攻击和3）仅标签攻击，这取决于目标模型的信息量。白盒攻击可以访问模型的所有参数。黑盒攻击可以访问由置信度分数组成的软推理结果，而仅标签攻击只能以硬标签形式访问推理结果。随着对深度学习模型隐私攻击的关注增加，加强在开发和部署深度学习模型时的隐私保护机制显得尤为重要。研究人员和实践者正在积极探索提高机器学习模型隐私性的方法，包括差分隐私、联邦学习和安全多方计算等技术。随着领域的不断发展，解决隐私挑战将对确保人工智能技术的负责和道德使用至关重要。</p>
+<p>白盒模型逆向攻击[5, 25, 27]通过使用生成对抗网络（GANs）[10]成功地恢复了包括个人信息在内的高质量私有数据。首先，它们在独立的公共数据上训练GANs以学习私有数据的一般先验。然后，由于可以访问已训练白盒模型的参数，它们利用基于梯度的优化方法搜索并找到代表特定标签数据的潜在向量。然而，这些方法无法应用于保护模型参数的机器学习服务，如亚马逊的Rekognition [1]。要从这些服务中重构私有数据，需要进行关于黑盒和仅标签的模型逆向攻击的研究。</p>
+<p>与白盒攻击不同，这些攻击需要能够探索GANs的潜在空间的方法，以便利用它们，因为无法进行基于梯度的优化。最近提出的深度学习网络的模型逆向（MIRROR）[2]使用遗传算法在从黑盒目标模型获取的置信度分数中搜索潜在空间。此外，边界驱逐模型逆向攻击（BREPMI）[14]通过使用基于决策的零阶优化算法进行潜在空间搜索，在仅标签的设置下取得了成功。</p>
+<p>尽管存在这些尝试，但每种方法都存在显著问题。BREP-MI从第一个生成被分类为目标类别的图像的潜在向量开始潜在空间搜索的过程。这并不保证在通过随机采样找到第一个潜在向量之前需要多少次查询访问，并且在最坏的情况下，可能无法为某些目标类别启动搜索过程。对于MIRROR，尽管它使用了置信度分数进行攻击，但其表现较仅标签攻击BREP-MI更差。因此，我们提出了一种新方法，即基于强化学习的黑盒模型逆向攻击（RLB-MI），作为解决上述问题的方案。我们整合强化学习，以从置信度分数中获得有关潜在空间探索的有用信息。更具体地说，我们将在GAN中潜在空间的探索形式化为马尔可夫决策过程（MDP）的问题。然后，我们基于生成图像的置信度分数为代理提供奖励，并使用回放内存中的更新步骤使代理能够逼近包括潜在空间在内的环境。基于这些信息选择的代理操作比现有方法更有效地导航潜在向量。最终，我们可以通过从潜在向量中经过GAN重构私有数据。我们在各种数据集和模型上进行了实验。攻击性能与三类各种模型逆向攻击进行了比较。结果表明，所提出的攻击能够通过优于所有其他攻击的性能成功地恢复有关私有数据的有意义信息。</p>
+<h2 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h2><h3 id="模型逆向攻击"><a href="#模型逆向攻击" class="headerlink" title="模型逆向攻击"></a>模型逆向攻击</h3><p>模型逆向攻击是一种针对机器学习模型的隐私攻击，其目的是重构用于训练的数据。早期的研究主要关注白盒条件，即已训练的模型是完全可访问的。Fredrikson等人通过从低复杂性模型中提取敏感属性[8]和面部图像[7]，展示了模型逆向攻击的严重性。然而，早期的白盒模型逆向攻击由于无法从复杂模型中重构高维数据而存在明显的局限性。</p>
+<p>为解决这些限制，许多白盒模型逆向攻击利用了生成模型。Zhang等人[27]提出了一种名为生成模型逆向攻击（GMI）的攻击，使用在公共数据上训练的GAN [10]。他们通过搜索GAN的潜在空间而不是图像空间来重构图像。GAN的流形逼近能力有效地缩小了攻击模型的搜索空间。知识丰富的分布模型逆向攻击（KED-MI）[5]通过使用一个具有反演特定功能的GAN来改进GMI，其中鉴别器执行多类推断。反演专用GAN的鉴别器可以区分真实数据和伪造数据，并且可以预测目标网络的输出。这使得反演专用GAN能够从公共数据中提取目标模型的有用知识。此外，KED-MI通过提取目标类别数据的分布，而不仅仅是目标类别的一个训练数据，可以创建多样化的图像。变分模型逆向攻击（VMI）[25]将模型逆向攻击形式化为包含深度标准化流和styleGAN [15]框架的变分推断问题。</p>
+<p>不幸的是，白盒攻击并不适用于在训练模型的参数没有信息的情况下。因此，提出了仅需要访问软标签的黑盒模型逆向攻击。基于学习的模型逆向攻击（LBMI）[26]使用类似于自动编码器的结构来训练一个反演模型，该模型以与目标网络相反的方式行为。反演模型不仅需要访问攻击者构造的查询，还需要访问用户输入数据的置信度分数，该数据是反演的目标。Salem等人[22]提出了一种攻击，通过计算模型更新前后输出的差异来泄露用于更新的训练数据的信息。这两种方法都有一个局限，即它们需要攻击者通常难以访问的信息。深度学习网络的模型逆向（MIRROR）[2]表明可以利用GANs在黑盒模型逆向攻击中使用遗传算法。此外，提出了一种仅标签的模型逆向攻击，边界排斥模型逆向攻击（BREPMI）[14]。BREP-MI在反演过程中仅使用硬标签。BREP-MI从当前潜在向量为中心的球面上的点的标签估计梯度。使用估计的梯度更新潜在向量，使得GAN从潜在向量中重构目标类别的代表性图像。</p>
+<h3 id="深度增强学习"><a href="#深度增强学习" class="headerlink" title="深度增强学习"></a>深度增强学习</h3><p>使用深度神经网络进行强化学习（RL）的研究开始引起关注，因为深度Q网络（DQN）[18]在Atari 2600游戏中展现出与人类专家相媲美的性能[4]。DQN通过使用深度神经网络来估计动作值函数，成功解决了具有高维状态输入（如原始像素）的任务。然而，DQN不能立即应用于具有高维、连续动作空间的问题，因为它通过找到最大化动作值函数值的动作来工作。为了解决具有高维、连续动作空间的问题，提出了深度确定性策略梯度（DDPG）[16]。DDPG是一种无模型和离策略算法，使用基于深度策略梯度（DPG）[23]的演员-评论家方法。通过将DQN的回放缓冲和目标网络的思想应用于演员-评论家方法，DDPG稳定了学习过程。即使在DDPG之后，许多深度强化学习方法已被提出以改进DDPG。为了克服过度估计偏差问题，提出了双延迟深度确定性策略梯度（TD3）[9]算法。TD3通过使用一些技巧，如剪切的双Q学习和延迟的策略更新，解决了这个问题。此外，提出了Soft Actor-Critic（SAC）[12]来处理复杂环境的问题。SAC通过将熵最大化项添加到标准最大奖励强化学习目标中，显著提高了探索性能和稳定性。</p>
+<h2 id="提出的方法"><a href="#提出的方法" class="headerlink" title="提出的方法"></a>提出的方法</h2><p>在本节中，我们将介绍我们的方法，即基于强化学习的黑盒模型逆向攻击（RLB-MI）。RLB-MI的概述如图1所示。<br><img src="/2024/01/18/reinforcement-learning-based-black-box-model-inversion-attacks-yue-du-bi-ji/img1.png" alt="图 1"></p>
+<h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p><strong>攻击者的目标</strong>：模型逆向的目标是从使用数据集$D_{pvt}$训练的模型$T$中恢复出类别$y$的样本。目标模型$T: x\to [0,1]^K$学习的是样本到类别的映射。用$K$表示$D_{pvt}$的大小，$d$表示输入的维度。</p>
+<p><strong>攻击者的知识</strong>：由于我们的方法处理的是黑盒设置，攻击者只能访问由攻击者输入的数据和与数据相对应的软标签组织的查询。此外，攻击者了解目标模型的目的。正如先前的研究中所提到的[2, 5, 14, 25, 27]，提供的模型或服务的任务信息不仅是可用的，而且还可以从输出的类别中轻松推断出来。基于对任务的这种了解，攻击者可以访问相应任务的公共数据集。</p>
+<p><strong>概述</strong>：给定在私有数据集$D_{pvt}$上训练的黑盒模型$T$，一个黑盒的模型逆向攻击目的就是恢复出这个私有的数据集。和最近的模型逆向攻击一致，我们也使用了一个公开数据集$D_{pub}$训练了一个Gan  $G$。攻击者只能知道一个模型输出的软标签，但对模型的参数和结构一无所知。因此，我们的方法就是通过搜索能够使模型输出相应类别的高置信度样本的隐向量。我们把隐向量的搜索过程形式化为马尔可夫过程（MDP），然后使用强化学习来解决该问题。更具体的，我们把MDP的状态空间定义为生成器$G$的隐空间，于是每一步$t$的状态$s_t$都可以用隐空间中的向量来表示。状态$s_t$经过动作 $a_t$后会变为状态$s_{t+1}$。任务的目标就是最大化目标模型的置信度向量。</p>
+<h3 id="隐空间搜索中的马尔卡弗过程"><a href="#隐空间搜索中的马尔卡弗过程" class="headerlink" title="隐空间搜索中的马尔卡弗过程"></a>隐空间搜索中的马尔卡弗过程</h3><p>我们描述了用于潜在空间搜索的MDP的组成部分：状态，动作，状态转换和奖励。</p>
+<p><strong>状态</strong>：MDP的状态空间就是生成器G的隐空间（输入空间）。对于每一个eposode，第一个状态$s_0$是一个$k$维的标准化随机向量：</p>
+<script type="math/tex; mode=display">
+s_0 \sim \mathcal{N}_k(0,1),s_0 \in \mathbb{R}^k,</script><p>在每一步$t$，状态$s_t$会被动作$a_t$更新。</p>
+<p><strong>动作</strong>：我们希望动作可以让随机产生的初始状态向着高奖励的最终状态前进。从宏观的视角来看，我们可以把这种问题理解为基于强化学习的路径查找问题。在传统的路径查找问题中，动作被定义为了$s_t$到$s_{t+1}$的位移$\triangle s$。然而，与寻路中的有界二维空间不同，潜在空间是一个不受限制的高维空间。在我们的阐述中，当将行为定义为位移向量时，由于与潜在空间相比存在较大的状态方差和狭窄的探索区域，强化学习代理可能无法收敛并达到局部最小值或完全失败。因此，我们将行为空间视为整个潜在空间。我们将一个潜在矢量形状的行为定义为一个引导矢量。如图1所示，根据定义，在相同的空间中选择行为。这使得能够广泛探索整个潜在空间，防止代理陷入局部最小值并保证代理的收敛。每一步$t$的动作都由强化代理$A:\mathbb{R}^k \to \mathbb{R}^k$来产生：</p>
+<script type="math/tex; mode=display">
+a_t=A(s_t),a_t\in \mathbb{R}^k</script><p><strong>状态转移</strong>：我们通过在每一步将状态朝着行为移动来更新状态，使用一个差异因子 α 作为状态转移中当前状态的权重，以确定移动距离。在步骤 t 的状态转移如下：</p>
+<script type="math/tex; mode=display">
+s_{t+1} = \alpha \cdot s_t + (1-\alpha) \cdot a_t</script><p>我们将 $\alpha$ 称为多样性因子的原因是，我们将 $\alpha$ 提出作为一个超参数，允许我们控制生成图像的多样性。正如Wang等人所提到的[25]，在重构图像时，模型逆向攻击存在准确性和多样性之间的权衡。我们可以通过 $\alpha$ 调整准确性和多样性之间的权衡。 $\alpha$ 越高，随机初始潜在向量对每个episode的影响越大，代理就越专注于生成具有高多样性的图像。例如，如果 $\alpha$ 的值为零，下一个状态将与当前步骤中的行为相同，因此代理只专注于生成目标分类器概率最高的一张图像。另一方面，随着 $\alpha$ 的增加，随机初始潜在向量的影响增大，代理被训练以找到具有高概率属于目标类别的各种图像。</p>
+<p><strong>奖励</strong>：在通过行为更新状态后，代理从环境中接收一个奖励。生成器 $G$ 从更新后的潜在向量生成一张图像，通过使用目标网络 $T$ 进行推理，我们可以得到图像目标类别 $y$ 的置信度分数。由于行为指导了状态的移动方向，从行为生成的图像也应该接近目标类别空间。为了将状态和行为置于靠近目标类别空间的位置，我们需要在状态和行为具有较高置信度分数时提供较高的奖励。因此，我们构建一个奖励，其中包含状态分数和行为分数，这些分数是由每个矢量创建的图像的置信度分数的对数值计算而得。这些分数的计算如下：</p>
+<script type="math/tex; mode=display">
+r_1 = log[T_y(G(s_{t+1}))]</script><script type="math/tex; mode=display">
+r_2 = log[T_y(G(a_{t}))]</script><p>其中$r_1$使状态分数，$r_2$是动作分数。此外，我们希望重构的图像具有目标类别的特征，使其与其他类别的图像有所区别。因此，我们提出了一个额外的项 $r_3$，对其他类别图像的高置信度分数进行惩罚。我们计算目标类别的置信度分数与其他类别的最大置信度分数之间的差异。与先前的分数一样，对计算值应用对数。由于对于小于或等于零的数字，对数是未定义的，因此取对数为减去的值和一个小正数 $\epsilon$ 中的较大者。项 $r3$ 的表达式如下：</p>
+<script type="math/tex; mode=display">
+r_3=\log[\max\{\epsilon,T_y(G(s_{t+1}))-\max_{i\neq y}T_i(G(s_{t+1}))\}].</script><p>每一步的总奖励 $Rt$ 计算如下：</p>
+<script type="math/tex; mode=display">\begin{aligned}R_t&=w_1\cdot r_1+w_2\cdot r_2+w_3\cdot r_3,\end{aligned}</script><p>其中$w_n$是分数$r_n$的权重。</p>
+<h3 id="使用强化学习解决MDP"><a href="#使用强化学习解决MDP" class="headerlink" title="使用强化学习解决MDP"></a>使用强化学习解决MDP</h3><p>我们通过强化学习来解决被提出的潜在空间搜索问题，该问题被制定为马尔可夫决策过程（MDP）。由于所提出的由 G 和 T 组成的 MDP 的环境非常复杂，我们需要在复杂环境中具有鲁棒性的强化学习代理。此外，我们需要一个能够处理连续行为空间的代理，因为MDP中的行为空间被定义为 G 的潜在空间。因此，我们使用满足所有上述点的 Soft Actor-Critic (SAC) [12] 来解决MDP。我们训练一个SAC代理来从给定状态中选择适当的行为。在训练之后，通过将随机初始向量提供给训练过的代理作为初始状态，我们可以获得每个episode的重构图像。代理训练的整个过程如 算法 1 所示。</p>
+<p><img src="/2024/01/18/reinforcement-learning-based-black-box-model-inversion-attacks-yue-du-bi-ji/al1.png" alt="算法 1"></p>
 
                 
             </div>
@@ -597,7 +591,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://blog.expecto.top/2021/11/08/evaluating-differentially-private-machine-learning-in-practice/">https://blog.expecto.top/2021/11/08/evaluating-differentially-private-machine-learning-in-practice/</a>
+                    <a href="https://blog.expecto.top/2024/01/18/reinforcement-learning-based-black-box-model-inversion-attacks-yue-du-bi-ji/">https://blog.expecto.top/2024/01/18/reinforcement-learning-based-black-box-model-inversion-attacks-yue-du-bi-ji/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -634,7 +628,27 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                    <span class="chip bg-color">机器学习</span>
+                                </a>
+                            
+                                <a href="/tags/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/">
+                                    <span class="chip bg-color">论文笔记</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">
+                                    <span class="chip bg-color">强化学习</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%A8%A1%E5%9E%8B%E9%80%86%E5%90%91/">
+                                    <span class="chip bg-color">模型逆向</span>
+                                </a>
+                            
+                                <a href="/tags/GAN/">
+                                    <span class="chip bg-color">GAN</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -678,17 +692,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/11/15/testpass/">
+                <a href="/2024/01/18/reinforcement-learning-based-black-box-model-inversion-attacks-yue-du-bi-ji/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="testpass">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Reinforcement Learning-Based Black-Box Model Inversion Attacks 阅读笔记">
                         
-                        <span class="card-title">testpass</span>
+                        <span class="card-title">Reinforcement Learning-Based Black-Box Model Inversion Attacks 阅读笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -698,9 +713,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-11-15
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-18
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -708,6 +723,31 @@
                             
                         </span>
                     </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">机器学习</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">论文笔记</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">强化学习</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%A8%A1%E5%9E%8B%E9%80%86%E5%90%91/">
+                        <span class="chip bg-color">模型逆向</span>
+                    </a>
+                    
+                    <a href="/tags/GAN/">
+                        <span class="chip bg-color">GAN</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -719,25 +759,24 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/10/29/an-attentive-survey-of-attention-models-2021-yan-du-bao-gao/">
+                <a href="/2023/10/12/cade-detecting-and-explaining-concept-drift-samples-for-security-applications-yue-du-bi-ji/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="An Attentive Survey of Attention Models(2021)研读报告">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="CADE: Detecting and Explaining Concept Drift Samples for Security Applications 阅读笔记">
                         
-                        <span class="card-title">An Attentive Survey of Attention Models(2021)研读报告</span>
+                        <span class="card-title">CADE: Detecting and Explaining Concept Drift Samples for Security Applications 阅读笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            An Attentive Survey of Attention Models(2021)研读报告
-论文标题：关于注意力模型的细心调研如今注意力模型已经成为了神经网络中一个非常重要的概念，而且在多种应用领域中得到了广泛的研究。这篇调研针对注
+                            
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-29
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-10-12
                             </span>
                         <span class="publish-author">
                             
@@ -746,6 +785,22 @@
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">机器学习</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">论文笔记</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%A6%82%E5%BF%B5%E6%BC%82%E7%A7%BB/">
+                        <span class="chip bg-color">概念漂移</span>
+                    </a>
+                    
                 </div>
                 
             </div>
