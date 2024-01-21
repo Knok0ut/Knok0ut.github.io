@@ -486,21 +486,21 @@ Title: Reinforcement Learni">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-01-18
+                    2024-01-21
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5k
+                    7.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    18 分
+                    28 分
                 </div>
                 
 
@@ -565,6 +565,28 @@ r_3=\log[\max\{\epsilon,T_y(G(s_{t+1}))-\max_{i\neq y}T_i(G(s_{t+1}))\}].</scrip
 <script type="math/tex; mode=display">\begin{aligned}R_t&=w_1\cdot r_1+w_2\cdot r_2+w_3\cdot r_3,\end{aligned}</script><p>其中$w_n$是分数$r_n$的权重。</p>
 <h3 id="使用强化学习解决MDP"><a href="#使用强化学习解决MDP" class="headerlink" title="使用强化学习解决MDP"></a>使用强化学习解决MDP</h3><p>我们通过强化学习来解决被提出的潜在空间搜索问题，该问题被制定为马尔可夫决策过程（MDP）。由于所提出的由 G 和 T 组成的 MDP 的环境非常复杂，我们需要在复杂环境中具有鲁棒性的强化学习代理。此外，我们需要一个能够处理连续行为空间的代理，因为MDP中的行为空间被定义为 G 的潜在空间。因此，我们使用满足所有上述点的 Soft Actor-Critic (SAC) [12] 来解决MDP。我们训练一个SAC代理来从给定状态中选择适当的行为。在训练之后，通过将随机初始向量提供给训练过的代理作为初始状态，我们可以获得每个episode的重构图像。代理训练的整个过程如 算法 1 所示。</p>
 <p><img src="/2024/01/18/reinforcement-learning-based-black-box-model-inversion-attacks-yue-du-bi-ji/al1.png" alt="算法 1"></p>
+<h2 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h2><h3 id="实验设置"><a href="#实验设置" class="headerlink" title="实验设置"></a>实验设置</h3><p><strong>数据集</strong>：我们对使用代表性人脸数据集 CelebFaces 属性数据集（CelebA）[17]、FaceScrub 数据集[19] 和 PubFig83 数据集[20] 训练的目标分类器进行了攻击评估。我们将每个数据集分为一个用于训练目标分类器的私有数据集和一个用于训练生成模型的公共数据集。公共数据集与私有数据集之间没有类别交集，因此生成模型无法学习目标分类器的特定类别信息。</p>
+<p>对于 CelebA，私有数据集包括 30,027 张属于 1,000 个身份的图像，而公共数据集包括从其余的 9,177 个身份中随机选择的 30,000 张图像，与先前的研究[5, 14]一样。对于 FaceScrub，总共 530 个身份中，随机选择的 200 个身份的所有图像用作私有数据集，剩余 330 个身份的所有图像用作公共数据集。对于 PubFig83，总共 83 个身份中，随机选择的 50 个身份的所有图像用作私有数据集，剩余 33 个身份的所有图像用作公共数据集。此外，我们使用 Flickr-Faces-HQ 数据集（FFHQ）[15] 作为公共数据集，考虑到公共数据集和私有数据集之间存在分布转移的情况。在这些实验中，从 FFHQ 随机选择的 30,000 张图像被用作公共数据集。所有人脸图像都经过居中裁剪，然后调整大小为 64 × 64。</p>
+<p><strong>模型</strong>：为了进行公正比较，我们尝试对几种流行的网络结构进行攻击。与先前的研究[5, 14, 27]类似，我们在实验中使用了三种网络结构，分别是 VGG16 [24]、ResNet-152 [13] 和 Face.evoLVe [6]。</p>
+<p><strong>评估指标</strong>：Zhang 等人[27]提出了可以定量评估模型逆向攻击的指标，与之前依赖于视觉检查的定性评估不同。我们简要描述评估指标，包括攻击准确率、K 最近邻距离（KNN Dist）和特征距离（Feat Dist）。</p>
+<p>攻击准确率：为了评估重构图像的攻击准确率，我们在私有数据集上训练评估分类器。评估分类器必须与目标分类器不同，因为重构图像可能会过拟合目标分类器。我们使用了 Cheng 等人[6]提出的架构作为评估分类器。我们在 MS-Celeb-1M [11] 上对一个预训练的分类器进行微调，分别在 PubFig83、FaceScrub 和 CelebA 数据集上实现了 98%、99% 和 96% 的测试准确率。</p>
+<p>KNN Dist：KNN Dist 是一种度量，用于测量重构图像的特征与目标标签图像中最近样本的特征之间的平均 L2 距离。特征是在评估分类器的全连接层之前获取的。</p>
+<p>Feat Dist：Feat Dist 是一种度量，用于测量重构图像的特征与目标标签图像的特征中心的 L2 距离。特征是在评估分类器的全连接层之前获取的。</p>
+<h3 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h3><p><strong>基线</strong>：我们将我们的攻击性能与三个类别中包括的代表性模型逆向攻击进行比较：白盒攻击、黑盒攻击和仅标签攻击。白盒攻击的基线是 GMI [27] 和 KED-MI [5]。GMI 是使用 GAN 的第一个模型逆向攻击，而 KED-MI 在白盒攻击中表现出最高的攻击性能。黑盒和仅标签的基线是 LB-MI [26]、MIRROR [2] 和 BREP-MI [14]。为了公平比较，除了 LB-MI 和 KED-MI 之外，攻击中使用了相同的 GAN，因为 LBMI 不使用 GAN，而 KED-MI 使用其自己的生成模型，名为反演专用 GAN。我们使用每个周期的代理生成图像，并选择对目标分类器具有最高置信度分数的图像。</p>
+<p><strong>在各种模型上的性能评估</strong>：表1显示了RLB-MI和基线在使用CelebA训练的三个模型（VGG16、ResNet-152和Face.evoLVe）上的评估结果。每个目标模型的测试准确率分别为88%、91%和89%。尽管现有的黑盒模型逆向攻击LB-MI和MIRROR可以访问软标签，但它们的性能明显低于BREP-MI，这是一种仅标签的模型逆向攻击方法。然而，提出的黑盒攻击RLB-MI通过适当利用置信度分数的信息，远远超过了BREP-MI。此外，我们的攻击在ResNet-152和Face.evoLVe的情况下超过了最先进的白盒模型逆向攻击KED-MI，尽管无法访问梯度信息。即使在VGG16的情况下，通过RLB-MI重构的图像也捕捉到目标类的信息特征，具有与真实样本的K最近邻距离和特征距离最小。还可以看到目标分类器的更高预测性能导致攻击性能的提高。这个结果是合理的，因为性能更好的分类器包含关于训练数据特征的更准确和关键的信息。我们通过提供基线和我们的方法生成的真实样本和攻击图像，对定性评估结果进行展示，因为评估分类器可能不能完全代表人类判断。<br><img src="/2024/01/18/reinforcement-learning-based-black-box-model-inversion-attacks-yue-du-bi-ji/table1.png" alt="表1"></p>
+<p><img src="/2024/01/18/reinforcement-learning-based-black-box-model-inversion-attacks-yue-du-bi-ji/img2.png" alt="图2"></p>
+<p><strong>在各种数据集上的性能评估</strong>：我们测量了在使用PubFig83、FaceScrub和CelebA训练的Face.evoLVe模型上进行攻击的性能。每个目标模型的测试准确率分别为96%、97%和89%。表2显示，RLB-MI的攻击准确率优于所有基线。尽管LB-MI显示出与其他方法竞争的特征距离，但它获得了非常低的攻击准确率。这是由于LB-MI反演模型学习来自公共数据集的一般先验能力的限制引起的。<br><img src="/2024/01/18/reinforcement-learning-based-black-box-model-inversion-attacks-yue-du-bi-ji/table2.png" alt="表2"></p>
+<p><strong>公共数据集差异的影响</strong>：在大多数实际情境中，公共和私有数据集具有相同分布的机会很少，因此我们通过在与私有数据集不同分布的公共数据集上训练生成模型来进行实验。我们使用Flickr-Faces-HQ数据集（FFHQ）[15]训练的生成模型进行攻击评估。这些实验中使用的目标分类器是使用PubFig83、FaceScrub和CelebA进行训练的Face.evoLVe。在使用FFHQ作为公共数据集的实验中，模型逆向攻击显示出了降低的攻击性能。然而，即使在公共和私有数据集之间存在分布偏移的情况下，如表3所示，我们的攻击仍然实现了最先进的攻击性能。我们认为性能下降可能是因为每个数据集中对齐或裁剪面部的方式不同，每个数据集中包含的性别或年龄分布也不同。在拍照时，由光照条件或背景引起的图像分布差异可能也会影响攻击性能。</p>
+<p><img src="/2024/01/18/reinforcement-learning-based-black-box-model-inversion-attacks-yue-du-bi-ji/table3.png" alt="表3"></p>
+<h3 id="对攻击配置进行实验"><a href="#对攻击配置进行实验" class="headerlink" title="对攻击配置进行实验"></a>对攻击配置进行实验</h3><p><strong>准确性和多样性之间的权衡</strong>：我们根据多样性因子$\alpha$的变化测量训练代理的攻击准确性和多样性。我们为各种$\alpha$值训练代理，并为特定身份的每个代理生成1,000张图像。为了分别评估生成图像的保真度和多样性，我们使用Density and Coverage (D&amp;C) [3]作为度量标准。在这些实验中使用的目标分类器是使用CelebA对Face.evoLVe进行训练的。图3显示了攻击准确性和多样性之间的权衡。随着$\alpha$的增加，攻击准确性减小，表示多样性的覆盖率增加。此外，从图3b可以看出，密度对$\alpha$的变化具有鲁棒性，这意味着代理生成的图像的保真度不受$\alpha$变化的影响。当$\alpha$为0.00和0.97时生成的图像在图4中可视化。</p>
+<p><img src="/2024/01/18/reinforcement-learning-based-black-box-model-inversion-attacks-yue-du-bi-ji/img3.png" alt="图3"></p>
+<p><img src="/2024/01/18/reinforcement-learning-based-black-box-model-inversion-attacks-yue-du-bi-ji/table4.png" alt="图4"></p>
+<p><strong>攻击性能随最大轮数的变化趋势</strong>：为了观察攻击性能随最大轮数的变化，我们按照从1,000到40,000的步长报告攻击准确性。实验结果见图5。在图5a中，我们绘制了使用CelebA训练的各种目标模型的结果，而在图5b中，我们绘制了使用不同数据集训练的Face.evoLVe模型的结果。攻击性能每达到最大轮数就迅速增加，然后趋于稳定。即使更改目标分类器的结构，当数据集相同时，攻击准确性的趋势没有显著差异。此外，目标数据集的目标类别数越少，饱和点就越早出现，之后攻击准确性由于过拟合而下降。对于有50个目标类别的PubFig83，饱和点出现在25,000轮，而对于有200个目标类别的FaceScrub，饱和点出现在36,000轮。因此，根据目标数据集设置适当的最大轮数是很重要的。<br><img src="/2024/01/18/reinforcement-learning-based-black-box-model-inversion-attacks-yue-du-bi-ji/img5.png" alt="图5"></p>
+<p><strong>对各种RL代理的实验</strong>：为了确定RL代理的效果，我们尝试使用DDPG [16]和TD3 [9]代替SAC进行潜在空间搜索。在这个实验中使用的目标分类器是使用CelebA训练的Face.evoLVe。表4中的结果显示，当在我们的攻击中使用SAC时，其性能明显高于DDPG和TD3。我们认为这些结果的原因在于SAC对嘈杂和复杂环境的鲁棒性。在我们的攻击中，每一轮都会重新给出一个高维随机潜在向量，而目标身份的置信度对这样的潜在向量变化非常敏感。因此，对于嘈杂和复杂环境具有鲁棒性的强化学习算法，如SAC，是可取的。此外，我们在图6中展示了每个RL代理的奖励变化。</p>
+<p><img src="/2024/01/18/reinforcement-learning-based-black-box-model-inversion-attacks-yue-du-bi-ji/table4.png" alt="表4"></p>
+<p><img src="/2024/01/18/reinforcement-learning-based-black-box-model-inversion-attacks-yue-du-bi-ji/img6.png" alt="图6"></p>
+<h3 id="伦理的考虑"><a href="#伦理的考虑" class="headerlink" title="伦理的考虑"></a>伦理的考虑</h3><p>如果恶意用户滥用所提出的黑盒模型逆向攻击，可能会带来侵犯需要保护的个人信息等负面社会影响。然而，揭示当前系统的漏洞对于安全性的发展是不可或缺的。通过这项研究，我们提高了对机器学习隐私问题的关注，并敦促社区开发算法或系统以防范所提出的漏洞。我们相信，我们的工作将在安全性方面产生积极的影响，其益处将超过潜在的风险。</p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>我们提出了一种基于强化学习的新型黑盒模型逆向攻击，利用生成对抗网络（GAN）。我们将潜在空间的探索问题形式化为马尔可夫决策过程（MDP）问题，并训练一个强化学习代理来解决MDP，即使缺乏关于目标模型的信息，如权重和梯度。所提出的攻击解决了先前黑盒攻击存在的问题。此外，实验结果表明，我们的攻击成功地重构了目标模型的私有数据。我们的攻击不仅优于最先进的黑盒攻击，还优于所有其他方法，包括白盒和仅标签攻击。我们希望这项研究能够推动对黑盒模型逆向攻击和防御的研究。</p>
 
                 
             </div>
@@ -1009,7 +1031,7 @@ r_3=\log[\max\{\epsilon,T_y(G(s_{t+1}))-\max_{i\neq y}T_i(G(s_{t+1}))\}].</scrip
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">29.8k</span>
+                        class="white-color">32.7k</span>
             
             
             
