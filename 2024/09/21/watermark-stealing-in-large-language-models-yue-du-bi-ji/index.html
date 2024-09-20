@@ -4,9 +4,16 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="代码执行日志记录, 一丁">
-    <meta name="description" content="忘了在哪个开源项目里看到了一个执行日志系统。它会在每次运行时备份代码。对于我这种随时会忘掉实验结果和实验设置的人来说，这种东西应该会很有用……吧。凭印象和自己的喜好复现了一下，具体如下。
-首先，项目应该保持如下的结构。code路径下存放所有">
+    <meta name="keywords" content="Watermark Stealing in Large Language Models 阅读笔记, 一丁">
+    <meta name="description" content="论文研读笔记（2-3页）
+论文题目：Watermark Stealing in Large Language Models
+
+发表时间：2024
+
+发表期刊/会议：ICML （CCF A）
+
+
+1.  内容简介（简要概括文章，不可以直接翻译">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +25,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>代码执行日志记录 | 一丁</title>
+    <title>Watermark Stealing in Large Language Models 阅读笔记 | 一丁</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -325,12 +332,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">代码执行日志记录</h1>
+                    <h1 class="description center-align post-title">Watermark Stealing in Large Language Models 阅读笔记</h1>
                 </div>
             </div>
         </div>
@@ -446,12 +453,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F/">
-                                <span class="chip bg-color">日志系统</span>
+                            <a href="/tags/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/">
+                                <span class="chip bg-color">论文笔记</span>
                             </a>
                         
-                            <a href="/tags/%E6%89%A7%E8%A1%8C%E6%97%A5%E5%BF%97/">
-                                <span class="chip bg-color">执行日志</span>
+                            <a href="/tags/%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B/">
+                                <span class="chip bg-color">大语言模型</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%B0%B4%E5%8D%B0%E7%AA%83%E5%8F%96/">
+                                <span class="chip bg-color">水印窃取</span>
                             </a>
                         
                     </div>
@@ -466,28 +477,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-10-05
+                    2024-09-21
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-10-05
+                    2024-09-21
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    666
+                    1.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    6 分
                 </div>
                 
 
@@ -507,89 +518,82 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>忘了在哪个开源项目里看到了一个执行日志系统。它会在每次运行时备份代码。对于我这种随时会忘掉实验结果和实验设置的人来说，这种东西应该会很有用……吧。凭印象和自己的喜好复现了一下，具体如下。</p>
-<p>首先，项目应该保持如下的结构。code路径下存放所有的代码，任何数据和中间运行结果都<strong>不</strong>应该放在这里。log目录下存放所有的日志记录。其它的目录根据自己喜好设置。<br><img src="/2023/10/05/dai-ma-zhi-xing-ri-zhi-ji-lu/path.png" alt="代码路径"></p>
-<p>在code/util路径下，新建一个code_logger.py。粘贴如下内容。该日志模块下集成了代码备份、参数保存、日志输出与保存的功能。</p>
-<pre class=" language-lang-python"><code class="language-lang-python">import os
-from datetime import datetime
-import shutil
-import json
-import logging
-
-
-class CodeLogger:
-    def __init__(self, comment=None, args=None):
-        self.run_time = datetime.now()
-        self.time_fmt = "%Y-%m-%d-%H-%M-%S"
-        # self.time_fmt = "%Y%m%d%H%M%S"
-        self.comment = comment
-        self.log_dir = self.run_time.strftime(self.time_fmt)
-        if comment is not None:
-            self.log_dir = f"{self.log_dir}-{comment}"
-        self.log_dir = os.path.join("../log", self.log_dir)
-        self.args = args
-
-        # create log dir if not exists
-        if not os.path.exists(self.log_dir):
-            os.mkdir(self.log_dir)
-
-        # back up codes
-        shutil.copytree("../code/", os.path.join(self.log_dir, "code/"))
-        if self.args is not None:
-            self.save_args(args)
-        self.logger = self.init_logger()
-
-    def save_args(self, args):
-        with open(os.path.join(self.log_dir, "args.json"), "w") as f:
-            json.dump(args.__dict__, f)
-
-    def init_logger(self):
-        logger = logging.getLogger(self.comment)
-        logger.setLevel(logging.INFO)
-        log_format = logging.Formatter(
-            "%(asctime)s %(levelname)-8s %(message)s")
-        filename = os.path.join(self.log_dir, "run.log")
-        log_handler = logging.FileHandler(filename, mode="w")
-        log_handler.setLevel(logging.INFO)
-        log_handler.setFormatter(log_format)
-        logger.addHandler(log_handler)
-        console_logger = logging.StreamHandler()
-        console_logger.setLevel(logging.INFO)
-        console_logger.setFormatter(log_format)
-        logger.addHandler(console_logger)
-        return logger
-</code></pre>
-<p>在使用该模块时，需要先import该模块。演示如下：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">from util.models import get_architecture
-from util.code_logger import CodeLogger
-import argparse
-
-
-parser = argparse.ArgumentParser()
-parser.add_argument("--model", type=str, default="resnet")
-parser.add_argument("--dataset", type=str, default="cifar10")
-parser.add_argument("--epochs", type=int, default=150)
-parser.add_argument("--batch_size", type=int, default=256)
-parser.add_argument("--lr", type=float, default=0.01)
-parser.add_argument("--verbose", action="store_true")
-args = parser.parse_args()
-
-model_name = args.model
-dataset = args.dataset
-epochs = args.epochs
-batch_size = args.batch_size
-lr = args.lr
-verbose = args.verbose
-
-cl = CodeLogger(comment=f"train model {model_name}_{dataset}", args=args)
-''' 上面是日志模块初始化，初始化会做三件事：
-1. 在log文件夹下新建一个文件夹，文件夹名称为“当前时间-comment内容”。
-2. 把code路径下所有文件保存到新建的文件夹中
-3. 把运行参数args存放到新建文件夹的args.json中
-'''
-cl.logger.info(f"test output") # 控制台输出，同时会把输出内容保存到新建文件夹下的run.log中
-</code></pre>
-<p>如果再发生没有记录实验结果，或者忘掉实验设置时，就可以通过查找log目录下的代码备份或者参数备份来一键找回了。</p>
+                <h1 id="论文研读笔记（2-3页）"><a href="#论文研读笔记（2-3页）" class="headerlink" title="论文研读笔记（2-3页）"></a>论文研读笔记（2-3页）</h1><ul>
+<li><p>论文题目：Watermark Stealing in Large Language Models</p>
+</li>
+<li><p>发表时间：2024</p>
+</li>
+<li><p>发表期刊/会议：ICML （CCF A）</p>
+</li>
+</ul>
+<h2 id="1-内容简介（简要概括文章，不可以直接翻译摘要）"><a href="#1-内容简介（简要概括文章，不可以直接翻译摘要）" class="headerlink" title="1.  内容简介（简要概括文章，不可以直接翻译摘要）"></a>1.  内容简介（简要概括文章，不可以直接翻译摘要）</h2><p>部署在网络中的LLM可能通过替换文本的方式在模型的输出中注入水印。水印的用途有知识产权保护和AI文本检测等。本文设计了一个模型水印窃取攻击，即训练一个本地的模型水印策略，使其水印添加方式和目标模型一致。本文还设计了两个下游攻击：水印伪造和水印擦除。</p>
+<h2 id="2-主要贡献（记录文章最核心的思路、方法）"><a href="#2-主要贡献（记录文章最核心的思路、方法）" class="headerlink" title="2.  主要贡献（记录文章最核心的思路、方法）"></a>2.  主要贡献（记录文章最核心的思路、方法）</h2><h3 id="2-1-标记"><a href="#2-1-标记" class="headerlink" title="2.1 标记"></a>2.1 标记</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>记号</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$T_t$</td>
+<td>LM第$t$步的输出</td>
+</tr>
+<tr>
+<td>$H$</td>
+<td>哈希函数</td>
+</tr>
+<tr>
+<td>$\xi$</td>
+<td>被攻击者所持有的水印密钥</td>
+</tr>
+<tr>
+<td>$V$</td>
+<td>词库</td>
+</tr>
+<tr>
+<td>$f$</td>
+<td>伪随机函数PRF</td>
+</tr>
+<tr>
+<td>$l$</td>
+<td>logit向量</td>
+</tr>
+<tr>
+<td>$\mathcal{P}$</td>
+<td>幂集</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="2-2-水印添加算法"><a href="#2-2-水印添加算法" class="headerlink" title="2.2 水印添加算法"></a>2.2 水印添加算法</h3><p>大语言模型的水印添加方式本质上就是词替换。本文主要攻击的是目前最新的几种水印添加算法。下面对这几种算法进行简单介绍。</p>
+<ol>
+<li>KGW-Soft/Hard：假设$T_t$是第$t$步模型的输出，该算法首先把上一步输出的哈希值$H(T_{t-1})$和一个密钥$\xi$作为随机数种子，利用伪随机函数$f$将词库$V$划分为$V_{green}$和$V_{red}$  。soft版本的算法通过增加green词的logit来增加该类词的输出概率，而hard版本的算法则是禁止输出red词（$l_T=-\infty\quad for\quad T \in V_{red}$）。</li>
+<li>KGW2-SELFHASH：在前面工作的基础上，水印算法产生了几种变体。第一个是让PRF的输入中包含更长的上下文内容$T_{t-h},\dots,T_{t-1}$；第二个是self-seeding，即PRF的种子中引入了$T_t$本身，如果生成的$T_t$不在$V_{green}$中则拒绝采样。KGW2-SELFHASH使用h=3和self-seeding，种子的计算方式为$min\{H(T_{t-h},\dots,H(T_{t-1}),H(T_t)\}\cdot \xi \cdot H(T_t)$ 。</li>
+<li>KGW2-SUM：h=3, 种子计算方式为加和。</li>
+<li>Unigram 水印：h=0，即只使用$\xi$产生$V_{green}$  ，且固定不变。</li>
+</ol>
+<p>为了检测输出是否加盖水印，需要逐个统计该输出中存在的green词个数，然后计算z-统计量$z=(n_{green}-\gamma L)/\sqrt{L\gamma(1-\gamma)}$ ，最后利用假设检验计算p值判断水印是否存在。</p>
+<h3 id="2-3-攻击者能力"><a href="#2-3-攻击者能力" class="headerlink" title="2.3 攻击者能力"></a>2.3 攻击者能力</h3><ol>
+<li>水印检测器访问权限。有些模型提供了检测API，可以返回一个bit指示某段话是否加盖了该模型的水印。攻击者可以利用该API检验攻击的有效性并指导攻击的进行。<pre><code> D0：没有API访问权限。前人工作大多采用此场景
+ D1：有API访问权限。这也符合现实场景。SynthID提供了类似的API
+</code></pre></li>
+<li>基模型输出的访问权限。即攻击者是否可以收集目标模型未部署水印算法时的输出语料（不一定是水印输出的未水印版本）。<pre><code>B0：不可以
+B1：可以
+</code></pre></li>
+</ol>
+<p>该论文可以在上述四种场景中进行攻击</p>
+<h3 id="2-4-攻击算法"><a href="#2-4-攻击算法" class="headerlink" title="2.4 攻击算法"></a>2.4 攻击算法</h3><p>该攻击算法遵循Kerckhoffs原则，即假设攻击者知道被攻击者所使用水印的所有细节，除了密钥$\xi$。</p>
+<p>该论文的攻击并不直接窃取$\xi$的具体数值，而是在给定待判定文本时，从中截取出一个序列$T_1,T_2,T_3,T$，计算一个得分函数$s(T|ctx)$，该分数指示了上下文ctx存在的情况下，生成的$T$在$V_{green}$中的置信度。为了得到该得分，攻击者首先需要计算<strong>目标模型</strong>的条件分布$\hat{p}_w(T|ctx),\quad \forall ctx \in \mathcal{P}(\{T_1,T_2,T_3\})$和<strong>一般模型</strong>的条件分布$\hat{p}_b(T|ctx)\quad \forall ctx \in \mathcal{P}(\{T_1,T_2,T_3\})$。这个条件分布指示了上下文存在的情况下模型下一步生成$T$的概率。一般模型可以为$B_1$场景下的基模型，也可以为攻击者的私有模型$LM_{att}$。s函数表示如下：</p>
+<script type="math/tex; mode=display">s(T,ctx)=\begin{cases}\frac{1}{c}\min\left(\frac{\hat{p}_w(T|ctx)}{\hat{p}_b(T|ctx)},c\right)&\text{if}\frac{\hat{p}_w(T|ctx)}{\hat{p}_b(T|ctx)}\geq1,\\0&\text{otherwise.}\end{cases}</script><p><strong>稀疏性挑战</strong>：为了降低计算复杂度，如果$\hat{p}_w(T_4|ctx)$ 和 $\hat{p}_b(T_4|ctx)$只从较少的样本计算得出，则直接将其置为0。</p>
+<h2 id="3-实验结果（仅记录关键结果，重点在于对实验的分析）"><a href="#3-实验结果（仅记录关键结果，重点在于对实验的分析）" class="headerlink" title="3.  实验结果（仅记录关键结果，重点在于对实验的分析）"></a>3.  实验结果（仅记录关键结果，重点在于对实验的分析）</h2><p>正文的实验环节主要介绍最严格场景（D0,B0）时攻击KGW2-SELFHASH的结果。</p>
+<p>攻击者在访问目标模型时使用的数据集为C4数据集的RealNewsLike子集，最终获取了长度小于800的30000个回答。c设置为2。</p>
+<p><strong>两个关键指标</strong>：水印强度和文本质量。对于文本质量，使用GPT4对生成文本的准确性和一致性进行打分，如果较低则水印伪造失败；使用P-SP评分估计生成文本是否完全捕捉了原文内容，如果较低则水印去除失败。<br>文章将两个目标合并为一个成功率指标。对于水印伪造攻击，报告FPR<em>@f，即成功被假阳率为f的水印检测器检测为带有水印的生成样本的比例（忽略GPT分数小于6.5的样本）；对于水印去除攻击，报告FNR</em>@f，即被假阴率为f的检测器检测为不带水印的转译样本的比例。</p>
+<p>伪造攻击的攻击结果如下（PPL好像是一种对话质量评价指标，文中没有解释。p-val即为前文水印添加算法中介绍的假设检验的p值）。该实验使用了不同的($LM_{mo}$ , $LM_{att}$）组合。结果现实，即使在低假阳率设置下，该文的方法仍然可以实现高质量文本的伪造。尽管之前认为KGW2-SELFHASH可以防止伪造，但该文方法明显做出了突破。<br><img src="/2024/09/21/watermark-stealing-in-large-language-models-yue-du-bi-ji/Pasted image 20240920233801.png" alt="img"></p>
+<p>水印抹除效果提升效果如下。可以看到使用本文的水印窃取算法可以明显提升DIPPER的抹除效果。<br><img src="/2024/09/21/watermark-stealing-in-large-language-models-yue-du-bi-ji/Pasted image 20240920234000.png" alt="img"><br><img src="/2024/09/21/watermark-stealing-in-large-language-models-yue-du-bi-ji/Pasted image 20240920233906.png" alt="img"></p>
+<h2 id="4-写作技巧（文章在章节划分、遣词造句方面的特点）"><a href="#4-写作技巧（文章在章节划分、遣词造句方面的特点）" class="headerlink" title="4.  写作技巧（文章在章节划分、遣词造句方面的特点）"></a>4.  写作技巧（文章在章节划分、遣词造句方面的特点）</h2><p>详细的介绍了现有的最新水印算法，新手不用再翻别的论文也可以有一个大致的了解。<br>但部分关键内容还是不太好理解</p>
+<h2 id="5-结论收获（总结自己通过本文学到的知识）"><a href="#5-结论收获（总结自己通过本文学到的知识）" class="headerlink" title="5.  结论收获（总结自己通过本文学到的知识）"></a>5.  结论收获（总结自己通过本文学到的知识）</h2><p>主要了解了一些最新的LLM水印算法，以及窃取水印的新思路。<br>了解到了Kerckhoffs原则，在某些问题里可以不给自己加太多的限制。</p>
 
                 
             </div>
@@ -616,7 +620,7 @@ cl.logger.info(f"test output") # 控制台输出，同时会把输出内容保�
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://blog.expecto.top/2023/10/05/dai-ma-zhi-xing-ri-zhi-ji-lu/">https://blog.expecto.top/2023/10/05/dai-ma-zhi-xing-ri-zhi-ji-lu/</a>
+                    <a href="https://blog.expecto.top/2024/09/21/watermark-stealing-in-large-language-models-yue-du-bi-ji/">https://blog.expecto.top/2024/09/21/watermark-stealing-in-large-language-models-yue-du-bi-ji/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -654,12 +658,16 @@ cl.logger.info(f"test output") # 控制台输出，同时会把输出内容保�
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F/">
-                                    <span class="chip bg-color">日志系统</span>
+                                <a href="/tags/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/">
+                                    <span class="chip bg-color">论文笔记</span>
                                 </a>
                             
-                                <a href="/tags/%E6%89%A7%E8%A1%8C%E6%97%A5%E5%BF%97/">
-                                    <span class="chip bg-color">执行日志</span>
+                                <a href="/tags/%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B/">
+                                    <span class="chip bg-color">大语言模型</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%B0%B4%E5%8D%B0%E7%AA%83%E5%8F%96/">
+                                    <span class="chip bg-color">水印窃取</span>
                                 </a>
                             
                         </div>
@@ -705,17 +713,18 @@ cl.logger.info(f"test output") # 控制台输出，同时会把输出内容保�
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/10/12/cade-detecting-and-explaining-concept-drift-samples-for-security-applications-yue-du-bi-ji/">
+                <a href="/2024/09/21/watermark-stealing-in-large-language-models-yue-du-bi-ji/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="CADE: Detecting and Explaining Concept Drift Samples for Security Applications 阅读笔记">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Watermark Stealing in Large Language Models 阅读笔记">
                         
-                        <span class="card-title">CADE: Detecting and Explaining Concept Drift Samples for Security Applications 阅读笔记</span>
+                        <span class="card-title">Watermark Stealing in Large Language Models 阅读笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -725,9 +734,63 @@ cl.logger.info(f"test output") # 控制台输出，同时会把输出内容保�
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-10-12
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-09-21
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            wangxh
+                            
                         </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">论文笔记</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B/">
+                        <span class="chip bg-color">大语言模型</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%B0%B4%E5%8D%B0%E7%AA%83%E5%8F%96/">
+                        <span class="chip bg-color">水印窃取</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2024/01/18/reinforcement-learning-based-black-box-model-inversion-attacks-yue-du-bi-ji/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Reinforcement Learning-Based Black-Box Model Inversion Attacks 阅读笔记">
+                        
+                        <span class="card-title">Reinforcement Learning-Based Black-Box Model Inversion Attacks 阅读笔记</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-01-18
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -747,65 +810,16 @@ cl.logger.info(f"test output") # 控制台输出，同时会把输出内容保�
                         <span class="chip bg-color">论文笔记</span>
                     </a>
                     
-                    <a href="/tags/%E6%A6%82%E5%BF%B5%E6%BC%82%E7%A7%BB/">
-                        <span class="chip bg-color">概念漂移</span>
+                    <a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">强化学习</span>
                     </a>
                     
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2023/09/06/2023-an-quan-ding-hui-ai-an-quan-xiang-guan-hui-zong/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="2023安全顶会AI安全相关汇总">
-                        
-                        <span class="card-title">2023安全顶会AI安全相关汇总</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-09-06
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            wangxh
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
-                        <span class="chip bg-color">机器学习</span>
+                    <a href="/tags/%E6%A8%A1%E5%9E%8B%E9%80%86%E5%90%91/">
+                        <span class="chip bg-color">模型逆向</span>
                     </a>
                     
-                    <a href="/tags/%E9%A1%B6%E4%BC%9A/">
-                        <span class="chip bg-color">顶会</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%B1%87%E6%80%BB/">
-                        <span class="chip bg-color">汇总</span>
-                    </a>
-                    
-                    <a href="/tags/AI%E5%AE%89%E5%85%A8/">
-                        <span class="chip bg-color">AI安全</span>
+                    <a href="/tags/GAN/">
+                        <span class="chip bg-color">GAN</span>
                     </a>
                     
                 </div>
@@ -936,6 +950,13 @@ cl.logger.info(f"test output") # 控制台输出，同时会把输出内容保�
 
 </main>
 
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+    });
+</script>
 
 
 
