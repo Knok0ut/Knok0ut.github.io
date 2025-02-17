@@ -4,9 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="An Attentive Survey of Attention Models(2021)研读报告, 一丁">
-    <meta name="description" content="An Attentive Survey of Attention Models(2021)研读报告
-论文标题：关于注意力模型的细心调研如今注意力模型已经成为了神经网络中一个非常重要的概念，而且在多种应用领域中得到了广泛的研究。这篇调研针对注">
+    <meta name="keywords" content="Denoising Diffusion Probabilistic Models 阅读笔记, 一丁">
+    <meta name="description" content="Denoising Diffusion Probabilistic Models 阅读笔记论文题目：Denoising Diffusion Probabilistic Models
+发表时间：2020
+发表期刊/会议：NIPS  期刊   ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +19,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>An Attentive Survey of Attention Models(2021)研读报告 | 一丁</title>
+    <title>Denoising Diffusion Probabilistic Models 阅读笔记 | 一丁</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -325,12 +326,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">An Attentive Survey of Attention Models(2021)研读报告</h1>
+                    <h1 class="description center-align post-title">Denoising Diffusion Probabilistic Models 阅读笔记</h1>
                 </div>
             </div>
         </div>
@@ -444,9 +445,21 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/">
+                                <span class="chip bg-color">论文笔记</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%88%90%E5%91%98%E6%8E%A8%E7%90%86/">
+                                <span class="chip bg-color">成员推理</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%89%A9%E6%95%A3%E6%A8%A1%E5%9E%8B/">
+                                <span class="chip bg-color">扩散模型</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -458,28 +471,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-10-29
+                    2025-02-17
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-11-08
+                    2025-02-17
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.3k
+                    1.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    16 分
+                    7 分
                 </div>
                 
 
@@ -499,154 +512,43 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="An-Attentive-Survey-of-Attention-Models-2021-研读报告"><a href="#An-Attentive-Survey-of-Attention-Models-2021-研读报告" class="headerlink" title="An Attentive Survey of Attention Models(2021)研读报告"></a>An Attentive Survey of Attention Models(2021)研读报告</h1><blockquote>
-<p>论文标题：关于注意力模型的细心调研<br>如今注意力模型已经成为了神经网络中一个非常重要的概念，而且在多种应用领域中得到了广泛的研究。这篇调研针对注意力机制的发展提供了一个结构化、综合的概述。我们将现有的注意力技术分类。我们回顾了一些具有注意力模型的神经结构，并且讨论一些注意力模型已经发挥显著作用的应用。我们还描述了注意力机制是如何用来提升神经网络的可解释性的。最后我们讨论了一些未来的注意力机制的研究方向。这篇调研可以针对注意力机制提供一个简洁的介绍，并在实践人员开发应用时提供引导。</p>
+                <h1 id="Denoising-Diffusion-Probabilistic-Models-阅读笔记"><a href="#Denoising-Diffusion-Probabilistic-Models-阅读笔记" class="headerlink" title="Denoising Diffusion Probabilistic Models 阅读笔记"></a>Denoising Diffusion Probabilistic Models 阅读笔记</h1><p>论文题目：Denoising Diffusion Probabilistic Models</p>
+<p>发表时间：2020</p>
+<p>发表期刊/会议：NIPS  期刊   CCF-A<br>论文作者：Jonathan Ho et al.</p>
+<h2 id="1-内容简介"><a href="#1-内容简介" class="headerlink" title="1. 内容简介"></a>1. 内容简介</h2><p>介绍扩散模型的基本内容。参考”Understanding Diffusion Models: A Unified Perspective”</p>
+<h2 id="2-主要内容"><a href="#2-主要内容" class="headerlink" title="2. 主要内容"></a>2. 主要内容</h2><h3 id="2-1-理论基础"><a href="#2-1-理论基础" class="headerlink" title="2.1 理论基础"></a>2.1 理论基础</h3><p>扩散模型将模型的训练过程分为加噪过程和去噪过程。加噪过程需要在原始的图像$x_0$上添加T次高斯噪声形成一个纯噪声图像$x_T$，这个过程和模型无关。去噪过程可以看成是加噪过程的逆过程，模型需要逐步预测噪声并在$x_T$上将这些噪声减去从而恢复出原始图像$x_0$。加噪过程和去噪过程都是马尔可夫过程。</p>
+<p>加噪过程遵循状态转移方程$x_{t}=\sqrt{\alpha_t}x_{t-1}+\sqrt{\beta_t}\epsilon_t,\epsilon_t \sim \mathcal{N}(0,I)$  其中$\alpha_t,\beta_t$都是预设的一组值，$\beta_t = 1-\alpha_t$ 。设$\bar{\alpha_t}=\prod_{i=1}^{i=t}\alpha_i$ ，$\bar{\beta_t}$同理。不断地迭代状态转移方程可以得到:</p>
+<script type="math/tex; mode=display">
+x_t=\sqrt{\bar{\alpha_t}}x_{0}+\sqrt{1-\bar{\alpha_t}}\epsilon,\quad \epsilon \sim \mathcal{N}(0,I)</script><p>即$x_t$和$x_0$可以互相转化。</p>
+<p>去噪过程是加噪过程的逆过程。由于模型对噪声建模比较容易，故去噪过程会让模型对第t步的噪声进行预测，再利用$x_t$和$x_{t-1}$的转移关系得到前一步图像。</p>
+<p>下面介绍如何推导出模型的损失函数。参考论文”Understanding Diffusion Models: A Unified Perspective“进行讲解。<br>设加噪过程的状态转移服从分布$q(x_t|x_{t-1})$, 去噪过程的状态转移服从分布$p_\theta(x_{t-1}|x_t)$ 。我们的目标是模型经过t次的去噪后可以得到原始图像$x_0$，即：</p>
+<script type="math/tex; mode=display">
+\underset{\theta}{max}\quad p_\theta(x_0)</script><p>贝叶斯展开得到：</p>
+<script type="math/tex; mode=display">p_\theta(x_0)=\frac{p_\theta(x_{0:T})}{p_\theta(x_{1:T}|x_0)}</script><p>取对数然后取期望：</p>
+<script type="math/tex; mode=display">\begin{aligned}\mathbb{E}_{q(x_{1:T}|x_0)}\log p_\theta(x_0)&=\mathbb{E}_{q(x_{1:T}|x_0)}\log\frac{p_\theta(x_{0:T})}{q(x_{1:T}|x_0)}-\mathbb{E}_{q(x_{1:T}|x_0)}\log\frac{p_\theta(x_{1:T}|x_0)}{q(x_{1:T}|x_0)}\\&=\mathbb{E}_{q(x_{1:T}|x_0)}\log\frac{p_\theta(x_{0:T})}{q(x_{1:T}|x_0)}+KL(q(x_{1:T}|x_0)||p_\theta(x_{1:T}|x_0))\end{aligned}</script><p>由于KL散度恒大于等于0，故我们可以直接最大化下界$\mathbb{E}_{q(x_{1:T}|x_0)}\log\frac{p_\theta(x_{0:T})}{q(x_{1:T}|x_0)}$。对当前结果取负值，即最小化$\mathbb{E}_{q(x_{1:T}|x_0)}-\log\frac{p_\theta(x_{0:T})}{q(x_{1:T}|x_0)}$。</p>
+<p>利用马尔可夫过程的无后效性，对分子分母分别进行展开：</p>
+<script type="math/tex; mode=display">p_\theta(x_{0:T})=p(x_T)\prod_{t=1}^Tp_\theta(x_{t-1}|x_t)</script><script type="math/tex; mode=display">q(x_{1:T}|x_0)=\prod_{t=1}^Tq(x_t|x_{t-1})</script><p>得到：</p>
+<script type="math/tex; mode=display">\begin{aligned}-\mathbb{E}_q\left[\log\frac{p_\theta(x_{0:T})}{q(x_{1:T}|x_0)}\right]&=-\mathbb{E}_q\left[\log p(x_T)+\sum_{t\geq1}\log\frac{p_\theta(x_{t-1}|x_t)}{q(x_t|x_{t-1})}\right]\\&=-\mathbb{E}_q\left[\log p(x_T)+\log\frac{p_\theta(x_0|x_1)}{q(x_1|x_0)}+\sum_{t\ge2}\log\frac{p_\theta(x_{t-1}|x_t)}{q(x_t|x_{t-1})}\right]\end{aligned}</script><p>由于：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}q(x_t|x_{t-1}) &= q(x_t|x_0,x_{t-1})\\&=\frac{q(x_0,x_{t-1},x_t)}{q(x_0,x_{t-1})}\\&=\frac{q(x_0,x_{t-1},x_t)q(x_0,x_t)q(x_0)}{q(x_0,x_t)q(x_0)q(x_0,x_{t-1})}\\&=\frac{q(x_{t-1}|x_0,x_t)q(x_t|x_0)}{q(x_{t-1}|x_0)} \end{aligned}</script><blockquote>
+<p>上面这是咋想出来的步骤……倒推容易，正推是咋分析出来的</p>
 </blockquote>
-<span id="more"></span>
-<h2 id="1-INTRODUCTION"><a href="#1-INTRODUCTION" class="headerlink" title="1 INTRODUCTION"></a>1 INTRODUCTION</h2><p>注意力模型（AM）最早用于机器翻译，并为神经网络模型带来很大的优势。AM作为大量NLP应用中的一个基本部件，它已经变得非常出名。注意力机制背后的直觉（intuition）可以用人类生物系统解释。举个例子，我们的视觉处理系统倾向于把注意点放在图像的某些部位，同时忽略其他不相关的信息。类似的，在一些关于语言、视觉、听觉的问题中，输入的某些部分比其它部分更加重要（如图像描述问题，相较于其他区域，图像的某一个特定区域可能对于生成描述句的下一个词更加重要）。注意力模型通过动态的调整模型的注意力从而让模型只注意对完成任务有用的部分输入。下面是[Yang et al. 2016] 做的关于注意力机制在情感分类问题中的应用的例子。AM学习到在这五句话中，第一句和第三句对情感分析更有帮助。</p>
-<p><img src="/2021/10/29/an-attentive-survey-of-attention-models-2021-yan-du-bao-gao/upload_e1e9157e816c7a6c17f183442e37c95d.png" alt="img"></p>
-<p>对注意力进行建模发展迅速的三个原因：</p>
-<ol>
-<li>是解决多任务最先进的模型。</li>
-<li>为提升主任务性能提供了其它的优势。它被用于提升神将网络的可解释性（越来越多的人对影响人类生活的应用中的网络模型的公平性、问责制、透明度感兴趣）。</li>
-<li>它们有助于克服递归神经网络RNN中的一些挑战，例如随着输入长度的增加性能下降，以及输入顺序不合理导致的计算效率低下。</li>
-</ol>
-<p>文章的组织：我们的工作致力于为注意力建模提供一个简短但是综合的研究。在第二节我们用一个简单的回归模型来为你提供关于注意力的初步印象。在第三节我们简短的介绍了[Bahdanau et al. 2015]提出的AM和其他的注意力函数（attention function）。第四节我们介绍了我们的分类结果。第五节和第六节讨论了使用AM的关键神经结构并展示了一些广泛使用注意力机制的应用。最后在第七节我们解释了注意力如何促进理解神经网络的可解释性，并在第八节介绍了未来的研究方向。</p>
-<p>相关的调研：目前已经有一些专门领域的关于注意力机制的研究。如：</p>
-<ol>
-<li>[Wang and Tax 2016] on cv</li>
-<li>[Lee et al. 2019] on graphs</li>
-<li>[Galassi et al. 2020] on nlp</li>
-</ol>
-<h2 id="2-ATTENTION-BASICS"><a href="#2-ATTENTION-BASICS" class="headerlink" title="2 ATTENTION BASICS"></a>2 ATTENTION BASICS</h2><p>[Nadaraya 1964; Watson 1964]提出的回归模型可以帮助我们理解注意力机制。我们的数据样本有n个数据$\{(x_1,y_1),(x_2,y_2),\dots,(x_n,y_n)\}$。我们想知道当给定一个x时其对应的y的预测值$\hat{y}$。一个朴素的估计器对于任何输入都会输出样本中$y_i$的平均值。Naradaya-Watson提出了一个更好的方法：使用$y_i$的加权平均数。$y_i$的权值为$x,x_i$之间的相关度。公式如下：</p>
-<script type="math/tex; mode=display">\hat{y} = \sum_{i=1}^{n}\alpha(x,x_i)y_i</script><p>$\alpha$是一个衡量$x,x_i$关联程度的函数。对于$\alpha$的一个普遍的选择是使用高斯核。Naradaya-Watson表示这种估计器有两个特性：</p>
-<ol>
-<li>一致性(consistency)：数据样本量越大结果越好。</li>
-<li>朴素性(simplicity)：没有没用的参数。信息存储在样本数据中而不是在权重中。<br>往后推50年，深度模型中的注意力机制可以看作是上述公式的一种泛化，即权重函数是可以学习的。</li>
-</ol>
-<h2 id="3-ATTENTION-MODEL"><a href="#3-ATTENTION-MODEL" class="headerlink" title="3 ATTENTION MODEL"></a>3 ATTENTION MODEL</h2><p>AM的第一次应用被[Bahdanau et al. 2015]用来解决一个sequence-to-sequence modeling<br>task。s2s Model含有一个编码器(encoder)和一个解码器(decoder),他们的隐藏状态分别为$h_i,s_i$。编码器获得输入$\{x_1,x_2,\dots,x_T\}$并输出T个具有固定长度的向量$\{h_1,h_2,\dots,h_T\}$。将$h_T$输入解码器，解码器会输出$\{y_1,y_2,\dots,y_{T’}\}$token by token。<br><strong>上述模型有两个问题（挑战）：</strong></p>
-<ol>
-<li>将所有输入压缩成一个具有固定长度的向量会造成信息丢失。</li>
-<li>无法对输入和输出序列之间的排列进行建模</li>
-</ol>
-<p>也就是说解码器在输出每个token时无法有选择的使用输入。</p>
-<p><strong>核心思想</strong>：使用注意力权重来决定哪些输入对下一个输出更重要。</p>
-<p><strong>注意力的使用方法</strong>：如下图(b)。在解码器的第j个时间步，模型结构中的注意力模块负责自动生成注意力权重$\alpha_{ij}$。用这个权重表示$s_{j-1},h_i$直间的关联度。接着这些权重会通过$c_j=\sum_{i=1}^{T}\alpha_{ij}h_i$生成contex vector c。c会输入到解码器的下一个时间步。通过生成c，解码器就可以获得整个输入信息同时只把”注意力”放在输入的某部分。这种方法提升了算法的性能和输出的质量。Table 1 是这种注意力机制的数学表达。<br><img src="/2021/10/29/an-attentive-survey-of-attention-models-2021-yan-du-bao-gao/upload_1455ea8a4e2ecf7e25bf47df00e2bac9.png" alt=""><br><img src="/2021/10/29/an-attentive-survey-of-attention-models-2021-yan-du-bao-gao/upload_7d99451e1b73905d753043d61336ddb0.png" alt=""></p>
-<p><strong>学习注意力权重</strong>: 注意力权重的学习可以通过引入一个前馈神经网络来完成。这个前馈神经网络作为一个函数，它的的输入为$h_i,s_{j-1}$。这个函数叫做alignment funcion（table 1 中用a表示），它会对$h_i,s_{j-1}$的相关度进行评估（有的资料把这个函数叫做评分函数scoring function）并输出评分$e_{ij}$。distribution function（table 1中用p表示）会把$e_{ij}$转化为注意力权重。当a，p是可微的函数时，这整个基于注意力的encoder-decoder模型就会成为一个大的可微函数，并且可以一同训练。<br><strong>泛化的AM</strong>：AM可以看作是一种映射。这个映射会根据query q将keys K映射为权重$\alpha$。其中keys即为编码器的隐藏状态$\{h_1,h_2,\dots,h_T\}$，q即为$s_{j-1}$。注意力模型表示如下：</p>
-<script type="math/tex; mode=display">A(q,K,V)=\sum_ip(a(k_i,q))*v_i</script><p>通常keys和values是一一对应的。在[Bahdanau et al. 2015]提出的模型中，$h_i = v_i = k_i$。通过上面的回归的例子来理解这个公式，输入x为query，$v_i$为$y_i$，$k_i$为$x_i$。</p>
-<p><strong>Alignment functions（排列函数？）</strong>：<br>对于key和query在相同向量空间的：</p>
-<ol>
-<li>余弦相似度或者点积（dot product）</li>
-<li>考虑到不同的表示长度，scaled dot product使用表示向量的长度来归一化点积。</li>
-</ol>
-<p>对于key和query在不同向量空间的：</p>
-<ol>
-<li>General alignment：引入可学习的转换矩阵将query映射到key的向量空间。</li>
-<li>Activated general alignment：添加一个非线性的激活层（hyperbolic tangent, rectifier linear unit, or scaled exponential linear unit. ）</li>
-<li>Biased general alignment ：不管query，通过添加偏置项（bias）直接学习一些key的全局重要性。</li>
-<li>[Choromanski et al. 2021] 展示了key和query可以通过generalized kernel function匹配，而不是点积。<br>key，query联合表示的：</li>
-<li>concat alignment：keys和queries拼接到一起形成联合表示。</li>
-<li>Additive alignment：对key和query的贡献进行解耦。使得可以提前计算所有key的贡献而不用对每个query再计算一遍。降低了计算时间。</li>
-<li>deep alignment 使用了多层神经网络。<br>针对特定使用场景的：</li>
-<li>Location-based alignment：忽略keys的内容，只使用它的位置信息。</li>
-<li>[Li et al. 2019a]提出当处理一组元素（如2-D patches for images 或者 1-D temporal<br>sequences），从属于该组的单个元素的表示中得出的特征（如平均数和标准差）可以作为alignment function的输入。</li>
-</ol>
-<p><img src="/2021/10/29/an-attentive-survey-of-attention-models-2021-yan-du-bao-gao/upload_617f45653ad3c44d2f61bd3ded2c020e.png" alt=""></p>
-<p><strong>distribution function（分布函数）</strong>：</p>
-<ol>
-<li>dense distribution：softmax,logistic sigmoid。输出可以看作概率，但会降低模型的可解释性，而且会对不可能的输出分配概率（This density is wasteful, making models less interpretable and assigning probability mass to many implausible outputs. ）。</li>
-<li>sparse distribution：sparsemax和sparse entmax。通过只对少量可能的输出赋予概率从而产生sparse alignment。当大量元素之间是不相关时会非常有用。</li>
-<li>[Tay et al. 2019]提出一种分布函数。计算两个项——$thanh(\frac{qk_i^T}{\sqrt{d_k}}),sigmoid(\frac{G(qk_i^T)}{\sqrt{d_k}})$的乘积来形成准注意力（qusi-attention）。其中第一项控制向量的加或者减，第二项可以看作是控制删除不相关元素的门函数。</li>
-</ol>
-<h2 id="4-TAXONOMY-OF-ATTENTION"><a href="#4-TAXONOMY-OF-ATTENTION" class="headerlink" title="4 TAXONOMY OF ATTENTION"></a>4 TAXONOMY OF ATTENTION</h2><p><img src="/2021/10/29/an-attentive-survey-of-attention-models-2021-yan-du-bao-gao/upload_7471d28d5ac5631a1e2d6b9048aab5ef.png" alt=""></p>
-<h3 id="4-1-Number-of-sequences"><a href="#4-1-Number-of-sequences" class="headerlink" title="4.1 Number of sequences"></a>4.1 Number of sequences</h3><ol>
-<li>distinctive attention：输入和输出是独立的两个序列。上面考虑的全是这种情况。大部分情况应用于翻译 [Bahdanau et al. 2015]、图像描述[Xu et al. 2015]和语音识别[Chan et al. 2016]。</li>
-<li>co-attention：输入有多个序列，同时计算他们的注意力权重。[Lu et al. 2016]用它来做visual question answering。不仅提取图像中的重要信息a同样也要提取问题中的关键点b。a和b会互相影响。类似的[Yu et al. 2019] 也用它来做visual question answering task</li>
-<li>self-attention(inner attention)。每个输入序列都可以学习自身中相关的元素。即key和query在同一个序列中。</li>
-</ol>
-<h3 id="4-2-Number-of-abstraction-levels"><a href="#4-2-Number-of-abstraction-levels" class="headerlink" title="4.2 Number of abstraction levels"></a>4.2 Number of abstraction levels</h3><ol>
-<li>single-level：只对原始输入添加注意力权重。</li>
-<li>multi-level：注意力模型的低层输出变为高层的输入（query）。再细分可以根据学习顺序分为自顶向下，自底向上两类。 [Yang et al. 2016]用“Hierarchical Attention Model”(HAM) 解决文档分类问题。这种多层模型可以从句子中找到关键词，从文档中找到关键句。上面提到的 [Lu et al. 2016]使用的co-attention也是多层模型（单词层，短语层，问题层），如下图。[Zhao and Zhang 2018]提出attention-via-attention，低层为字母高层为单词，并通过自顶向下的方式学习。<br><img src="/2021/10/29/an-attentive-survey-of-attention-models-2021-yan-du-bao-gao/upload_6149cd7ede3a72ba726fd358cba6b2f6.png" alt=""></li>
-</ol>
-<h3 id="4-3-Number-of-positions"><a href="#4-3-Number-of-positions" class="headerlink" title="4.3 Number of positions"></a>4.3 Number of positions</h3><ol>
-<li>soft attention：编码器输出的所有隐藏状态都要参与注意力的计算。方便反向传播但是会造成二次方的损失（quadratic computational cost）。</li>
-<li>hard attention：[Xu et al. 2015]提出通过范畴分布（multinoulli distribution）随机选取隐藏状态计算注意力权重。降低了计算损失但导致函数不可微，并且难以优化。Variational learning方法和 policy gradient 方法的提出可以帮助解决这些缺陷。</li>
-<li>local and global：[Luong et al. 2015b] 为机器翻译提出两种注意力模型：local、global。global类似soft attention模型。local介于soft和hard之间。local的关键想法是在输入序列中找到一个”注意点”（attention point），在这个点（位置）周围选择一个创建一个窗口，在窗口中建立局部soft attention模型。这个点（位置）可以认为设定(monotonic alignment) 或者通过学习得到(predictive alignment)。</li>
-</ol>
-<h3 id="4-4-Number-of-representations"><a href="#4-4-Number-of-representations" class="headerlink" title="4.4 Number of representations"></a>4.4 Number of representations</h3><ol>
-<li>Single-representational AM：只使用输入序列的一种特征表示法。这是大多数应用使用的方法。但是在某些情况下不能满足下游任务。</li>
-<li>Multi-representational AM：通过多种特征表示来获取输入的不同方面的特征，然后使用注意力机制为不同的表示添加权重从而决定与这个任务最相关的表示法。[Kiela et al. 2018]、[Maharjan et al. 2018]、[Lin et al. 2017] 、 [Shen et al. 2018] 都做了类似的工作。</li>
-</ol>
-<h2 id="5-NETWORK-ARCHITECTURES-WITH-ATTENTION"><a href="#5-NETWORK-ARCHITECTURES-WITH-ATTENTION" class="headerlink" title="5 NETWORK ARCHITECTURES WITH ATTENTION"></a>5 NETWORK ARCHITECTURES WITH ATTENTION</h2><h3 id="5-1-Encoder-Decoder"><a href="#5-1-Encoder-Decoder" class="headerlink" title="5.1 Encoder-Decoder"></a>5.1 Encoder-Decoder</h3><p>最早在 [Bahdanau et al. 2015]中提出。编码器把输入压缩到一个固定长度的向量，解码器再对这个向量进行处理。这种方式把输入输出进行解耦，这使得杂交encoder-decoder成为了可能。比如编码器用CNN，解码器用LSTM。对许多模型任务例如图像，视频描述、Visual Question Answering和语音识别有非常大的帮助。<br>但是并不是所有问题都可以的输入输出都是序列化的。Pointer Network [Vinyals et al. 2015]有如下的两个不同：</p>
-<ol>
-<li>输出是离散的值，并且指向了输入序列的某个位置。</li>
-<li>输出类别取决于输入的数量。<br>作者通过使用注意力权重来对每个时间步选择第i个输入符号的概率。这个方法可以用作离散优化问题（旅行商，排序）</li>
-</ol>
-<h3 id="5-2-Transformer"><a href="#5-2-Transformer" class="headerlink" title="5.2 Transformer"></a>5.2 Transformer</h3><p>循环结构会序列化的处理输入，这导致计算效率下降。Transformer [Vaswani et al. 2017].通过使用自注意力机制来获得输入输出的全局依赖。作者展示了使用Transformer，即便不使用循环结构也可以在机器翻译任务中获得超强的并行处理能力，更短的训练时间和更高的准确度。</p>
-<h3 id="5-3-Memory-Networks"><a href="#5-3-Memory-Networks" class="headerlink" title="5.3 Memory Networks"></a>5.3 Memory Networks</h3><p>类似Question Answering的应用需要拥有从事实数据库中学习的能力。网络的输入是知识数据库（knowledge dagabase）和一个问题（query）。在数据库中有些事实是与问题相关的但有些不是。在这种情况下就需要注意力来选择相关的事实。</p>
-<h3 id="5-4-Graph-Attention-Networks-GAT"><a href="#5-4-Graph-Attention-Networks-GAT" class="headerlink" title="5.4 Graph Attention Networks (GAT)"></a>5.4 Graph Attention Networks (GAT)</h3><p>战略性略过</p>
-<h2 id="6-APPLICATIONS"><a href="#6-APPLICATIONS" class="headerlink" title="6 APPLICATIONS"></a>6 APPLICATIONS</h2><p><img src="/2021/10/29/an-attentive-survey-of-attention-models-2021-yan-du-bao-gao/upload_11ba64cfcd9ee772f67375ac7dbc8270.png" alt=""></p>
-<h2 id="7-ATTENTION-FOR-INTERPRETABILITY"><a href="#7-ATTENTION-FOR-INTERPRETABILITY" class="headerlink" title="7 ATTENTION FOR INTERPRETABILITY"></a>7 ATTENTION FOR INTERPRETABILITY</h2><p>越来越多的人关注AI模型的可解释性，而且这正是神经网络特别是深度学习网络所欠缺的。注意力机制可以帮助我们提升AI模型的可解释性。存在的一种假设是注意力权重的大小与对应输入部分与当前时间步下的输出的相关度有关。通过可视化输入输出对可以发现这种规律。<br> [Rush et al. 2015]展示了在（文本）总结问题中，AM可以在输出时把注意力放在输入的相关的单词上（下图a）。 [He et al. 2018]表示注意力可以用来识别用户的兴趣（下图b）。[Xu et al. 2015]通过可视化展示了图片摘要问题中对输出有很大影响的图形区域。<br><img src="/2021/10/29/an-attentive-survey-of-attention-models-2021-yan-du-bao-gao/upload_5220608e9e49aeb36a7d305a78faa59a.png" alt=""><br>总结几种有趣的事实：</p>
-<ol>
-<li>[De-Arteaga et al. 2019] explored gender bias in occupation classification, and showed how the words getting more attention during classification task are often gendered.（没看懂，直接粘原文了）</li>
-<li>[Yang et al. 2016]表示在情感分类问题中，”good”和”bad”这两个单词的重要性是与文本内容相关的。</li>
-<li>[Chan et al. 2016]注意到在语音识别中，字符输出和音频信号之间的注意力可以正确识别音频信号中第一个字符的起始位置，并且对于具有声学相似性的单词，注意力权重是相似的。</li>
-<li>[Kiela et al. 2018]发现multi-representational attention对 GloVe, FastText这两种词嵌入方式赋予了更高的权重。</li>
-</ol>
-<p>另一种有趣的应用： [Lee et al. 2017] and [Liu et al. 2018]提供了一种注意力可视化的工具</p>
-<p>尽管许多人用注意力来提高AI模型的可解释性，但有些人也提出了相反的观点。 [Jain and Wallace 2019]提出注意力权重与特征重要性分析是不相关的。他们观察预测结果对注意力权重改变的敏感度，却发现通过使用随机排列和adversarial training并没有改变输出结果。[Serrano and Smith 2019] applied a different analysis based on intermediate representation erasure method and showed that attention weights are at best noisy predictors of relative importance of the specific regions of input sequence, and should not be treated as justifications for model’s decisions. （又没看懂………….）</p>
-<h2 id="未来的研究方向"><a href="#未来的研究方向" class="headerlink" title="未来的研究方向"></a>未来的研究方向</h2><ol>
-<li>Real-time Attention<br>类似实时翻译的应用需要在获得整个输入之前开始预测结果，这就需要Real-time Attention。<br>相关的成果：<ol>
-<li>[Chiu and Raffel 2017] </li>
-<li>[Ma et al. 2019] </li>
-</ol>
-</li>
-<li><p>Stand-alone Attention<br>相关成果：</p>
-<ol>
-<li>[Ramachandran et al. 2019]</li>
-<li>[Wang et al. 2020e]</li>
-</ol>
-</li>
-<li><p>Model Distillation<br>相关成果：</p>
-<ol>
-<li>[Wang et al. 2020d] </li>
-<li>[Mirzadeh et al. 2020]</li>
-<li>[Touvron et al. 2020] </li>
-</ol>
-</li>
-<li><p>Attention for Interpretability<br>相关成果</p>
-<ol>
-<li>[Mohankumar et al. 2020]</li>
-</ol>
-</li>
-<li><p>Auto-learning Attention<br>相关成果：</p>
-<ol>
-<li>[Ma et al. 2020] </li>
-</ol>
-</li>
-<li><p>Multi-instance Attention<br>相关成果：</p>
-<ol>
-<li>[Li et al. 2019a]</li>
-</ol>
-</li>
-<li><p>Multi-agent Systems<br>相关成果：</p>
-<ol>
-<li>[Fujii et al. 2020; Li et al. 2020a] </li>
-</ol>
-</li>
-<li><p>Scalability<br>相关成果：</p>
-<ol>
-<li>[Sukhbaatar et al. 2019b] </li>
-<li>[Choromanski et al. 2021]</li>
-<li>[Wang et al. 2020a]</li>
-<li>[Li et al. 2020b]</li>
-</ol>
-</li>
-</ol>
-<h2 id="REFERENCES"><a href="#REFERENCES" class="headerlink" title="REFERENCES"></a>REFERENCES</h2><ol>
-<li><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1904.02874.pdf">Chaudhari S, Mithal V, Polatkan G, et al. An attentive survey of attention models[J]. ACM Transactions on Intelligent Systems and Technology (TIST), 2021, 12(5): 1-32.</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/d2l-ai/d2l-zh">《动手学深度学习》</a></li>
-</ol>
+<p>代入，裂项相消得到：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}-\mathbb{E}_q\left[\log\frac{p_\theta(x_{0:T})}{q(x_{1:T}|x_0)}\right]&=-\mathbb{E}_{q}\left[\log\frac{p(x_{T})p_{\boldsymbol{\theta}}(x_{0}|x_{1})}{q(x_{T}|x_{0})}+\sum_{t=2}^{T}\log\frac{p_{\boldsymbol{\theta}}(x_{t-1}|x_{t})}{q(x_{t-1}|x_{t},x_{0})}\right]\\&=-\mathbb{E}_{q(\boldsymbol{x}_{1:T}|\boldsymbol{x}_{0})}\left[\log p_{\boldsymbol{\theta}}(x_{0}|x_{1})\right]-\mathbb{E}_{q(\boldsymbol{x}_{1:T}|\boldsymbol{x}_{0})}\left[\log\frac{p(\boldsymbol{x}_{T})}{q(\boldsymbol{x}_{T}|x_{0})}\right]-\sum_{t=2}^{T}\mathbb{E}_{q(\boldsymbol{x}_{1:T}|\boldsymbol{x}_{0})}\left[\log\frac{p_{\boldsymbol{\theta}}(x_{t-1}|x_{t})}{q(x_{t-1}|x_{t},x_{0})}\right]\\&=\underbrace{-\mathbb{E}_{q(\boldsymbol{x}_1|\boldsymbol{x}_0)}\left[\log p_{\boldsymbol{\theta}}(\boldsymbol{x}_0|\boldsymbol{x}_1)\right]}_{\text{reconstruction term}}+\underbrace{D_{\mathrm{KL}}(q(\boldsymbol{x}_T|\boldsymbol{x}_0)\parallel p(\boldsymbol{x}_T))}_{\text{prior matching term}}+\sum_{t=2}^T\underbrace{\mathbb{E}_{q(\boldsymbol{x}_t|\boldsymbol{x}_0)}\left[D_{\mathrm{KL}}(q(\boldsymbol{x}_{t-1}|\boldsymbol{x}_t,\boldsymbol{x}_0)\parallel p_{\boldsymbol{\theta}}(\boldsymbol{x}_{t-1}|\boldsymbol{x}_t))\right]}_{\text{denoising matching term}}\\&=L_0+L_T+\sum_{t\ge2} L_{t-1}\end{aligned}</script><blockquote>
+<p>没看懂期望角标的变化。这个<a target="_blank" rel="noopener" href="https://blog.csdn.net/gaofeipaopaotang/article/details/139247321">链接</a>有一些推导但跟论文里的还不太一样</p>
+</blockquote>
+<p>结果左项表示重构项，可以用蒙特卡罗方法近似优化。中间项和模型参数无关，不管。最后一项是一个去噪匹配项。q项表示了真实的信号，定义了如何对样本进行去噪。其值越小说明去噪结果和真实信号越相近。</p>
+<p>最右边的一项是优化重点。p是模型的输出，q可以使用高斯概率分布公式代入化简看出他本身还是一个高斯分布。过程如下：<br><img src="/2025/02/17/denoising-diffusion-probabilistic-models-yue-du-bi-ji/Pasted image 20250217012154.png" alt="img"><br>在给定$x_t$和$x_0$的情况下，q的均值是固定的。模型的输出可以直接看作是P的均值。故可以将该优化问题转化为最小化模型输出和分布均值之间的距离：</p>
+<script type="math/tex; mode=display">
+L_{t-1} = \mathbb{E}_q||{\mu}_q(x_t,x_0),\mu_\theta(x_t,t)||^2</script><p>根据$x_t,x_0$之间的转换关系，将$x_0$用$x_t$表示并代入到$\mu_q$中，得到：</p>
+<script type="math/tex; mode=display">
+\mu_q(x_t,x_0)=\frac{1}{\sqrt{\alpha_t}}\left(x_t-\frac{1-\alpha_t}{\sqrt{1-\bar{\alpha}_t}} \epsilon\right)</script><p>$\mu_\theta$可以用同样形式的式子表示，其中$\hat{\epsilon}$是模型预测结果：</p>
+<script type="math/tex; mode=display">
+\mu_\theta(x_t,t) = \frac{1}{\sqrt{\alpha_t}}\left(x_t-\frac{1-\alpha_t}{\sqrt{1-\bar{\alpha}_t}} \hat{\epsilon}\right)</script><p>代入$L_{t-1}$得到简化的损失函数，即直接计算预测噪声和真实噪声之间的距离：</p>
+<script type="math/tex; mode=display">
+L_{t-1} = \mathbb{E}_{x_0,\epsilon}||\epsilon,\hat{\epsilon}||^2</script><h3 id="2-2-训练算法"><a href="#2-2-训练算法" class="headerlink" title="2.2 训练算法"></a>2.2 训练算法</h3><p><img src="/2025/02/17/denoising-diffusion-probabilistic-models-yue-du-bi-ji/Pasted image 20250217154744.png" alt="img"><br>观察可以看到采样过程第四步会再添加一次噪声z。根据<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1mLbQeRExa">李宏毅的课程</a>得知在生成模型的生成过程中添加随机性可以提高生成的成功率。</p>
+<h2 id="结论和收获"><a href="#结论和收获" class="headerlink" title="结论和收获"></a>结论和收获</h2><p>复习了一下数学，了解了扩散模型的理论基础。</p>
 
                 
             </div>
@@ -673,7 +575,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://blog.expecto.top/2021/10/29/an-attentive-survey-of-attention-models-2021-yan-du-bao-gao/">https://blog.expecto.top/2021/10/29/an-attentive-survey-of-attention-models-2021-yan-du-bao-gao/</a>
+                    <a href="https://blog.expecto.top/2025/02/17/denoising-diffusion-probabilistic-models-yue-du-bi-ji/">https://blog.expecto.top/2025/02/17/denoising-diffusion-probabilistic-models-yue-du-bi-ji/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -710,7 +612,19 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/">
+                                    <span class="chip bg-color">论文笔记</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%88%90%E5%91%98%E6%8E%A8%E7%90%86/">
+                                    <span class="chip bg-color">成员推理</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%89%A9%E6%95%A3%E6%A8%A1%E5%9E%8B/">
+                                    <span class="chip bg-color">扩散模型</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -754,17 +668,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/11/08/evaluating-differentially-private-machine-learning-in-practice/">
+                <a href="/2025/02/17/denoising-diffusion-probabilistic-models-yue-du-bi-ji/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Evaluating Differentially Private Machine Learning in Practice">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Denoising Diffusion Probabilistic Models 阅读笔记">
                         
-                        <span class="card-title">Evaluating Differentially Private Machine Learning in Practice</span>
+                        <span class="card-title">Denoising Diffusion Probabilistic Models 阅读笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -774,9 +689,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-11-08
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-02-17
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -784,6 +699,23 @@
                             
                         </span>
                     </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">论文笔记</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%88%90%E5%91%98%E6%8E%A8%E7%90%86/">
+                        <span class="chip bg-color">成员推理</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%89%A9%E6%95%A3%E6%A8%A1%E5%9E%8B/">
+                        <span class="chip bg-color">扩散模型</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -795,24 +727,24 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/10/28/hello-world/">
+                <a href="/2024/12/29/are-diffusion-models-vulnerable-to-membership-inference-attacks-yue-du-bi-ji/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Are Diffusion Models Vulnerable to Membership Inference Attacks 阅读笔记">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">Are Diffusion Models Vulnerable to Membership Inference Attacks 阅读笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
+                            
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-28
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-12-29
                             </span>
                         <span class="publish-author">
                             
@@ -821,6 +753,22 @@
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">论文笔记</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%88%90%E5%91%98%E6%8E%A8%E7%90%86/">
+                        <span class="chip bg-color">成员推理</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%89%A9%E6%95%A3%E6%A8%A1%E5%9E%8B/">
+                        <span class="chip bg-color">扩散模型</span>
+                    </a>
+                    
                 </div>
                 
             </div>
