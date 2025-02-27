@@ -4,9 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Do Membership Inference Attacks Work on Large Language Models 阅读笔记, 酸辣果汁">
-    <meta name="description" content="论文研读笔记论文题目：Do Membership Inference Attacks Work on Large Language Models?发表时间：2024发表期刊/会议：COLM论文作者：Duan et al.
-1. 内容简介论文">
+    <meta name="keywords" content="High-Dimensional Probability 第一章笔记, 酸辣果汁">
+    <meta name="description" content="
+书名：High-Dimensional Probability An Introduction with Applications in Data Science. 这一张章主要介绍概率论的一些基础知识。笔记中只记录简单结论，证明过程可以">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Do Membership Inference Attacks Work on Large Language Models 阅读笔记 | 酸辣果汁</title>
+    <title>High-Dimensional Probability 第一章笔记 | 酸辣果汁</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -325,12 +325,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Do Membership Inference Attacks Work on Large Language Models 阅读笔记</h1>
+                    <h1 class="description center-align post-title">High-Dimensional Probability 第一章笔记</h1>
                 </div>
             </div>
         </div>
@@ -444,9 +444,17 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
+                                <span class="chip bg-color">阅读笔记</span>
+                            </a>
+                        
+                            <a href="/tags/%E9%AB%98%E7%BB%B4%E6%A6%82%E7%8E%87%E8%AE%BA/">
+                                <span class="chip bg-color">高维概率论</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -458,28 +466,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2024-11-30
+                    2025-02-27
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-11-30
+                    2025-02-27
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.7k
+                    1.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    5 分
                 </div>
                 
 
@@ -499,31 +507,59 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="论文研读笔记"><a href="#论文研读笔记" class="headerlink" title="论文研读笔记"></a>论文研读笔记</h2><p>论文题目：Do Membership Inference Attacks Work on Large Language Models?<br>发表时间：2024<br>发表期刊/会议：COLM<br>论文作者：Duan et al.</p>
-<h2 id="1-内容简介"><a href="#1-内容简介" class="headerlink" title="1. 内容简介"></a>1. 内容简介</h2><p>论文针对大语言模型的成员推理攻击进行了广泛的测试。测试说明成员推理攻击对大语言模型的效果近似于随机猜测，并对该现象的产生做出了解释。</p>
-<h2 id="2-主要内容"><a href="#2-主要内容" class="headerlink" title="2. 主要内容"></a>2. 主要内容</h2><p>改论文主要通过实验验证成员推理攻击对大语言模型的有效性。假设$\mathcal{M}$是目标模型，论文考虑了如下的几种攻击方法：</p>
-<ul>
-<li>基于损失LOSS：只要目标样本在模型上的损失小于某个阈值就判定其为成员</li>
-<li>基于参考模型的攻击：如果样本在目标模型上的损失小于参考模型上的损失，就认为是成员</li>
-<li>Zlib entropy：使用 zlib entropy作为损失</li>
-<li>近邻攻击：对样本进行变形，如果样本本身的损失小于变形样本的均值就认为是成员</li>
-<li>min-k% 概率：使用置信度向量中最低的k%分量计算损失</li>
+                <blockquote>
+<p>书名：High-Dimensional Probability An Introduction with Applications in Data Science<br>. 这一张章主要介绍概率论的一些基础知识。笔记中只记录简单结论，证明过程可以参阅原书</p>
+</blockquote>
+<h1 id="1-1基础概念："><a href="#1-1基础概念：" class="headerlink" title="1.1基础概念："></a>1.1基础概念：</h1><ul>
+<li>随机变量X，期望（均值）$\mathbb{E}(x)$，方差$Var(x)=\mathbb{E}(X-\mathbb{E}(X))^2$</li>
+<li>矩母生成函数$M_X(t) = \mathbb{E}[e^{tX}],t\in\mathbb R$。更多信息参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/goldtimes/article/details/139370411">这篇博客</a></li>
+<li>对于$p&gt;0$，$X$的p阶矩为$\mathbb{E}X^p$，p阶绝对矩为$\mathbb{E}|X|^p$</li>
+<li>$X$的$L^p$范数为p阶绝对矩开p次方，即$||X||_{L^p}=(\mathbb{E}X^p)^{\frac{1}{p}}$</li>
+<li>$X$的无穷范数被定义为$|X|$的本质上确界$|X|_{L^{\infty}}=\operatorname{ess} \sup |X|$</li>
+<li>对于一个概率空间$(\Omega,\Sigma,\mathbb P)$和一个固定的$p$，经典向量空间$L^p=L^p(\Omega,\Sigma,\mathbb P)$包含$\Omega$中所有范数有穷的随机变量$X$，即$L^p=\left\{X:|X|_{L^p}&lt;\infty\right\}$</li>
+<li>如果$p\in [1,\infty]$，则$|X|_{L^p}$是一个范数且$L^p$是一个巴拿赫（Banach）空间。如果p小于1，则三角不等式失效且$||X||_{L^p}$不是一个范数。</li>
+<li>如果p=2，则$L^2$同时是一个希尔伯特空间，该空间中的内积和协方差为：$\langle X, Y\rangle_{L^2}=\mathbb{E} X Y$,$\operatorname{cov}(X, Y)=\mathbb{E}(X-\mathbb{E} X)(Y-\mathbb{E} Y)=\langle X-\mathbb{E} X, Y-\mathbb{E} Y\rangle_{L^2}$</li>
+<li>当我们把希尔伯特空间中的随机变量看成是空间中的向量时，上面的公式说明了$X-\mathbb E(X)$和$Y-\mathbb E(Y)$越匹配，他们的协方差和内积就越大。</li>
 </ul>
-<h2 id="3-实验"><a href="#3-实验" class="headerlink" title="3. 实验"></a>3. 实验</h2><p><strong>模型</strong>：主要针对PYTHIA模型套件，包括：（1）五个PYTHIA模型（Biderman et al., 2023b），其参数分别为160M、1.4B、2.8B、6.7B和12B，训练数据为原始的Pile数据（Gao et al., 2020）；（2）五个PYTHIA-DEDUP模型（Biderman et al., 2023b），具有与PYTHIA相同的参数数量，但训练数据为去重后的Pile数据。我们还使用GPT-NEO家族的模型进行实验，以验证在不同模型家族中的发现，观察到大多数领域的趋势类似（见附录A.6）。</p>
-<p><strong>数据集</strong>：Pile中包含的七个多样化数据源：通用网页（Pile-CC）、知识来源（维基百科）、学术论文（PubMed Central，ArXiv）、对话数据（HackerNews）以及特定领域数据（DM Math，Github）。</p>
-<p><strong>评估指标</strong>：AUC， ROC，TPR@low%FPR</p>
-<h3 id="3-1-主要结果"><a href="#3-1-主要结果" class="headerlink" title="3.1 主要结果"></a>3.1 主要结果</h3><p>由下表可知，现在所有的针对大模型的成员推理都接近于随机猜测。总体上基于参考模型的推理表现最佳，而且发现训练集的去重降低了MIA的表现。</p>
-<p><img src="/2024/11/30/do-membership-inference-attacks-work-on-large-language-models-yue-du-bi-ji/Pasted image 20241130182805.png" alt="img"></p>
-<h3 id="3-2-为什么MIA表现不佳"><a href="#3-2-为什么MIA表现不佳" class="headerlink" title="3.2 为什么MIA表现不佳"></a>3.2 为什么MIA表现不佳</h3><h4 id="3-2-1-LLM的特性"><a href="#3-2-1-LLM的特性" class="headerlink" title="3.2.1 LLM的特性"></a>3.2.1 LLM的特性</h4><p><strong>训练集规模</strong>：当前最先进的大语言模型都使用巨量的数据训练模型，而模型的泛化程度会随着数据集的变大而变好。在这论文使用PYTHIA-DEDUP模型套件中的中间检查点来评估不同规模训练数据的影响。论文对每个检查点的最近100个步骤中采样成员，以去除成员的时效性偏差影响。MIA的表现一开始接近随机猜测，后来迅速升高，最后逐渐下降（如下图左）。开始性能低可能是因为模型在热身，对成员和非成员的损失都很高。后面随着训练的进行，由于数据和参数的比例较小，模型会出现过拟合。但最后随着训练的进行模型的泛化能力会加强。</p>
-<p><strong>训练轮次</strong>：增加训练轮次会增强MIA性能，但也会增加隐私泄露的风险（下图右）。论文对Datablations模型套件（Muennighoff et al., 2023）进行了MIA测试，该模型套件包含在不同epoch数量下，使用C4（Raffel et al., 2019）训练数据的子集训练的模型。<br><img src="/2024/11/30/do-membership-inference-attacks-work-on-large-language-models-yue-du-bi-ji/Pasted image 20241130184850.png" alt="img"></p>
-<h4 id="3-2-2-LLM固有的模糊性"><a href="#3-2-2-LLM固有的模糊性" class="headerlink" title="3.2.2 LLM固有的模糊性"></a>3.2.2 LLM固有的模糊性</h4><p>自然语言中存在重复文本，包括相近的表达方式、相似文本的自然使用、特定领域内的固有说法等，这就导致成员和非成员之间的差异没有那么明显。论文使用n-gram重叠比来量化重叠。对于一个m个词组成的成员样本$x=x_1x_2\dots x_m$以及其中的一个n-gram$x_i\dots x_{i+n-1}$，x在数据集D上的n-gram重叠定义为：</p>
-<script type="math/tex; mode=display">\frac1{m-n+1}\sum_{i=1}^{m-n+1}\mathbb{I}\{\exists y\in D:x_i...x_{i+n-1}\in y\}</script><p>这一指标表示非成员样本中的n-gram中有多少百分比至少能在一个成员样本中找到。下图展示了非成员样本对于整个训练集的7-gram重叠百分比。可以看到很多数据集的重叠比都很高。<br><img src="/2024/11/30/do-membership-inference-attacks-work-on-large-language-models-yue-du-bi-ji/Pasted image 20241130194213.png" alt="img"></p>
-<p>论文重新采样非成员样本，使重叠率降低，重新报告了MIA的性能。可以看到MIA的表现显著提高。<br>论文指出n-gram是自然语言的固有属性，还指出，n-gram重叠分布分析有助于评估一组候选非成员样本在构建MIA基准测试时，是否能代表目标领域。论文强调需要考虑数据领域的特征，例如n-gram重叠，并理解它们可能对MIA性能的影响。<br><img src="/2024/11/30/do-membership-inference-attacks-work-on-large-language-models-yue-du-bi-ji/Pasted image 20241130194822.png" alt="img"></p>
-<h3 id="3-3-候选集选择的重要性"><a href="#3-3-候选集选择的重要性" class="headerlink" title="3.3 候选集选择的重要性"></a>3.3 候选集选择的重要性</h3><p>最近的研究表明最先进的成员推理攻击在预训练模型上达到了&gt;0.7的AUC ROC。论文探讨了这些研究非成员候选选择方式如何导致非成员和成员之间固有、无意的分布偏移。以往的工作通常根据目标模型的知识截止日期来区分目标领域中的成员和非成员，成员为截止日期之前的样本，非成员反之。</p>
-<p>论文在wikipedia领域进一步加大了成员和非成员之间的时间差距。下表显示该设置可以显著增强成员推理的性能。推测这是源于语言的变化，如新术语的引入。<br><img src="/2024/11/30/do-membership-inference-attacks-work-on-large-language-models-yue-du-bi-ji/Pasted image 20241130201059.png" alt="img"></p>
-<p>下图展示了时间偏移前后7-gram的变化。可以看到时间偏移后7-gram重叠降低。论文建议在评估MIA性能时通过将候选非成员样本的n-gram重叠分布与从预训练语料库中剔除的样本集的n-gram重叠分布进行比较，来估算样本非成员集在成员领域中的代表性。<br><img src="/2024/11/30/do-membership-inference-attacks-work-on-large-language-models-yue-du-bi-ji/Pasted image 20241130201711.png" alt="img"></p>
-<h2 id="4-结论"><a href="#4-结论" class="headerlink" title="4. 结论"></a>4. 结论</h2><p>论文利用实验说明现在的成员推理攻击和随机猜测没什么差距。主要原因是1. 目前大模型的训练过程中使用的数据量大且训练轮次小，所以单个样本所能留下的痕迹很小；2. 成员和非成员之间具有很强的相似性（自然语料中可能包含很多重复的片段），导致他们之间的界限是模糊的。</p>
-
+<h2 id="1-2一些基础不等式"><a href="#1-2一些基础不等式" class="headerlink" title="1.2一些基础不等式"></a>1.2一些基础不等式</h2><p><strong>詹森不等式（Jensen’s inequality）</strong>：对于任意一个随机变量$X$和一个凸函数$\varphi:\mathbb R \to \mathbb R$，都有：</p>
+<script type="math/tex; mode=display">
+\varphi(\mathbb EX)\le\mathbb E\varphi(X)</script><p>$||X||_{}L^p$是一个关于p的单调上升函数，即:</p>
+<script type="math/tex; mode=display">
+\|X\|_{L^p} \leq\|X\|_{L^q} \quad \text { for any } 0 \leq p \leq q \leq \infty</script><p><strong>闵可夫斯基不等式</strong>（Minkowski’s inequality）：对于任意$p\in[1,\infty]$和随机变量$X,Y\in L^p$，有：</p>
+<script type="math/tex; mode=display">
+\|X+Y\|_{L^p} \leq\|X\|_{L^p}+\|Y\|_{L^p}</script><p><strong>柯西-施瓦兹不等式</strong>（Cauchy-Schwarz）：对于任意的随机变量$X,Y\in L^2$，有：</p>
+<script type="math/tex; mode=display">
+|EXY|\le||X|_{L^2}||Y|_{L^2}</script><p>更一般的，根据<strong>赫尔德不等式</strong>，如果$p,q\in(1,\infty)$是共轭的，即$1/p+1/q=1$，有：</p>
+<script type="math/tex; mode=display">
+|EXY|\le||X|_{L^p}||Y|_{L^q}</script><p>当$p=1,q=\infty$时同样成立</p>
+<p>对于一个随机变量X，它的分布由累积分布函数（CDF）决定：</p>
+<script type="math/tex; mode=display">
+F_X(t)=\mathbb P\{X\le t\}</script><p>在处理一些问题(关于期望或者矩）时，使用1-CDF会更方便，即$\mathbb P(X&gt;t)=1-F_X(t)$</p>
+<p><strong>引理1.2.1</strong>：$X$是一个<strong>非负</strong>的随机变量，有：</p>
+<script type="math/tex; mode=display">
+\mathbb{E} X=\int_0^{\infty} \mathbb{P}\{X>t\} d t</script><p><strong>练习1.2.2（引理1.2.1的泛化版）</strong>：对于任意一个随机变量，有：</p>
+<script type="math/tex; mode=display">
+\mathbb X=\int_0^\infty\mathbb P\{X>t\}dt-\int_{-\infty}^0\mathbb P\{X<t\}dt</script><p><strong>练习1.2.3</strong>：$X$是一个随机变量，$p\in(0,\infty)$，当下面的右式有穷时有：</p>
+<script type="math/tex; mode=display">
+\mathbb E(|X|^p)=\int_0^\infty pt^{p-1}\mathbb P\{|X|>t\}dt</script><p><strong>马尔可夫不等式</strong>（提供了CDF尾部的bound）：对于任意一个<strong>非负</strong>随机变量$X$和一个$t&gt;0$，有：</p>
+<script type="math/tex; mode=display">
+\mathbb P\{X\ge t\}\le \frac{\mathbb EX}{t}</script><p><strong>切比雪夫不等式</strong>（马尔可夫不等式的结论之一）：对于任意一个随机变量$X$和一个$t&gt;0$，有：</p>
+<script type="math/tex; mode=display">
+\mathbb P\{|X-\mu|\ge t\}\le \frac{\sigma^2}{t^2}</script><h2 id="1-3-极限定理"><a href="#1-3-极限定理" class="headerlink" title="1.3 极限定理"></a>1.3 极限定理</h2><p><strong>定理1.3.1 大数定理</strong>：对于均值为$\mu$的独立同分布(i.i.d.)随机变量序列$X_1,X_2,\dots$，他们的和$S_N=\sum X_i$，当$N\to\infty$时，有：</p>
+<script type="math/tex; mode=display">
+\frac{S_N}{N}\to\mu</script><p>原因是i.i.d.的随机变量序列满足$Var(\sum X_i)=\sum Var(X_i)$，两边同除以$N^2$有$Var(\frac{1}{N}\sum X_i)=\frac{\sigma^2}{N^2}$。当$N\to\infty$，该式趋近于0，故随机变量序列的均值强趋近于$\mu$。</p>
+<p><strong>定理1.3.2 中心极限定理</strong>：$X_1,X_2,\dots$是i.i.d.的随机变量序列，均值和方差分别为$\mu,\sigma$。考虑$S_N=X_1+\dots+X_N$,并对其进行标准化：</p>
+<script type="math/tex; mode=display">
+Z_N:=\frac{S_N-\mathbb ES_N}{Var(S_N)}=\frac{1}{\sigma\sqrt{N}}\sum_{i=1}^N(X_i-\mu)</script><p>当$N\to\infty$，在分布上$Z_N\to N(0,1)$<br>可以使用CDF尾部表示为，当$N\to\infty$时，有：</p>
+<script type="math/tex; mode=display">
+\mathbb P\{Z_N\ge t\}\to \mathbb P\{g\ge t\}=\frac{1}{\sqrt{2\pi}}\int_t^\infty e^{-x^2/2}dx</script><p>其中$g\sim N(0,1)$</p>
+<p><strong>练习1.3.3</strong>：令i.i.d.的随机变量序列$X_i$，均值为$\mu$且方差有穷。证明：</p>
+<script type="math/tex; mode=display">
+\mathbb E \left|\frac{1}{N}\sum X_i -\mu \right|=O(\frac{1}{\sqrt{N}}) \quad as\quad N\to\infty</script><p>定理<strong>1.3.4泊松极限定理</strong>：令$X_{N,i},1\le i\le N$是独立随机变量，服从伯努利分布$Ber(p_{N,i})$。令$S_N=\sum_{i=1}^{N}X_{N,i}$，假设$N\to \infty$时有：</p>
+<script type="math/tex; mode=display">
+\max_{i\le N}p_{N,i}\to0,\quad\mathbb ES_N=\sum_{i=1}^N p_{N,i}\to \lambda<\infty</script><p>则当$N\to\infty$时，有：</p>
+<script type="math/tex; mode=display">
+S_N\to Pois(\lambda)</script>
                 
             </div>
             <hr/>
@@ -549,7 +585,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://blog.expecto.top/2024/11/30/do-membership-inference-attacks-work-on-large-language-models-yue-du-bi-ji/">https://blog.expecto.top/2024/11/30/do-membership-inference-attacks-work-on-large-language-models-yue-du-bi-ji/</a>
+                    <a href="https://blog.expecto.top/2025/02/27/high-dimensional-probability-bi-ji/">https://blog.expecto.top/2025/02/27/high-dimensional-probability-bi-ji/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -586,7 +622,15 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
+                                    <span class="chip bg-color">阅读笔记</span>
+                                </a>
+                            
+                                <a href="/tags/%E9%AB%98%E7%BB%B4%E6%A6%82%E7%8E%87%E8%AE%BA/">
+                                    <span class="chip bg-color">高维概率论</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -630,17 +674,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2024/12/29/are-diffusion-models-vulnerable-to-membership-inference-attacks-yue-du-bi-ji/">
+                <a href="/2025/02/27/high-dimensional-probability-bi-ji/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Are Diffusion Models Vulnerable to Membership Inference Attacks 阅读笔记">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="High-Dimensional Probability 第一章笔记">
                         
-                        <span class="card-title">Are Diffusion Models Vulnerable to Membership Inference Attacks 阅读笔记</span>
+                        <span class="card-title">High-Dimensional Probability 第一章笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -650,9 +695,59 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-12-29
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-02-27
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            wangxh
+                            
                         </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">阅读笔记</span>
+                    </a>
+                    
+                    <a href="/tags/%E9%AB%98%E7%BB%B4%E6%A6%82%E7%8E%87%E8%AE%BA/">
+                        <span class="chip bg-color">高维概率论</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2025/02/17/denoising-diffusion-probabilistic-models-yue-du-bi-ji/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Denoising Diffusion Probabilistic Models 阅读笔记">
+                        
+                        <span class="card-title">Denoising Diffusion Probabilistic Models 阅读笔记</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-02-17
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -674,55 +769,6 @@
                     
                     <a href="/tags/%E6%89%A9%E6%95%A3%E6%A8%A1%E5%9E%8B/">
                         <span class="chip bg-color">扩散模型</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2024/11/29/low-cost-high-power-membership-inference-attacks-yue-du-bi-ji/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Low-Cost High-Power Membership Inference Attacks 阅读笔记">
-                        
-                        <span class="card-title">Low-Cost High-Power Membership Inference Attacks 阅读笔记</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-11-29
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            wangxh
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/">
-                        <span class="chip bg-color">论文笔记</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%88%90%E5%91%98%E6%8E%A8%E7%90%86/">
-                        <span class="chip bg-color">成员推理</span>
                     </a>
                     
                 </div>
