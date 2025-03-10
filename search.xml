@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>Property Existence Inference against Generative Models 阅读笔记</title>
+      <link href="/2025/03/10/property-existence-inference-against-generative-models-yue-du-bi-ji/"/>
+      <url>/2025/03/10/property-existence-inference-against-generative-models-yue-du-bi-ji/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Property-Existence-Inference-against-Generative-Models-阅读笔记"><a href="#Property-Existence-Inference-against-Generative-Models-阅读笔记" class="headerlink" title="Property Existence Inference against Generative Models 阅读笔记"></a>Property Existence Inference against Generative Models 阅读笔记</h1><p>论文题目：Property Existence Inference against Generative Models<br>发表时间：2024<br>发表期刊/会议：USENIX, CCF A</p><h2 id="内容简介"><a href="#内容简介" class="headerlink" title="内容简介"></a>内容简介</h2><p>这篇文章介绍了一种针对生成模型的属性存在攻击。该攻击的目标是判断部分特征是不是在训练集当中。<br>贡献：</p><ul><li><strong>首次提出属性存在性推理攻击</strong>：据我们所知，本研究是<strong>首个</strong>针对<strong>生成模型</strong>执行<strong>属性存在推理</strong>（Property Existence Inference, PEI）的工作，并强调<strong>应特别关注训练集中占比极低的属性</strong>。</li><li><strong>提出属性存在推理方法</strong>：我们利用<strong>生成样本与目标属性样本的相似性差异</strong>，判断目标属性是否存在于训练集中，从而实现<strong>高效的属性存在性推理攻击</strong>。</li><li><strong>在最先进的生成模型上进行全面评估</strong>：我们在<strong>包括 Stable Diffusion 在内的大规模生成模型</strong>上进行了<strong>系统性实验</strong>，评估了该方法的有效性，并探讨了<strong>哪些生成样本最容易泄露属性存在性信息</strong>。</li></ul><h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h2><h3 id="基础设定"><a href="#基础设定" class="headerlink" title="基础设定"></a>基础设定</h3><p><strong>理论框架</strong>：假设检验<br>定义1 属性存在推理:给定一个模型和两个关于训练集分布的假设，攻击者需要访问模型来判断这两个假设哪个是真的。</p><script type="math/tex; mode=display">\mathcal H_0: \text{The proportion of samples with target property P in the training set of the target model is 0}.\\</script><script type="math/tex; mode=display">\mathcal H_1:\text{The proportion of samples with target property P is larger than 0.}</script><p><strong>攻击者能力</strong>：黑盒，可以访问数据分布并从其中采样出$D_{out}$和$D_A$，分别表示与训练集属性不同的数据集与含有目标属性$\mathbb P$的数据集。攻击者可以利用目标生成模型采样出数据集$D_{gen}$</p><h3 id="攻击算法"><a href="#攻击算法" class="headerlink" title="攻击算法"></a>攻击算法</h3><p>首先训练一个属性提取器将$D_A$和$D_{gen}$根据不同的目标属性值映射到嵌入空间中，然后根据$D_A,D_{gen}$在嵌入空间的相似度对目标属性的存在性进行评分，最终利用影子模型设定攻击阈值。</p><p><strong>属性提取器训练</strong>：使用同样的分类标准去划分样本的标签。比如我想知道目标训练集中是否有红色头发的人，就把相同颜色头发的图像划为positive样本，不同头发颜色的图像划为negtive。使用三元组数据集训练属性提取器，三元组中有一个携带特定属性的基图像，以及该图像的postive样本和negtive样本各一个。属性提取器会将所有的图像映射到嵌入空间，并最小化基图像和pos样本的cos相似度，最大化基图像和neg样本的cos相似度。</p><p><strong>相似度计算</strong>：使用含有目标属性的数据和生成模型生成的数据之间的相似度来判断目标属性在不在训练集中。算法如下图。对于每张带有目标属性的图像（即对手收集的锚点图像，anchor image）计算其与所有生成图像（经过属性提取后）的余弦相似度（详见算法 1 的第 12-14 行）。随后，在所有生成图像的相似度分数中，选取 K 个最高相似度值（top K）并求和，作为该锚点图像的最终相似性评分（详见算法 1 的第 11-23 行）。这些top K 值代表了最可能受到目标属性影响的生成图像。这些相似性评分共同构成了针对目标属性的相似性评分。<br>在计算属性相似性评分的过程中采用了两种操作——相似性评分平滑（similarity score smoothing）和似然校准（likelihood calibration），以减少锚点图像和生成图像带来的不确定性。</p><p><img src="/2025/03/10/property-existence-inference-against-generative-models-yue-du-bi-ji/Pasted image 20250310120403.png" alt="img"></p><p><strong>区分度测试</strong>：确定阈值。使用$D_{out}$中的部分数据训练影子模型，选取用于训练的属性和未被用于训练的属性计算对应的相似性评分，并将两类评分建模为高斯分布:$\mathcal N(\mu_0,s_0^2), \mathcal N(\mu_1,s_1^2)$，前者表示未使用目标属性的分布，后者表示使用目标属性的分布。阈值确定为：</p><script type="math/tex; mode=display">T = \frac{\mu_0 s_1^2 - \mu_1 s_0^2}{s_1^2 - s_0^2} \pm 2 s_1 s_0 \sqrt{\left( \frac{\mu_1 - \mu_0}{2} \right)^2 + \frac{s_0^2}{s_1^2} \log \left( \frac{s_0}{s_1} \right) \frac{s_1^2}{s_0^2}}</script>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 论文笔记 </tag>
+            
+            <tag> 属性存在推理 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>High-Dimensional Probability 第一章笔记</title>
       <link href="/2025/02/27/high-dimensional-probability-bi-ji/"/>
       <url>/2025/02/27/high-dimensional-probability-bi-ji/</url>
