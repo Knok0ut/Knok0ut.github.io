@@ -4,9 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Do Membership Inference Attacks Work on Large Language Models 阅读笔记, 酸辣果汁">
-    <meta name="description" content="论文研读笔记论文题目：Do Membership Inference Attacks Work on Large Language Models?发表时间：2024发表期刊/会议：COLM论文作者：Duan et al.
-1. 内容简介论文">
+    <meta name="keywords" content="Can Neural Network Memorization Be Localized 阅读笔记, 酸辣果汁">
+    <meta name="description" content="论文题目：Can Neural Network Memorization Be Localized发表时间：2023发表期刊/会议： ICML, CCF A
+1. 内容简介这篇文章通过实验讨论模型的记忆性是否可以被定位到网络的特定部分。有之">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Do Membership Inference Attacks Work on Large Language Models 阅读笔记 | 酸辣果汁</title>
+    <title>Can Neural Network Memorization Be Localized 阅读笔记 | 酸辣果汁</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -325,12 +325,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Do Membership Inference Attacks Work on Large Language Models 阅读笔记</h1>
+                    <h1 class="description center-align post-title">Can Neural Network Memorization Be Localized 阅读笔记</h1>
                 </div>
             </div>
         </div>
@@ -444,9 +444,17 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/">
+                                <span class="chip bg-color">论文笔记</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%A8%A1%E5%9E%8B%E8%AE%B0%E5%BF%86%E6%80%A7/">
+                                <span class="chip bg-color">模型记忆性</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -458,28 +466,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2024-11-30
+                    2025-03-22
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-11-30
+                    2025-03-22
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.7k
+                    3.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    13 分
                 </div>
                 
 
@@ -499,30 +507,64 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="论文研读笔记"><a href="#论文研读笔记" class="headerlink" title="论文研读笔记"></a>论文研读笔记</h2><p>论文题目：Do Membership Inference Attacks Work on Large Language Models?<br>发表时间：2024<br>发表期刊/会议：COLM<br>论文作者：Duan et al.</p>
-<h2 id="1-内容简介"><a href="#1-内容简介" class="headerlink" title="1. 内容简介"></a>1. 内容简介</h2><p>论文针对大语言模型的成员推理攻击进行了广泛的测试。测试说明成员推理攻击对大语言模型的效果近似于随机猜测，并对该现象的产生做出了解释。</p>
-<h2 id="2-主要内容"><a href="#2-主要内容" class="headerlink" title="2. 主要内容"></a>2. 主要内容</h2><p>改论文主要通过实验验证成员推理攻击对大语言模型的有效性。假设$\mathcal{M}$是目标模型，论文考虑了如下的几种攻击方法：</p>
-<ul>
-<li>基于损失LOSS：只要目标样本在模型上的损失小于某个阈值就判定其为成员</li>
-<li>基于参考模型的攻击：如果样本在目标模型上的损失小于参考模型上的损失，就认为是成员</li>
-<li>Zlib entropy：使用 zlib entropy作为损失</li>
-<li>近邻攻击：对样本进行变形，如果样本本身的损失小于变形样本的均值就认为是成员</li>
-<li>min-k% 概率：使用置信度向量中最低的k%分量计算损失</li>
-</ul>
-<h2 id="3-实验"><a href="#3-实验" class="headerlink" title="3. 实验"></a>3. 实验</h2><p><strong>模型</strong>：主要针对PYTHIA模型套件，包括：（1）五个PYTHIA模型（Biderman et al., 2023b），其参数分别为160M、1.4B、2.8B、6.7B和12B，训练数据为原始的Pile数据（Gao et al., 2020）；（2）五个PYTHIA-DEDUP模型（Biderman et al., 2023b），具有与PYTHIA相同的参数数量，但训练数据为去重后的Pile数据。我们还使用GPT-NEO家族的模型进行实验，以验证在不同模型家族中的发现，观察到大多数领域的趋势类似（见附录A.6）。</p>
-<p><strong>数据集</strong>：Pile中包含的七个多样化数据源：通用网页（Pile-CC）、知识来源（维基百科）、学术论文（PubMed Central，ArXiv）、对话数据（HackerNews）以及特定领域数据（DM Math，Github）。</p>
-<p><strong>评估指标</strong>：AUC， ROC，TPR@low%FPR</p>
-<h3 id="3-1-主要结果"><a href="#3-1-主要结果" class="headerlink" title="3.1 主要结果"></a>3.1 主要结果</h3><p>由下表可知，现在所有的针对大模型的成员推理都接近于随机猜测。总体上基于参考模型的推理表现最佳，而且发现训练集的去重降低了MIA的表现。</p>
-<p><img src="/2024/11/30/do-membership-inference-attacks-work-on-large-language-models-yue-du-bi-ji/Pasted image 20241130182805.png" alt="img"></p>
-<h3 id="3-2-为什么MIA表现不佳"><a href="#3-2-为什么MIA表现不佳" class="headerlink" title="3.2 为什么MIA表现不佳"></a>3.2 为什么MIA表现不佳</h3><h4 id="3-2-1-LLM的特性"><a href="#3-2-1-LLM的特性" class="headerlink" title="3.2.1 LLM的特性"></a>3.2.1 LLM的特性</h4><p><strong>训练集规模</strong>：当前最先进的大语言模型都使用巨量的数据训练模型，而模型的泛化程度会随着数据集的变大而变好。在这论文使用PYTHIA-DEDUP模型套件中的中间检查点来评估不同规模训练数据的影响。论文对每个检查点的最近100个步骤中采样成员，以去除成员的时效性偏差影响。MIA的表现一开始接近随机猜测，后来迅速升高，最后逐渐下降（如下图左）。开始性能低可能是因为模型在热身，对成员和非成员的损失都很高。后面随着训练的进行，由于数据和参数的比例较小，模型会出现过拟合。但最后随着训练的进行模型的泛化能力会加强。</p>
-<p><strong>训练轮次</strong>：增加训练轮次会增强MIA性能，但也会增加隐私泄露的风险（下图右）。论文对Datablations模型套件（Muennighoff et al., 2023）进行了MIA测试，该模型套件包含在不同epoch数量下，使用C4（Raffel et al., 2019）训练数据的子集训练的模型。<br><img src="/2024/11/30/do-membership-inference-attacks-work-on-large-language-models-yue-du-bi-ji/Pasted image 20241130184850.png" alt="img"></p>
-<h4 id="3-2-2-LLM固有的模糊性"><a href="#3-2-2-LLM固有的模糊性" class="headerlink" title="3.2.2 LLM固有的模糊性"></a>3.2.2 LLM固有的模糊性</h4><p>自然语言中存在重复文本，包括相近的表达方式、相似文本的自然使用、特定领域内的固有说法等，这就导致成员和非成员之间的差异没有那么明显。论文使用n-gram重叠比来量化重叠。对于一个m个词组成的成员样本$x=x_1x_2\dots x_m$以及其中的一个n-gram$x_i\dots x_{i+n-1}$，x在数据集D上的n-gram重叠定义为：</p>
-<script type="math/tex; mode=display">\frac1{m-n+1}\sum_{i=1}^{m-n+1}\mathbb{I}\{\exists y\in D:x_i...x_{i+n-1}\in y\}</script><p>这一指标表示非成员样本中的n-gram中有多少百分比至少能在一个成员样本中找到。下图展示了非成员样本对于整个训练集的7-gram重叠百分比。可以看到很多数据集的重叠比都很高。<br><img src="/2024/11/30/do-membership-inference-attacks-work-on-large-language-models-yue-du-bi-ji/Pasted image 20241130194213.png" alt="img"></p>
-<p>论文重新采样非成员样本，使重叠率降低，重新报告了MIA的性能。可以看到MIA的表现显著提高。<br>论文指出n-gram是自然语言的固有属性，还指出，n-gram重叠分布分析有助于评估一组候选非成员样本在构建MIA基准测试时，是否能代表目标领域。论文强调需要考虑数据领域的特征，例如n-gram重叠，并理解它们可能对MIA性能的影响。<br><img src="/2024/11/30/do-membership-inference-attacks-work-on-large-language-models-yue-du-bi-ji/Pasted image 20241130194822.png" alt="img"></p>
-<h3 id="3-3-候选集选择的重要性"><a href="#3-3-候选集选择的重要性" class="headerlink" title="3.3 候选集选择的重要性"></a>3.3 候选集选择的重要性</h3><p>最近的研究表明最先进的成员推理攻击在预训练模型上达到了&gt;0.7的AUC ROC。论文探讨了这些研究非成员候选选择方式如何导致非成员和成员之间固有、无意的分布偏移。以往的工作通常根据目标模型的知识截止日期来区分目标领域中的成员和非成员，成员为截止日期之前的样本，非成员反之。</p>
-<p>论文在wikipedia领域进一步加大了成员和非成员之间的时间差距。下表显示该设置可以显著增强成员推理的性能。推测这是源于语言的变化，如新术语的引入。<br><img src="/2024/11/30/do-membership-inference-attacks-work-on-large-language-models-yue-du-bi-ji/Pasted image 20241130201059.png" alt="img"></p>
-<p>下图展示了时间偏移前后7-gram的变化。可以看到时间偏移后7-gram重叠降低。论文建议在评估MIA性能时通过将候选非成员样本的n-gram重叠分布与从预训练语料库中剔除的样本集的n-gram重叠分布进行比较，来估算样本非成员集在成员领域中的代表性。<br><img src="/2024/11/30/do-membership-inference-attacks-work-on-large-language-models-yue-du-bi-ji/Pasted image 20241130201711.png" alt="img"></p>
-<h2 id="4-结论"><a href="#4-结论" class="headerlink" title="4. 结论"></a>4. 结论</h2><p>论文利用实验说明现在的成员推理攻击和随机猜测没什么差距。主要原因是1. 目前大模型的训练过程中使用的数据量大且训练轮次小，所以单个样本所能留下的痕迹很小；2. 成员和非成员之间具有很强的相似性（自然语料中可能包含很多重复的片段），导致他们之间的界限是模糊的。</p>
+                <p>论文题目：Can Neural Network Memorization Be Localized<br>发表时间：2023<br>发表期刊/会议： ICML, CCF A</p>
+<h2 id="1-内容简介"><a href="#1-内容简介" class="headerlink" title="1. 内容简介"></a>1. 内容简介</h2><p>这篇文章通过实验讨论模型的记忆性是否可以被定位到网络的特定部分。有之前的工作认为主要是模型的最后几层具有记忆性，但本篇论文反驳了这个观点，并提出模型的记忆性来自于所有层的个别神经元。</p>
+<h2 id="2-主要内容"><a href="#2-主要内容" class="headerlink" title="2. 主要内容"></a>2. 主要内容</h2><h3 id="2-1-问题设定"><a href="#2-1-问题设定" class="headerlink" title="2.1 问题设定"></a>2.1 问题设定</h3><p>讨论模型的记忆性首先要明确什么是模型的记忆性。在论文intro部分写道 目前一种常见模型记忆性的定义是，如果把一个非典型（可能指离群点）样本从训练集中移除，模型对其预测标签产生了明显的变化（在训练集时预测正确，移除后预测错误），则认为模型对这个样本产生了记忆。但计算这一度量的开销较大，故许多研究使用错误标注样本来衡量记忆程度，因为模型必须记住这个样本才能正确预测。这篇论文同时探讨非典型的记忆化喝错误标注的记忆化。</p>
+<p><strong>Preliminaries</strong>:考虑一个d层的前馈神经网络$\mathcal F_d$，其参数为$\theta = (\theta_1,\dots,\theta_d)$。使用$z_l$表示第$l$层的激活输出，可以使用下式进行表达：</p>
+<script type="math/tex; mode=display">
+z_l = \mathcal F(z_{l-1};\theta_l)</script><p>使用$[z_l]_j$表示第j个神经元/通道。模型使用监督学习训练，数据集为$\mathcal S=\{x_i,y_i\}^n$，优化器为SGD。第t个epoch训练的结果为$\theta^t=\{\theta_1^t,\dots,\theta_d^t\}$</p>
+<p>在带有标签噪声的实验中，论文随机改变了固定比例样本的标签。$\mathcal S=\mathcal S_c \cup \mathcal S_n$，其中c表示干净样本，n表示改变了标签的样本。</p>
+<p><strong>数据集和模型</strong>：数据集有CIFAR10，MNIST，SVHN。模型有ResNet-9，ResNet-50，ViT</p>
+<h3 id="2-2-梯度核算"><a href="#2-2-梯度核算" class="headerlink" title="2.2 梯度核算"></a>2.2 梯度核算</h3><p>在训练模型时，梯度更新公式为：</p>
+<script type="math/tex; mode=display">
+\theta_l^{t+1}=\theta^t_l-\eta \frac{d\mathcal L(\mathcal S,\mathcal F_d)}{d\theta_l}</script><p>梯度决定了如何更新模型的参数。如果一个知识被编码进模型参数，则梯度的大小就可以作为模型对该知识记忆潜力的表征。</p>
+<h4 id="2-2-1-分层范数贡献"><a href="#2-2-1-分层范数贡献" class="headerlink" title="2.2.1 分层范数贡献"></a>2.2.1 分层范数贡献</h4><p>为了获得干净样本和错误标注样本对梯度的贡献，论文使用$||d\mathcal L(\mathcal S_c,\mathcal F_d)||_2,||d\mathcal L(\mathcal S_n,\mathcal F_d)||_2$作为指标。使用每一层参数个数的算数平方根对其进行归一化。为了综合不同轮数或不同层的结果，使用平均值进行统计。</p>
+<p>从下图可以看出不存在哪一层的错误标注样本（记忆样本，Noisy样本）比干净样本的贡献值更大。同时论文也观测到一个有趣的事实是即使错误标注样本只占10%，他们对梯度的贡献度和其它样本整体的贡献度几乎一样大。这表明即使不存在特定的哪一层记住了错误标注样本，他们也确实对模型的每一层产生了巨大影响，这也意味着错误标注样本的梯度范数比干净样本高一个数量级。<br><img src="/2025/03/22/can-neural-network-memorization-be-localized-yue-du-bi-ji/Pasted image 20250322162251.png" alt="img"></p>
+<h4 id="2-2-2-干净样本和错误标注样本的梯度相似度"><a href="#2-2-2-干净样本和错误标注样本的梯度相似度" class="headerlink" title="2.2.2 干净样本和错误标注样本的梯度相似度"></a>2.2.2 干净样本和错误标注样本的梯度相似度</h4><p>上图展示的结果可以看到整体梯度值比单独的干净或错误标注样本小很多，这说明干净样本和噪声样本的梯度方向可能是相反的。论文对每一层每一个epoch里干净样本和错误标注样本的梯度平均值的余弦相似度进行计算。结果如下图。</p>
+<p>可以看到干净样本和错误标注样本的余弦相似度非常小。但该实验暂时无法说明(1) 每个神经元是否存在梯度错位（2）这是一个只发生在宏观层级的现象。<br><img src="/2025/03/22/can-neural-network-memorization-be-localized-yue-du-bi-ji/Pasted image 20250322163740.png" alt="img"></p>
+<p>和图三（下图）的曲线对比可以发现错误标注样本被模型学习的主要阶段在第10-30轮。对于所有轮所有层大多数时间两种样本余弦相似度的值都低于-0.75。这表明对错误标注的样本进行过拟合可能不是一种良性的现象。</p>
+<h3 id="2-3-层的功能临界性"><a href="#2-3-层的功能临界性" class="headerlink" title="2.3 层的功能临界性"></a>2.3 层的功能临界性</h3><h4 id="2-3-1-层回溯"><a href="#2-3-1-层回溯" class="headerlink" title="2.3.1 层回溯"></a>2.3.1 层回溯</h4><p>对于一个已经训练T轮收敛的模型$\mathcal F_d$，参数是$(\theta_1^T,\dots.\theta_d^T)$，论文把模型某一层的参数回退到第t轮的checkpoint，对每一层都重复这个过程。接着利用模型训练集对模型性能进行测试。结果如下图（图三）所示<br><img src="/2025/03/22/can-neural-network-memorization-be-localized-yue-du-bi-ji/Pasted image 20250322164618.png" alt="img"><br>分析可知：</p>
+<ol>
+<li>对模型最后一层进行回溯造成的影响较少（绿线和红线末尾准确率都比较高）</li>
+<li>（没看懂在说啥，感觉和图展示的不一样）If contrasted with learning dynamics of the memorized examples (Figure 3 (left)), we observe that the model accuracy on noisy examples stays below 20% until the 30th epoch. Despite this, rewinding individual model layers to a checkpoint before the 30th epoch does not reduce accuracy on memorized examples. This seemingly contradicts the hypothesis that memorization happens in the last (few) layer(s).</li>
+<li>不同模型记忆错误标注样本的关键层不同。</li>
+</ol>
+<p>综合信息表明：</p>
+<ol>
+<li>模型的记忆性分布在不同的层里</li>
+<li>模型记忆性分布和问题相关</li>
+<li>记忆层与学习干净样本的关键层有一定重叠</li>
+</ol>
+<h4 id="2-3-2-层重训练"><a href="#2-3-2-层重训练" class="headerlink" title="2.3.2 层重训练"></a>2.3.2 层重训练</h4><p>从上面的实验中注意到错误标注样本的关键层对干净样本同样重要。不同层固有的的学习速率可能是一个额外因素。为了进一步研究，论文将某一层回溯到初始状态后使用干净数据进行重训练。</p>
+<p>对$\mathcal F_d$的第l层进行重新训练时，初始化参数如下：</p>
+<script type="math/tex; mode=display">
+\theta_{init}=(\theta_1^T,\dots,\theta_{l-1}^T,\theta_l^0,\theta_{l+1}^T,\dots,\theta^T_d)</script><p>使用单周期学习率调度对模型进行20轮训练，第10轮时学习率到达最大值0.1，其它层参数保持冻结。</p>
+<p>下图结果表明，即使只使用干净样本训练单个层，它仍可以在没见过噪声样本的情况下对其进行准确预测。表明预测噪声样本的信息已经保存在其他层，该层对于噪声样本的记忆是冗余的。需要注意的是这个推导过程是单向的，即如果预测效果不好也不能说明该层对记忆至关重要，因为模型优化可能有多个最优解，可能由于优化路径不同导致结果的变化。<br><img src="/2025/03/22/can-neural-network-memorization-be-localized-yue-du-bi-ji/Pasted image 20250322182410.png" alt="img"></p>
+<h3 id="2-4-单个神经元的记忆性"><a href="#2-4-单个神经元的记忆性" class="headerlink" title="2.4 单个神经元的记忆性"></a>2.4 单个神经元的记忆性</h3><h4 id="2-4-1-预测一个样本需要多少个神经元？"><a href="#2-4-1-预测一个样本需要多少个神经元？" class="headerlink" title="2.4.1 预测一个样本需要多少个神经元？"></a>2.4.1 预测一个样本需要多少个神经元？</h4><p>论文利用基于梯度的贪心搜索来迭代的找到给定候选样本上的预测的最重要的神经元。<br>具体方法为：</p>
+<ol>
+<li>线性层：将某个神经元的权重置0</li>
+<li>卷积层：将某一层的整个通道置0</li>
+</ol>
+<p>为了更鲁棒的找到某个样本的重要神经元，论文采用如下的方法（按我的理解是通过修改参数翻转该样本的预测结果，然后记录翻转过程中神经元的变化）：</p>
+<ol>
+<li>保持预测结果不变：最小化训练集随机batch的损失，最大化待翻转样本的损失</li>
+<li>添加高斯噪声：在输入上添加噪声，并基于五组噪声样本预测结果的均值进行搜索（避免产生对抗样本）<br>模型记为$\overline{\mathcal {F_d}}$对于每个样本，上述过程需要独立的执行30次，然后平均30次的执行结果。寻找重要神经元的优化目标可以形式化为 ：<script type="math/tex; mode=display">
+\left[z_l\right]_j^*=\arg \max _{l, j}\left[\nabla_{\theta_l}\left(\ell\left(\overline{\mathcal{F}_d}\left(\mathbf{x}_i\right), \mathbf{y}_i\right)-\frac{1}{n} \mathcal{L}\left(\mathcal{S}, \overline{\mathcal{F}_d}\right)\right)\right]_j</script></li>
+</ol>
+<p>在卷积层的情况下，$[z_l]_j​$代表的是整个通道的激活值；在线性层的情况下，代表的是单个神经元的激活值。我们将该激活值置零，然后继续前向传播，直至该样本的预测翻转到错误类别。这一过程将迭代进行，直到样本的预测发生翻转。记录屏蔽的神经元数量。</p>
+<blockquote>
+<p>意思是找到一个神经元，使得将该神经元屏蔽（激活后的值置为0）后argmax里面的优化项值最大。优化项的含义是该样本的损失和训练集平均损失的差值在神经元上的梯度值。如果屏蔽了这个神经元后样本标签没有发生偏转则继续执行此过程。</p>
+</blockquote>
+<p>实验结果如下图所示。可以发现干净样本需要置0 的神经元个数显著多于噪声样本。这说明只有极少数神经元负责记忆错误标注样本（噪声样本、记忆样本）。超过90%的错误标注样本需要小于10个神经元。<br><img src="/2025/03/22/can-neural-network-memorization-be-localized-yue-du-bi-ji/Pasted image 20250322200928.png" alt="img"><br>论文将对样本重要的神经元屏蔽，并计算剩余训练样本在模型上的准确率。结果发现记忆噪声样本的神经元对总体准确率的影响远小于记忆干净样本的神经元，且屏蔽噪声样本的神经元比屏蔽干净样本的神经元的准确率高10%</p>
+<p>此外，观察关键神经元的分布情况可以发现，关键神经元并没有分布在特定层。干净样本和记忆化样本的重要是神经元可能往往属于相似的层，而不是来自专门的层。可能有某些层对模型整体很重要。关键神经元分散在多个层说明记忆并不局限于特定的层，而是多个神经元共同负责。</p>
+<p>未来研究可以利用关键神经元移除作为检测噪声样本的方法（噪声样本的关键神经元较少）。使用这种方法检测错误标注样本的效果优于现有方法。</p>
+<h4 id="2-4-2-样本绑定dropout：对特定神经元进行定向记忆"><a href="#2-4-2-样本绑定dropout：对特定神经元进行定向记忆" class="headerlink" title="2.4.2 样本绑定dropout：对特定神经元进行定向记忆"></a>2.4.2 样本绑定dropout：对特定神经元进行定向记忆</h4><p>根据前面的观察，正确预测错误标记的样本所需的信息通常比干净样本所需的信息要少得多。更有趣的是，通过将干净样本的预测通过归零个别激活来改变，通常会显著增加模型在同一训练集和测试集上的整体准确性损失。这些发现促使尝试将样本的记忆化过程引导到事先固定的神经元上。</p>
+<p>为了实现将神经元子集与每个样本连接的想法，我们为每层分配一个固定比例的神经元（记为pgen），这些神经元永远不会被丢弃。我们将这些神经元称为泛化神经元。在卷积层的情况下，为了保持通道结构，我们同样选择一个固定比例的通道（记为pgen），这些通道永远不会被丢弃。在剩余的部分中，我们为每个样本分配一个小子集的pmem神经元，这些神经元在采样特定样本时会被激活。目标是将所有特征学习引导到pgen神经元集合上，并将与样本特定记忆化相关的神经元引导到pmem神经元集合上。在测试时，我们会丢弃对应于pmem的神经元，即将其激活归零，从而调整模型，使得可以去除记忆化的影响。</p>
+<p>样本绑定丢弃的实验表明，确实可以将样本的记忆化限制在预先确定的神经元集合中。在ResNet 9模型的每一层后，我们添加一层“样本绑定丢弃”，并在MNIST、SVHN和CIFAR10数据集上进行训练，训练设置中有10%的均匀随机标签噪声。在丢弃记忆化神经元后，三个数据集的错误标记样本的准确率分别降至0.1%、1.4%和3.1%，尽管模型在训练时几乎完美拟合了所有的噪声数据。在所有情况下，对干净样本的有效影响分别为0.8%、4.2%和9.2%，同时降低了训练和测试性能之间的泛化差距。这表明，pgen比例的（泛化）神经元已经包含了分类数据集原型样本所需的特征。</p>
+<p>为了理解在移除记忆化神经元后，干净样本准确率下降的原因，我们发现，大多数模型不再正确预测的样本实际上要么是标记错误和模糊不清的样本，要么是数据集中具有例外性和独特性的样本，模型必须记忆这些样本才能正确预测（见下图）。<br><img src="/2025/03/22/can-neural-network-memorization-be-localized-yue-du-bi-ji/Pasted image 20250322204446.png" alt="img"></p>
+<p>为了评估pgen和pmem的取值对样本绑定丢弃方法在神经元中定位记忆化的能力的影响，我们在12种不同的参数组合上进行了网格搜索。表2展示了这些值变化对方法有效性变化的结果。我们发现，该方法对pgen和pmem的广泛取值（和组合）具有鲁棒性。一般来说，我们观察到一个趋势：随着泛化神经元容量的增加，记忆化神经元中的记忆化定位持续减少（即，在丢弃记忆化神经元后，噪声样本的准确率提高）。与此同时，这也导致了在丢弃记忆化神经元后，干净样本准确率的提高。</p>
+<p><strong>和其它baseline的对比测试</strong>：对于给定的pgen值，我们选择两个等效的模型：（a）使用标准丢弃法，p = pgen；（b）使用稀疏网络，剩余参数比例 = pgen。然后，我们最终比较在CIFAR-10数据集上训练50个epoch后，模型在干净样本和噪声样本上的准确率，使用ResNet-9模型。在样本绑定丢弃的情况下，我们丢弃记忆化神经元，同时在表3中测量准确率。我们发现，在相同的稀疏性水平下，当样本绑定丢弃能够将记忆化引导到选定的神经元集时，稀疏和标准丢弃方法仍然能够过拟合训练集（包括错误标记的样本）。</p>
+<h2 id="3-结论和收获"><a href="#3-结论和收获" class="headerlink" title="3. 结论和收获"></a>3. 结论和收获</h2><p>巧思的实验设计，严谨的论证过程，规范的行文结构。</p>
 
                 
             </div>
@@ -549,7 +591,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://blog.expecto.top/2024/11/30/do-membership-inference-attacks-work-on-large-language-models-yue-du-bi-ji/">https://blog.expecto.top/2024/11/30/do-membership-inference-attacks-work-on-large-language-models-yue-du-bi-ji/</a>
+                    <a href="https://blog.expecto.top/2025/03/22/can-neural-network-memorization-be-localized-yue-du-bi-ji/">https://blog.expecto.top/2025/03/22/can-neural-network-memorization-be-localized-yue-du-bi-ji/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -586,7 +628,15 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/">
+                                    <span class="chip bg-color">论文笔记</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%A8%A1%E5%9E%8B%E8%AE%B0%E5%BF%86%E6%80%A7/">
+                                    <span class="chip bg-color">模型记忆性</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -630,17 +680,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2024/12/29/are-diffusion-models-vulnerable-to-membership-inference-attacks-yue-du-bi-ji/">
+                <a href="/2025/03/22/can-neural-network-memorization-be-localized-yue-du-bi-ji/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Are Diffusion Models Vulnerable to Membership Inference Attacks 阅读笔记">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Can Neural Network Memorization Be Localized 阅读笔记">
                         
-                        <span class="card-title">Are Diffusion Models Vulnerable to Membership Inference Attacks 阅读笔记</span>
+                        <span class="card-title">Can Neural Network Memorization Be Localized 阅读笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -650,9 +701,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-12-29
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-03-22
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -661,6 +712,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -668,12 +720,8 @@
                         <span class="chip bg-color">论文笔记</span>
                     </a>
                     
-                    <a href="/tags/%E6%88%90%E5%91%98%E6%8E%A8%E7%90%86/">
-                        <span class="chip bg-color">成员推理</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%89%A9%E6%95%A3%E6%A8%A1%E5%9E%8B/">
-                        <span class="chip bg-color">扩散模型</span>
+                    <a href="/tags/%E6%A8%A1%E5%9E%8B%E8%AE%B0%E5%BF%86%E6%80%A7/">
+                        <span class="chip bg-color">模型记忆性</span>
                     </a>
                     
                 </div>
@@ -687,13 +735,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/11/29/low-cost-high-power-membership-inference-attacks-yue-du-bi-ji/">
+                <a href="/2025/03/10/property-existence-inference-against-generative-models-yue-du-bi-ji/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Low-Cost High-Power Membership Inference Attacks 阅读笔记">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Property Existence Inference against Generative Models 阅读笔记">
                         
-                        <span class="card-title">Low-Cost High-Power Membership Inference Attacks 阅读笔记</span>
+                        <span class="card-title">Property Existence Inference against Generative Models 阅读笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -704,7 +752,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-11-29
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-03-10
                             </span>
                         <span class="publish-author">
                             
@@ -721,8 +769,8 @@
                         <span class="chip bg-color">论文笔记</span>
                     </a>
                     
-                    <a href="/tags/%E6%88%90%E5%91%98%E6%8E%A8%E7%90%86/">
-                        <span class="chip bg-color">成员推理</span>
+                    <a href="/tags/%E5%B1%9E%E6%80%A7%E5%AD%98%E5%9C%A8%E6%8E%A8%E7%90%86/">
+                        <span class="chip bg-color">属性存在推理</span>
                     </a>
                     
                 </div>
