@@ -4,9 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="代码执行日志记录, 酸辣果汁">
-    <meta name="description" content="忘了在哪个开源项目里看到了一个执行日志系统。它会在每次运行时备份代码。对于我这种随时会忘掉实验结果和实验设置的人来说，这种东西应该会很有用……吧。凭印象和自己的喜好复现了一下，具体如下。
-首先，项目应该保持如下的结构。code路径下存放所有">
+    <meta name="keywords" content="High-Dimensional Probability 第二章笔记-1, 酸辣果汁">
+    <meta name="description" content="
+本章介绍几种集中不等式并介绍几种分布。笔记中只简单记录结论，证明过程可以参阅原书”High-Dimensional Probability An Introduction with Applications in Data Science">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>代码执行日志记录 | 酸辣果汁</title>
+    <title>High-Dimensional Probability 第二章笔记-1 | 酸辣果汁</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -325,12 +325,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">代码执行日志记录</h1>
+                    <h1 class="description center-align post-title">High-Dimensional Probability 第二章笔记-1</h1>
                 </div>
             </div>
         </div>
@@ -446,18 +446,27 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F/">
-                                <span class="chip bg-color">日志系统</span>
+                            <a href="/tags/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
+                                <span class="chip bg-color">阅读笔记</span>
                             </a>
                         
-                            <a href="/tags/%E6%89%A7%E8%A1%8C%E6%97%A5%E5%BF%97/">
-                                <span class="chip bg-color">执行日志</span>
+                            <a href="/tags/%E9%AB%98%E7%BB%B4%E6%A6%82%E7%8E%87%E8%AE%BA/">
+                                <span class="chip bg-color">高维概率论</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/High-Dimensional-Probability/" class="post-category">
+                                High-Dimensional Probability
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -466,28 +475,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-10-05
+                    2025-03-24
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-10-05
+                    2025-03-24
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    666
+                    1.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    6 分
                 </div>
                 
 
@@ -507,90 +516,42 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>忘了在哪个开源项目里看到了一个执行日志系统。它会在每次运行时备份代码。对于我这种随时会忘掉实验结果和实验设置的人来说，这种东西应该会很有用……吧。凭印象和自己的喜好复现了一下，具体如下。</p>
-<p>首先，项目应该保持如下的结构。code路径下存放所有的代码，任何数据和中间运行结果都<strong>不</strong>应该放在这里。log目录下存放所有的日志记录。其它的目录根据自己喜好设置。<br><img src="/2023/10/05/dai-ma-zhi-xing-ri-zhi-ji-lu/path.png" alt="代码路径"></p>
-<p>在code/util路径下，新建一个code_logger.py。粘贴如下内容。该日志模块下集成了代码备份、参数保存、日志输出与保存的功能。</p>
-<pre class=" language-lang-python"><code class="language-lang-python">import os
-from datetime import datetime
-import shutil
-import json
-import logging
-
-
-class CodeLogger:
-    def __init__(self, comment=None, args=None):
-        self.run_time = datetime.now()
-        self.time_fmt = "%Y-%m-%d-%H-%M-%S"
-        # self.time_fmt = "%Y%m%d%H%M%S"
-        self.comment = comment
-        self.log_dir = self.run_time.strftime(self.time_fmt)
-        if comment is not None:
-            self.log_dir = f"{self.log_dir}-{comment}"
-        self.log_dir = os.path.join("../log", self.log_dir)
-        self.args = args
-
-        # create log dir if not exists
-        if not os.path.exists(self.log_dir):
-            os.mkdir(self.log_dir)
-
-        # back up codes
-        shutil.copytree("../code/", os.path.join(self.log_dir, "code/"))
-        if self.args is not None:
-            self.save_args(args)
-        self.logger = self.init_logger()
-
-    def save_args(self, args):
-        with open(os.path.join(self.log_dir, "args.json"), "w") as f:
-            json.dump(args.__dict__, f)
-
-    def init_logger(self):
-        logger = logging.getLogger(self.comment)
-        logger.setLevel(logging.INFO)
-        log_format = logging.Formatter(
-            "%(asctime)s %(levelname)-8s %(message)s")
-        filename = os.path.join(self.log_dir, "run.log")
-        log_handler = logging.FileHandler(filename, mode="w")
-        log_handler.setLevel(logging.INFO)
-        log_handler.setFormatter(log_format)
-        logger.addHandler(log_handler)
-        console_logger = logging.StreamHandler()
-        console_logger.setLevel(logging.INFO)
-        console_logger.setFormatter(log_format)
-        logger.addHandler(console_logger)
-        return logger
-</code></pre>
-<p>在使用该模块时，需要先import该模块。演示如下：</p>
-<pre class=" language-lang-python"><code class="language-lang-python">from util.models import get_architecture
-from util.code_logger import CodeLogger
-import argparse
-
-
-parser = argparse.ArgumentParser()
-parser.add_argument("--model", type=str, default="resnet")
-parser.add_argument("--dataset", type=str, default="cifar10")
-parser.add_argument("--epochs", type=int, default=150)
-parser.add_argument("--batch_size", type=int, default=256)
-parser.add_argument("--lr", type=float, default=0.01)
-parser.add_argument("--verbose", action="store_true")
-args = parser.parse_args()
-
-model_name = args.model
-dataset = args.dataset
-epochs = args.epochs
-batch_size = args.batch_size
-lr = args.lr
-verbose = args.verbose
-
-cl = CodeLogger(comment=f"train model {model_name}_{dataset}", args=args)
-''' 上面是日志模块初始化，初始化会做三件事：
-1. 在log文件夹下新建一个文件夹，文件夹名称为“当前时间-comment内容”。
-2. 把code路径下所有文件保存到新建的文件夹中
-3. 把运行参数args存放到新建文件夹的args.json中
-'''
-cl.logger.info(f"test output") # 控制台输出，同时会把输出内容保存到新建文件夹下的run.log中
-</code></pre>
-<p>如果再发生没有记录实验结果，或者忘掉实验设置时，就可以通过查找log目录下的代码备份或者参数备份来一键找回了。</p>
-
+                <blockquote>
+<p>本章介绍几种集中不等式并介绍几种分布。笔记中只简单记录结论，证明过程可以参阅原书”High-Dimensional Probability An Introduction with Applications in Data Science”</p>
+</blockquote>
+<h2 id="2-1-为什么需要集中不等式"><a href="#2-1-为什么需要集中不等式" class="headerlink" title="2.1 为什么需要集中不等式"></a>2.1 为什么需要集中不等式</h2><p>集中不等式量化了一个随机变量$X$相较于其均值$\mu$的偏移程度。这件事通常使用$X-\mu$分布两端的一个约束表示：</p>
+<script type="math/tex; mode=display">
+\mathbb P\{\left |X-\mu \right |>t\} \le something \, small</script><p>切比雪夫不等式就是一个较弱的集中不等式。</p>
+<p><strong>主张2.1.2：高斯分布的尾约束</strong>：令$g\sim N(0,1),$则对于所有的$t&gt;0$，有：</p>
+<script type="math/tex; mode=display">
+(\frac{1}{t}-\frac{1}{t^3})\cdot\frac{1}{\sqrt{2\pi}}e^{-t^2/2}\le\mathbb P\{g\ge t\}\le\frac{1}{t}\cdot\frac{1}{\sqrt{2\pi}}e^{-t^2/2}</script><p>特别的，当$t&gt;1$时，尾部由概率密度函数本身约束：</p>
+<script type="math/tex; mode=display">
+\mathbb{P}\{g\ge t\}\le\frac{1}{\sqrt{2\pi}}e^{-t^2/2}</script><p>2.1.2所展示的下界有可能是个负值，所以下界在t&gt;1的时候才有意义。</p>
+<p>使用大数定理可知当$N\to\infty$时$Z_N$趋向于正态分布。故独立同分布随机变量的和的界可以用高斯分布的尾约束来计算。但即使该约束的上界是以指数速度逼近0的，但$Z_N$和正态分布之间的误差可能会减小的过于缓慢。</p>
+<p><strong>定理2.1.3 Berry-Esseen中心极限定理</strong>： i.i.d.随机变量序列$X_i$及其和$S_N$，对于任意$N$和$t\in \mathbb R$，有：</p>
+<script type="math/tex; mode=display">
+\left|\mathbb P\{Z_N\ge t\}-\mathbb P\{g \ge t\}\right| \le \frac{\rho}{\sqrt{N}}</script><p>其中$\rho=\mathbb E|X_1-\mu|^3/\sigma^3\,,g\sim N(0,1)$<br> 这个定理说明$Z_N$和正态分布的误差减小的过于缓慢，结合2.1.2使用会导致高斯分布尾约束的指数下降速率无法发挥作用</p>
+<p><strong>练习2.1.4</strong>：令$g\sim N(0,1)$。证明对于任意$t\ge 1$，有：</p>
+<script type="math/tex; mode=display">
+\mathbb{E} g^2 \mathbf{1}_{\{g>t\}}=t \cdot \frac{1}{\sqrt{2 \pi}} e^{-t^2 / 2}+\mathbb{P}\{g>t\} \leq\left(t+\frac{1}{t}\right) \frac{1}{\sqrt{2 \pi}} e^{-t^2 / 2}</script><h2 id="2-2-霍夫丁不等式"><a href="#2-2-霍夫丁不等式" class="headerlink" title="2.2 霍夫丁不等式"></a>2.2 霍夫丁不等式</h2><p><strong>定义 2.2.1 对称伯努利分布(Symmetric Bernoulli distribution)</strong>：一个随机变量$X$是对称伯努利分布（也叫拉德马赫分布）当且仅当它取值为-1或1的概率都为$1/2$，即：</p>
+<script type="math/tex; mode=display">
+\mathbb P(X=-1)=\mathbb P(X=1)=\frac{1}{2}</script><p>显然，如果$X$为一般(usual)伯努利分布当且仅当$2X-1$为对称伯努利分布。</p>
+<p><strong>定理2.2.2霍夫丁不等式</strong>：令$X_1,\dots,X_N$不相关的对称伯努利随机变量，$a=(a_1,\dots,a_N)\in \mathbb R^N$。对于任意$t\ge 0$，有：</p>
+<script type="math/tex; mode=display">
+\mathbb P\left\{\sum_{i=1}^Na_iX_i\right\}\le \exp\left(-\frac{t^2}{2||a||^2_2}\right)</script><p>霍夫丁定理可以看作是中心极限定理的集中形式。从中我们可以看出$\sum a_iX_i$的尾部和高斯分布的尾部表现相似。当$Z_n$和高斯分布之间的误差并不是指数级小的时候，我们可以依据该定理获得和高斯分布一样指数小的尾部约束。</p>
+<p><strong>评论2.2.4</strong>：值得注意的是，霍夫丁定理并不是渐进不等式，即它对所有的N都成立（其它经典的概率论定理可能只有在$n\to\infty$时才成立），而且N越大，霍夫丁不等式越强。这在实际应用中尤其是N和数据规模相关时尤其好用。</p>
+<p><strong>定理2.2.5双边霍夫丁不等式</strong>：令$X_1,\dots,X_N$不相关的对称伯努利随机变量，$a=(a_1,\dots,a_N)\in \mathbb R^N$。对于任意$t&gt; 0$，有：</p>
+<script type="math/tex; mode=display">
+\mathbb{P}\left\{\left|\sum_{i=1}^N a_i X_i\right| \geq t\right\} \leq 2 \exp \left(-\frac{t^2}{2\|a\|_2^2}\right)</script><p><strong>定理2.2.6只有一般约束的随机变量的霍夫丁不等式</strong>：令$X_1,\dots,X_N$不相关的随机变量，假设对于每个随机变量有$X_i\in[m_i,M_i]$，则对于任意的$t&gt;0$，有：</p>
+<script type="math/tex; mode=display">
+\mathbb{P}\left\{\sum_{i=1}^N\left(X_i-\mathbb{E} X_i\right) \geq t\right\} \leq \exp \left(-\frac{2 t^2}{\sum_{i=1}^N\left(M_i-m_i\right)^2}\right)</script><p><strong>练习2.2.8加强随机算法</strong>：有一个随机决策算法，该算法有$1/2+\delta$的概率返回正确答案，其中$\delta&gt;0$。为了提升该算法，我们把该算法运行N次并进行投票（少数服从多数）。证明对于任意的$\epsilon\in(0,1)$，投票后算法正确率至少为$1-\epsilon$，只要：</p>
+<script type="math/tex; mode=display">
+N\ge\frac{1}{2\delta^2}ln(\frac{1}{\epsilon})</script><p><strong>练习2.2.9均值的鲁棒估计</strong>：假设我们想估计随机变量$X$的均值$\mu$，从X独立采样出一批样本$X_1,\dots,X_N$。我们想要$\varepsilon$-准确度，即$\mu\in(\mu-\varepsilon,\mu+\varepsilon)$<br>(a) 证明采样数量为$N=O(\sigma^2/\epsilon^2)$的样本足以以3/4的概率达到$\varepsilon$-准确度，其中$\sigma^2$是X的方差<br>(b) 证明采样数量为$N=O(log(\delta^{-1})\sigma^2/\epsilon^2)$的样本足以至少以$1-\delta$的概率达到$\varepsilon$-准确度。</p>
+<p><strong>练习2.2.10小球概率</strong>：令$X_1,\dots,X_N$是非负的且连续分布的独立随机变量。假设$X_i$一致有界于1<br>(a) 证明$X_i$的矩生成函数满足：</p>
+<script type="math/tex; mode=display">
+\mathbb E(exp(-tX_i))\le\frac{1}{t}\quad for\,\,\,all\,\,\,t>0</script><p>(b) 推理对于任意的$\varepsilon &gt;0$,有：</p>
+<script type="math/tex; mode=display">
+\mathbb P\left\{\sum_{i=1}^NX_i\le\varepsilon N\right\}\le(e\varepsilon)^N</script>
                 
             </div>
             <hr/>
@@ -616,7 +577,7 @@ cl.logger.info(f"test output") # 控制台输出，同时会把输出内容保�
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://blog.expecto.top/2023/10/05/dai-ma-zhi-xing-ri-zhi-ji-lu/">https://blog.expecto.top/2023/10/05/dai-ma-zhi-xing-ri-zhi-ji-lu/</a>
+                    <a href="https://blog.expecto.top/2025/03/24/high-dimensional-probability-di-er-zhang-bi-ji-1/">https://blog.expecto.top/2025/03/24/high-dimensional-probability-di-er-zhang-bi-ji-1/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -654,12 +615,12 @@ cl.logger.info(f"test output") # 控制台输出，同时会把输出内容保�
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F/">
-                                    <span class="chip bg-color">日志系统</span>
+                                <a href="/tags/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
+                                    <span class="chip bg-color">阅读笔记</span>
                                 </a>
                             
-                                <a href="/tags/%E6%89%A7%E8%A1%8C%E6%97%A5%E5%BF%97/">
-                                    <span class="chip bg-color">执行日志</span>
+                                <a href="/tags/%E9%AB%98%E7%BB%B4%E6%A6%82%E7%8E%87%E8%AE%BA/">
+                                    <span class="chip bg-color">高维概率论</span>
                                 </a>
                             
                         </div>
@@ -705,17 +666,18 @@ cl.logger.info(f"test output") # 控制台输出，同时会把输出内容保�
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/10/12/cade-detecting-and-explaining-concept-drift-samples-for-security-applications-yue-du-bi-ji/">
+                <a href="/2025/03/24/high-dimensional-probability-di-er-zhang-bi-ji-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="CADE: Detecting and Explaining Concept Drift Samples for Security Applications 阅读笔记">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="High-Dimensional Probability 第二章笔记-1">
                         
-                        <span class="card-title">CADE: Detecting and Explaining Concept Drift Samples for Security Applications 阅读笔记</span>
+                        <span class="card-title">High-Dimensional Probability 第二章笔记-1</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -725,30 +687,31 @@ cl.logger.info(f"test output") # 控制台输出，同时会把输出内容保�
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-10-12
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-03-24
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            wangxh
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/High-Dimensional-Probability/" class="post-category">
+                                    High-Dimensional Probability
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
-                        <span class="chip bg-color">机器学习</span>
+                    <a href="/tags/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">阅读笔记</span>
                     </a>
                     
-                    <a href="/tags/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/">
-                        <span class="chip bg-color">论文笔记</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%A6%82%E5%BF%B5%E6%BC%82%E7%A7%BB/">
-                        <span class="chip bg-color">概念漂移</span>
+                    <a href="/tags/%E9%AB%98%E7%BB%B4%E6%A6%82%E7%8E%87%E8%AE%BA/">
+                        <span class="chip bg-color">高维概率论</span>
                     </a>
                     
                 </div>
@@ -762,13 +725,13 @@ cl.logger.info(f"test output") # 控制台输出，同时会把输出内容保�
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/09/06/2023-an-quan-ding-hui-ai-an-quan-xiang-guan-hui-zong/">
+                <a href="/2025/03/22/can-neural-network-memorization-be-localized-yue-du-bi-ji/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="2023安全顶会AI安全相关汇总">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Can Neural Network Memorization Be Localized 阅读笔记">
                         
-                        <span class="card-title">2023安全顶会AI安全相关汇总</span>
+                        <span class="card-title">Can Neural Network Memorization Be Localized 阅读笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -779,7 +742,7 @@ cl.logger.info(f"test output") # 控制台输出，同时会把输出内容保�
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-09-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-03-22
                             </span>
                         <span class="publish-author">
                             
@@ -792,20 +755,12 @@ cl.logger.info(f"test output") # 控制台输出，同时会把输出内容保�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
-                        <span class="chip bg-color">机器学习</span>
+                    <a href="/tags/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">论文笔记</span>
                     </a>
                     
-                    <a href="/tags/%E9%A1%B6%E4%BC%9A/">
-                        <span class="chip bg-color">顶会</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%B1%87%E6%80%BB/">
-                        <span class="chip bg-color">汇总</span>
-                    </a>
-                    
-                    <a href="/tags/AI%E5%AE%89%E5%85%A8/">
-                        <span class="chip bg-color">AI安全</span>
+                    <a href="/tags/%E6%A8%A1%E5%9E%8B%E8%AE%B0%E5%BF%86%E6%80%A7/">
+                        <span class="chip bg-color">模型记忆性</span>
                     </a>
                     
                 </div>
@@ -936,6 +891,13 @@ cl.logger.info(f"test output") # 控制台输出，同时会把输出内容保�
 
 </main>
 
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+    });
+</script>
 
 
 
