@@ -4,10 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Denoising Diffusion Probabilistic Models 阅读笔记, 酸辣果汁">
-    <meta name="description" content="Denoising Diffusion Probabilistic Models 阅读笔记论文题目：Denoising Diffusion Probabilistic Models
-发表时间：2020
-发表期刊/会议：NIPS  期刊   ">
+    <meta name="keywords" content="2025调研, 酸辣果汁">
+    <meta name="description" content="USENIX 2024错误注入和鲁棒性
+DNN-GP: Diagnosing and Mitigating Model’s Faults Using Latent Concepts.
+Yes, One-Bit-Flip Matters! U">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +19,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Denoising Diffusion Probabilistic Models 阅读笔记 | 酸辣果汁</title>
+    <title>2025调研 | 酸辣果汁</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -326,12 +326,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Denoising Diffusion Probabilistic Models 阅读笔记</h1>
+                    <h1 class="description center-align post-title">2025调研</h1>
                 </div>
             </div>
         </div>
@@ -447,16 +447,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/">
-                                <span class="chip bg-color">论文笔记</span>
-                            </a>
-                        
-                            <a href="/tags/%E6%88%90%E5%91%98%E6%8E%A8%E7%90%86/">
-                                <span class="chip bg-color">成员推理</span>
-                            </a>
-                        
-                            <a href="/tags/%E6%89%A9%E6%95%A3%E6%A8%A1%E5%9E%8B/">
-                                <span class="chip bg-color">扩散模型</span>
+                            <a href="/tags/%E8%AE%BA%E6%96%87%E8%B0%83%E7%A0%94/">
+                                <span class="chip bg-color">论文调研</span>
                             </a>
                         
                     </div>
@@ -471,28 +463,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2025-02-17
+                    2025-08-28
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-02-27
+                    2025-08-28
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.6k
+                    820
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    7 分
+                    4 分
                 </div>
                 
 
@@ -512,43 +504,76 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Denoising-Diffusion-Probabilistic-Models-阅读笔记"><a href="#Denoising-Diffusion-Probabilistic-Models-阅读笔记" class="headerlink" title="Denoising Diffusion Probabilistic Models 阅读笔记"></a>Denoising Diffusion Probabilistic Models 阅读笔记</h1><p>论文题目：Denoising Diffusion Probabilistic Models</p>
-<p>发表时间：2020</p>
-<p>发表期刊/会议：NIPS  期刊   CCF-A<br>论文作者：Jonathan Ho et al.</p>
-<h2 id="1-内容简介"><a href="#1-内容简介" class="headerlink" title="1. 内容简介"></a>1. 内容简介</h2><p>介绍扩散模型的基本内容。参考”Understanding Diffusion Models: A Unified Perspective”</p>
-<h2 id="2-主要内容"><a href="#2-主要内容" class="headerlink" title="2. 主要内容"></a>2. 主要内容</h2><h3 id="2-1-理论基础"><a href="#2-1-理论基础" class="headerlink" title="2.1 理论基础"></a>2.1 理论基础</h3><p>扩散模型将模型的训练过程分为加噪过程和去噪过程。加噪过程需要在原始的图像$x_0$上添加T次高斯噪声形成一个纯噪声图像$x_T$，这个过程和模型无关。去噪过程可以看成是加噪过程的逆过程，模型需要逐步预测噪声并在$x_T$上将这些噪声减去从而恢复出原始图像$x_0$。加噪过程和去噪过程都是马尔可夫过程。</p>
-<p>加噪过程遵循状态转移方程$x_{t}=\sqrt{\alpha_t}x_{t-1}+\sqrt{\beta_t}\epsilon_t,\epsilon_t \sim \mathcal{N}(0,I)$  其中$\alpha_t,\beta_t$都是预设的一组值，$\beta_t = 1-\alpha_t$ 。设$\bar{\alpha_t}=\prod_{i=1}^{i=t}\alpha_i$ ，$\bar{\beta_t}$同理。不断地迭代状态转移方程可以得到:</p>
-<script type="math/tex; mode=display">
-x_t=\sqrt{\bar{\alpha_t}}x_{0}+\sqrt{1-\bar{\alpha_t}}\epsilon,\quad \epsilon \sim \mathcal{N}(0,I)</script><p>即$x_t$和$x_0$可以互相转化。</p>
-<p>去噪过程是加噪过程的逆过程。由于模型对噪声建模比较容易，故去噪过程会让模型对第t步的噪声进行预测，再利用$x_t$和$x_{t-1}$的转移关系得到前一步图像。</p>
-<p>下面介绍如何推导出模型的损失函数。参考论文”Understanding Diffusion Models: A Unified Perspective“进行讲解。<br>设加噪过程的状态转移服从分布$q(x_t|x_{t-1})$, 去噪过程的状态转移服从分布$p_\theta(x_{t-1}|x_t)$ 。我们的目标是模型经过t次的去噪后可以得到原始图像$x_0$，即：</p>
-<script type="math/tex; mode=display">
-\underset{\theta}{max}\quad p_\theta(x_0)</script><p>贝叶斯展开得到：</p>
-<script type="math/tex; mode=display">p_\theta(x_0)=\frac{p_\theta(x_{0:T})}{p_\theta(x_{1:T}|x_0)}</script><p>取对数然后取期望：</p>
-<script type="math/tex; mode=display">\begin{aligned}\mathbb{E}_{q(x_{1:T}|x_0)}\log p_\theta(x_0)&=\mathbb{E}_{q(x_{1:T}|x_0)}\log\frac{p_\theta(x_{0:T})}{q(x_{1:T}|x_0)}-\mathbb{E}_{q(x_{1:T}|x_0)}\log\frac{p_\theta(x_{1:T}|x_0)}{q(x_{1:T}|x_0)}\\&=\mathbb{E}_{q(x_{1:T}|x_0)}\log\frac{p_\theta(x_{0:T})}{q(x_{1:T}|x_0)}+KL(q(x_{1:T}|x_0)||p_\theta(x_{1:T}|x_0))\end{aligned}</script><p>由于KL散度恒大于等于0，故我们可以直接最大化下界$\mathbb{E}_{q(x_{1:T}|x_0)}\log\frac{p_\theta(x_{0:T})}{q(x_{1:T}|x_0)}$。对当前结果取负值，即最小化$\mathbb{E}_{q(x_{1:T}|x_0)}-\log\frac{p_\theta(x_{0:T})}{q(x_{1:T}|x_0)}$。</p>
-<p>利用马尔可夫过程的无后效性，对分子分母分别进行展开：</p>
-<script type="math/tex; mode=display">p_\theta(x_{0:T})=p(x_T)\prod_{t=1}^Tp_\theta(x_{t-1}|x_t)</script><script type="math/tex; mode=display">q(x_{1:T}|x_0)=\prod_{t=1}^Tq(x_t|x_{t-1})</script><p>得到：</p>
-<script type="math/tex; mode=display">\begin{aligned}-\mathbb{E}_q\left[\log\frac{p_\theta(x_{0:T})}{q(x_{1:T}|x_0)}\right]&=-\mathbb{E}_q\left[\log p(x_T)+\sum_{t\geq1}\log\frac{p_\theta(x_{t-1}|x_t)}{q(x_t|x_{t-1})}\right]\\&=-\mathbb{E}_q\left[\log p(x_T)+\log\frac{p_\theta(x_0|x_1)}{q(x_1|x_0)}+\sum_{t\ge2}\log\frac{p_\theta(x_{t-1}|x_t)}{q(x_t|x_{t-1})}\right]\end{aligned}</script><p>由于：</p>
-<script type="math/tex; mode=display">
-\begin{aligned}q(x_t|x_{t-1}) &= q(x_t|x_0,x_{t-1})\\&=\frac{q(x_0,x_{t-1},x_t)}{q(x_0,x_{t-1})}\\&=\frac{q(x_0,x_{t-1},x_t)q(x_0,x_t)q(x_0)}{q(x_0,x_t)q(x_0)q(x_0,x_{t-1})}\\&=\frac{q(x_{t-1}|x_0,x_t)q(x_t|x_0)}{q(x_{t-1}|x_0)} \end{aligned}</script><blockquote>
-<p>上面这是咋想出来的步骤……倒推容易，正推是咋分析出来的</p>
-</blockquote>
-<p>代入，裂项相消得到：</p>
-<script type="math/tex; mode=display">
-\begin{aligned}-\mathbb{E}_q\left[\log\frac{p_\theta(x_{0:T})}{q(x_{1:T}|x_0)}\right]&=-\mathbb{E}_{q}\left[\log\frac{p(x_{T})p_{\boldsymbol{\theta}}(x_{0}|x_{1})}{q(x_{T}|x_{0})}+\sum_{t=2}^{T}\log\frac{p_{\boldsymbol{\theta}}(x_{t-1}|x_{t})}{q(x_{t-1}|x_{t},x_{0})}\right]\\&=-\mathbb{E}_{q(\boldsymbol{x}_{1:T}|\boldsymbol{x}_{0})}\left[\log p_{\boldsymbol{\theta}}(x_{0}|x_{1})\right]-\mathbb{E}_{q(\boldsymbol{x}_{1:T}|\boldsymbol{x}_{0})}\left[\log\frac{p(\boldsymbol{x}_{T})}{q(\boldsymbol{x}_{T}|x_{0})}\right]-\sum_{t=2}^{T}\mathbb{E}_{q(\boldsymbol{x}_{1:T}|\boldsymbol{x}_{0})}\left[\log\frac{p_{\boldsymbol{\theta}}(x_{t-1}|x_{t})}{q(x_{t-1}|x_{t},x_{0})}\right]\\&=\underbrace{-\mathbb{E}_{q(\boldsymbol{x}_1|\boldsymbol{x}_0)}\left[\log p_{\boldsymbol{\theta}}(\boldsymbol{x}_0|\boldsymbol{x}_1)\right]}_{\text{reconstruction term}}+\underbrace{D_{\mathrm{KL}}(q(\boldsymbol{x}_T|\boldsymbol{x}_0)\parallel p(\boldsymbol{x}_T))}_{\text{prior matching term}}+\sum_{t=2}^T\underbrace{\mathbb{E}_{q(\boldsymbol{x}_t|\boldsymbol{x}_0)}\left[D_{\mathrm{KL}}(q(\boldsymbol{x}_{t-1}|\boldsymbol{x}_t,\boldsymbol{x}_0)\parallel p_{\boldsymbol{\theta}}(\boldsymbol{x}_{t-1}|\boldsymbol{x}_t))\right]}_{\text{denoising matching term}}\\&=L_0+L_T+\sum_{t\ge2} L_{t-1}\end{aligned}</script><blockquote>
-<p>没看懂期望角标的变化。这个<a target="_blank" rel="noopener" href="https://blog.csdn.net/gaofeipaopaotang/article/details/139247321">链接</a>有一些推导但跟论文里的还不太一样</p>
-</blockquote>
-<p>结果左项表示重构项，可以用蒙特卡罗方法近似优化。中间项和模型参数无关，不管。最后一项是一个去噪匹配项。q项表示了真实的信号，定义了如何对样本进行去噪。其值越小说明去噪结果和真实信号越相近。</p>
-<p>最右边的一项是优化重点。p是模型的输出，q可以使用高斯概率分布公式代入化简看出他本身还是一个高斯分布。过程如下：<br><img src="/2025/02/17/denoising-diffusion-probabilistic-models-yue-du-bi-ji/Pasted image 20250217012154.png" alt="img"><br>在给定$x_t$和$x_0$的情况下，q的均值是固定的。模型的输出可以直接看作是P的均值。故可以将该优化问题转化为最小化模型输出和分布均值之间的距离：</p>
-<script type="math/tex; mode=display">
-L_{t-1} = \mathbb{E}_q||{\mu}_q(x_t,x_0),\mu_\theta(x_t,t)||^2</script><p>根据$x_t,x_0$之间的转换关系，将$x_0$用$x_t$表示并代入到$\mu_q$中，得到：</p>
-<script type="math/tex; mode=display">
-\mu_q(x_t,x_0)=\frac{1}{\sqrt{\alpha_t}}\left(x_t-\frac{1-\alpha_t}{\sqrt{1-\bar{\alpha}_t}} \epsilon\right)</script><p>$\mu_\theta$可以用同样形式的式子表示，其中$\hat{\epsilon}$是模型预测结果：</p>
-<script type="math/tex; mode=display">
-\mu_\theta(x_t,t) = \frac{1}{\sqrt{\alpha_t}}\left(x_t-\frac{1-\alpha_t}{\sqrt{1-\bar{\alpha}_t}} \hat{\epsilon}\right)</script><p>代入$L_{t-1}$得到简化的损失函数，即直接计算预测噪声和真实噪声之间的距离：</p>
-<script type="math/tex; mode=display">
-L_{t-1} = \mathbb{E}_{x_0,\epsilon}||\epsilon,\hat{\epsilon}||^2</script><h3 id="2-2-训练算法"><a href="#2-2-训练算法" class="headerlink" title="2.2 训练算法"></a>2.2 训练算法</h3><p><img src="/2025/02/17/denoising-diffusion-probabilistic-models-yue-du-bi-ji/Pasted image 20250217154744.png" alt="img"><br>观察可以看到采样过程第四步会再添加一次噪声z。根据<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1mLbQeRExa">李宏毅的课程</a>得知在生成模型的生成过程中添加随机性可以提高生成的成功率。</p>
-<h2 id="结论和收获"><a href="#结论和收获" class="headerlink" title="结论和收获"></a>结论和收获</h2><p>复习了一下数学，了解了扩散模型的理论基础。</p>
+                <h2 id="USENIX-2024"><a href="#USENIX-2024" class="headerlink" title="USENIX 2024"></a>USENIX 2024</h2><h3 id="错误注入和鲁棒性"><a href="#错误注入和鲁棒性" class="headerlink" title="错误注入和鲁棒性"></a>错误注入和鲁棒性</h3><ul>
+<li>DNN-GP: Diagnosing and Mitigating Model’s Faults Using Latent Concepts.</li>
+<li>Yes, One-Bit-Flip Matters! Universal DNN Model Inference Depletion with Runtime Code Fault Injection.</li>
+<li>Tossing in the Dark: Practical Bit-Flipping on Gray-box Deep Neural Networks for Runtime Trojan Injection.</li>
+<li>Forget and Rewire: Enhancing the Resilience of Transformer-based Models against Bit-Flip Attacks.<h3 id="大模型攻击与防御"><a href="#大模型攻击与防御" class="headerlink" title="大模型攻击与防御"></a>大模型攻击与防御</h3></li>
+<li>An LLM-Assisted Easy-to-Trigger Backdoor Attack on Code Completion Models: Injecting Disguised Vulnerabilities against Strong Detection. </li>
+<li>REMARK-LLM: A Robust and Efficient Watermarking Framework for Generative Large Language Models. 水印</li>
+<li>Formalizing and Benchmarking Prompt Injection Attacks and Defenses.</li>
+<li>Instruction Backdoor Attacks Against Customized LLMs.<h3 id="安全ML"><a href="#安全ML" class="headerlink" title="安全ML"></a>安全ML</h3></li>
+<li>AutoFHE: Automated Adaption of CNNs for Efficient Evaluation over FHE.</li>
+<li>Fast and Private Inference of Deep Neural Networks by Co-designing Activation Functions.</li>
+<li>OblivGNN: Oblivious Inference on Transductive and Inductive Graph Neural Network.</li>
+<li>MD-ML: Super Fast Privacy-Preserving Machine Learning for Malicious Security with a Dishonest Majority.</li>
+<li>Accelerating Secure Collaborative Machine Learning with Protocol-Aware RDMA.<h3 id="隐私推理"><a href="#隐私推理" class="headerlink" title="隐私推理"></a>隐私推理</h3></li>
+<li>A Linear Reconstruction Approach for Attribute Inference Attacks against Synthetic Data.</li>
+<li>Did the Neurons Read your Book? Document-level Membership Inference for Large Language Models.</li>
+<li>MIST: Defending Against Membership Inference Attacks Through Membership-Invariant Subspace Training.</li>
+<li>Inf2Guard: An Information-Theoretic Framework for Learning Privacy-Preserving Representations against Inference Attacks.</li>
+<li>Property Existence Inference against Generative Models.</li>
+<li>How Does a Deep Learning Model Architecture Impact Its Privacy? A Comprehensive Study of Privacy Attacks on CNNs and Transformers.</li>
+<li>Reconstructing training data from document understanding models.</li>
+<li>Privacy Side Channels in Machine Learning Systems.</li>
+<li>FaceObfuscator: Defending Deep Learning-based Privacy Attacks with Gradient Descent-resistant Features in Face Recognition.<h3 id="后门"><a href="#后门" class="headerlink" title="后门"></a>后门</h3></li>
+<li>Neural Network Semantic Backdoor Detection and Mitigation: A Causality-Based Approach.</li>
+<li>On the Difficulty of Defending Contrastive Learning against Backdoor Attacks.</li>
+<li>Mudjacking: Patching Backdoor Vulnerabilities in Foundation Models.</li>
+<li>Xplain: Analyzing Invisible Correlations in Model Explanation.</li>
+<li>Verify your Labels! Trustworthy Predictions and Datasets via Confidence Scores.<h3 id="Digital-Adversarial-Attacks"><a href="#Digital-Adversarial-Attacks" class="headerlink" title="Digital Adversarial Attacks"></a>Digital Adversarial Attacks</h3></li>
+<li>More Simplicity for Trainers, More Opportunity for Attackers: Black-Box Attacks on Speaker Recognition Systems by Inferring Feature Extractor.</li>
+<li>Transferability of White-box Perturbations: Query-Efficient Adversarial Attacks against Commercial DNN Services.</li>
+<li>Adversarial Illusions in Multi-Modal Embeddings.</li>
+<li>It Doesn’t Look Like Anything to Me: Using Diffusion Model to Subvert Visual Phishing Detectors.</li>
+<li>Invisibility Cloak: Proactive Defense Against Visual Game Cheating.<h3 id="对抗攻防"><a href="#对抗攻防" class="headerlink" title="对抗攻防"></a>对抗攻防</h3></li>
+<li>Correction-based Defense Against Adversarial Video Attacks via Discretization-Enhanced Video Compressive Sensing.</li>
+<li>Rethinking the Invisible Protection against Unauthorized Image Usage in Stable Diffusion.</li>
+<li>Splitting the Difference on Adversarial Training.</li>
+<li>Machine Learning needs Better Randomness Standards: Randomised Smoothing and PRNG-based attacks.</li>
+<li>PatchCURE: Improving Certifiable Robustness, Model Utility, and Computation Efficiency of Adversarial Patch Defenses.<h3 id="评估和最好的实践"><a href="#评估和最好的实践" class="headerlink" title="评估和最好的实践"></a>评估和最好的实践</h3></li>
+<li>SecurityNet: Assessing Machine Learning Vulnerabilities on Public Models<h3 id="后门-1"><a href="#后门-1" class="headerlink" title="后门"></a>后门</h3></li>
+<li>UBA-Inf: Unlearning Activated Backdoor Attack with Influence-Driven Camouflage</li>
+</ul>
+<h3 id="越狱"><a href="#越狱" class="headerlink" title="越狱"></a>越狱</h3><ul>
+<li>LLM-Fuzzer: Scaling Assessment of Large Language Model Jailbreaks.</li>
+<li>Don’t Listen To Me: Understanding and Exploring Jailbreak Prompts of Large Language Models.</li>
+<li>Malla: Demystifying Real-world Large Language Model Integrated Malicious Services.</li>
+<li>Making Them Ask and Answer: Jailbreaking Large Language Models in Few Queries via Disguise and Reconstruction.<h3 id="模型萃取和水印"><a href="#模型萃取和水印" class="headerlink" title="模型萃取和水印"></a>模型萃取和水印</h3></li>
+<li>SoK: All You Need to Know About On-Device ML Model Extraction - The Gap Between Research and Practice.</li>
+<li>Unveiling the Secrets without Data: Can Graph Neural Networks Be Exploited through Data-Free Model Extraction Attacks?</li>
+<li>ClearStamp: A Human-Visible and Robust Model-Ownership Proof based on Transposed Model Training.</li>
+<li>DeepEclipse: How to Break White-Box DNN-Watermarking Schemes.</li>
+<li>ModelGuard: Information-Theoretic Defense Against Model Extraction Attacks.</li>
+</ul>
+<h3 id="大模型滥用"><a href="#大模型滥用" class="headerlink" title="大模型滥用"></a>大模型滥用</h3><ul>
+<li>Moderating Illicit Online Image Promotion for Unsafe User Generated Content Games Using Large Vision-Language Models.</li>
+<li>Deciphering Textual Authenticity: A Generalized Strategy through the Lens of Large Language Semantics for Detecting Human vs. Machine-Generated Text.</li>
+<li>Prompt Stealing Attacks Against Text-to-Image Generation Models.</li>
+<li>Quantifying Privacy Risks of Prompts in Visual Prompt Learning.<h3 id="安全分析"><a href="#安全分析" class="headerlink" title="安全分析"></a>安全分析</h3></li>
+<li>Hijacking Attacks against Neural Network by Analyzing Training Data.</li>
+<li>False Claims against Model Ownership Resolution.</li>
+<li>Landscape More Secure Than Portrait? Zooming Into the Directionality of Digital Images With Security Implications.</li>
+<li>Information Flow Control in Machine Learning through Modular Model Architecture.<h3 id="物理对抗攻击"><a href="#物理对抗攻击" class="headerlink" title="物理对抗攻击"></a>物理对抗攻击</h3></li>
+<li>Devil in the Room: Triggering Audio Backdoors in the Physical World.</li>
+<li>FraudWhistler: A Resilient, Robust and Plug-and-play Adversarial Example Detection Method for Speaker Recognition.</li>
+<li>pi-Jack: Physical-World Adversarial Attack on Monocular Depth Estimation with Perspective Hijacking.</li>
+<li>AE-Morpher: Improve Physical Robustness of Adversarial Objects against LiDAR-based Detectors via Object Reconstruction.</li>
+</ul>
+<h3 id="用户研究"><a href="#用户研究" class="headerlink" title="用户研究"></a>用户研究</h3><ul>
+<li>“I Don’t Know If We’re Doing Good. I Don’t Know If We’re Doing Bad”: Investigating How Practitioners Scope, Motivate, and Conduct Privacy Work When Developing AI Products.</li>
+<li>Towards More Practical Threat Models in Artificial Intelligence Security.</li>
+</ul>
 
                 
             </div>
@@ -575,7 +600,7 @@ L_{t-1} = \mathbb{E}_{x_0,\epsilon}||\epsilon,\hat{\epsilon}||^2</script><h3 id=
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://blog.expecto.top/2025/02/17/denoising-diffusion-probabilistic-models-yue-du-bi-ji/">https://blog.expecto.top/2025/02/17/denoising-diffusion-probabilistic-models-yue-du-bi-ji/</a>
+                    <a href="https://blog.expecto.top/2025/08/28/2025-diao-yan/">https://blog.expecto.top/2025/08/28/2025-diao-yan/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -613,16 +638,8 @@ L_{t-1} = \mathbb{E}_{x_0,\epsilon}||\epsilon,\hat{\epsilon}||^2</script><h3 id=
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/">
-                                    <span class="chip bg-color">论文笔记</span>
-                                </a>
-                            
-                                <a href="/tags/%E6%88%90%E5%91%98%E6%8E%A8%E7%90%86/">
-                                    <span class="chip bg-color">成员推理</span>
-                                </a>
-                            
-                                <a href="/tags/%E6%89%A9%E6%95%A3%E6%A8%A1%E5%9E%8B/">
-                                    <span class="chip bg-color">扩散模型</span>
+                                <a href="/tags/%E8%AE%BA%E6%96%87%E8%B0%83%E7%A0%94/">
+                                    <span class="chip bg-color">论文调研</span>
                                 </a>
                             
                         </div>
@@ -668,17 +685,18 @@ L_{t-1} = \mathbb{E}_{x_0,\epsilon}||\epsilon,\hat{\epsilon}||^2</script><h3 id=
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2025/02/27/high-dimensional-probability-bi-ji/">
+                <a href="/2025/08/28/2025-diao-yan/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="High-Dimensional Probability 第一章笔记">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="2025调研">
                         
-                        <span class="card-title">High-Dimensional Probability 第一章笔记</span>
+                        <span class="card-title">2025调研</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -688,30 +706,23 @@ L_{t-1} = \mathbb{E}_{x_0,\epsilon}||\epsilon,\hat{\epsilon}||^2</script><h3 id=
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2025-02-27
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-08-28
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/High-Dimensional-Probability/" class="post-category">
-                                    High-Dimensional Probability
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            wangxh
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E9%AB%98%E7%BB%B4%E6%A6%82%E7%8E%87%E8%AE%BA/">
-                        <span class="chip bg-color">高维概率论</span>
-                    </a>
-                    
-                    <a href="/tags/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
-                        <span class="chip bg-color">阅读笔记</span>
+                    <a href="/tags/%E8%AE%BA%E6%96%87%E8%B0%83%E7%A0%94/">
+                        <span class="chip bg-color">论文调研</span>
                     </a>
                     
                 </div>
@@ -725,13 +736,13 @@ L_{t-1} = \mathbb{E}_{x_0,\epsilon}||\epsilon,\hat{\epsilon}||^2</script><h3 id=
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/12/29/are-diffusion-models-vulnerable-to-membership-inference-attacks-yue-du-bi-ji/">
+                <a href="/2025/04/03/a-survey-of-safety-on-large-vision-language-models-attacks-defenses-and-evaluations-yue-du-bi-ji/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Are Diffusion Models Vulnerable to Membership Inference Attacks 阅读笔记">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="A Survey of Safety on Large Vision-Language Models: Attacks, Defenses and Evaluations 阅读笔记">
                         
-                        <span class="card-title">Are Diffusion Models Vulnerable to Membership Inference Attacks 阅读笔记</span>
+                        <span class="card-title">A Survey of Safety on Large Vision-Language Models: Attacks, Defenses and Evaluations 阅读笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -742,7 +753,7 @@ L_{t-1} = \mathbb{E}_{x_0,\epsilon}||\epsilon,\hat{\epsilon}||^2</script><h3 id=
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-12-29
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-04-03
                             </span>
                         <span class="publish-author">
                             
@@ -755,16 +766,16 @@ L_{t-1} = \mathbb{E}_{x_0,\epsilon}||\epsilon,\hat{\epsilon}||^2</script><h3 id=
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/">
-                        <span class="chip bg-color">论文笔记</span>
+                    <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">机器学习</span>
                     </a>
                     
-                    <a href="/tags/%E6%88%90%E5%91%98%E6%8E%A8%E7%90%86/">
-                        <span class="chip bg-color">成员推理</span>
+                    <a href="/tags/%E7%BB%BC%E8%BF%B0/">
+                        <span class="chip bg-color">综述</span>
                     </a>
                     
-                    <a href="/tags/%E6%89%A9%E6%95%A3%E6%A8%A1%E5%9E%8B/">
-                        <span class="chip bg-color">扩散模型</span>
+                    <a href="/tags/%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B/">
+                        <span class="chip bg-color">大语言模型</span>
                     </a>
                     
                 </div>
@@ -895,13 +906,6 @@ L_{t-1} = \mathbb{E}_{x_0,\epsilon}||\epsilon,\hat{\epsilon}||^2</script><h3 id=
 
 </main>
 
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
-    });
-</script>
 
 
 
